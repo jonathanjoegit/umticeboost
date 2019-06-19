@@ -1,0 +1,75 @@
+// Customize the plugin block_myoverview
+// --- --- --- --- --- --- --- --- --- --- ---
+// vars :
+$studentchartcolor: #2a0;
+$teacherchartcolor: #1177d1;
+//chart Histogram (teacher)
+$colorbaractive: $teacherchartcolor;
+$colorbarbackground: #f4f4f4;
+$colorbartext:  #fff;
+$colorbartextshadow: $teacherchartcolor;
+$sizebarshadow: 1.2px;
+$sizebarshadow2: -1.2px;
+
+.progress-doughnut {
+  color: $studentchartcolor !important; //@todo : Utiliser variable !!!
+  circle {
+    stroke: $studentchartcolor !important; //@todo : Utiliser variable !!!
+  }
+  .progress-text {
+    color: $studentchartcolor !important;
+  }
+}
+
+.progress-teacher {
+  color: $teacherchartcolor !important; //@todo : Utiliser variable !!!
+  circle {
+    stroke: $teacherchartcolor !important; //@todo : Utiliser variable !!!
+  }
+  .progress-text {
+    color: $teacherchartcolor !important;
+  }
+}
+
+
+// bars diagram :
+.verticalChart {
+  width: 100%;
+  //background: #f4f4f4;
+  font-size: 0.75em;
+  .singleBar {
+    width       : 8.2%;
+    float       : left;
+    margin-left : .4%;
+    margin-right: .4%;
+    .bar {
+      position  : relative;
+      height    : 100px;
+      background: $colorbarbackground;
+      overflow  : hidden;
+      .value {
+        position  : absolute;
+        bottom    : 0;
+        width     : 100%;
+        background: $teacherchartcolor;
+        color     : $colorbartext;
+        span {
+          position   : absolute;
+          //font-size  : 0.9em;
+          bottom     : 0;
+          width      : 100%;
+          height     : 20px;
+          color      : $colorbartext;
+          text-shadow: 0 $sizebarshadow2 0  $colorbartextshadow, 0 $sizebarshadow 0  $colorbartextshadow, $sizebarshadow 0 0  $colorbartextshadow, $sizebarshadow2 0 0  $colorbartextshadow, $sizebarshadow2 $sizebarshadow2 0  $colorbartextshadow, $sizebarshadow2 $sizebarshadow 0  $colorbartextshadow, $sizebarshadow $sizebarshadow 0  $colorbartextshadow, $sizebarshadow $sizebarshadow2 0  $colorbartextshadow;
+          display    : none;
+          text-align : center;
+        }
+      }
+    }
+    .title {
+      margin-top: 5px;
+      text-align: center;
+      color     : $teacherchartcolor;
+    }
+  }
+}

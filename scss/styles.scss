@@ -1,0 +1,43 @@
+// Vars & mixin :
+@import 'includes/config';
+
+// partials :
+@import 'includes/home';
+@import 'includes/loginform';
+@import 'includes/navbar';
+@import 'includes/navdrawer';
+@import 'includes/footer';
+@import 'includes/administrationsite';
+@import 'includes/pluginjournal';
+@import 'includes/plugin_block_myoverview.scss';
+
+// ATTENTION A LA PLACE DU THEME !!!!!!
+// Fonction lib.php dans le thème va chercher les fichiers SCSS (du thème boost et du thème enfant !!!)
+//	$post = file_get_contents($CFG->themedir . '/eadumboost/scss/post.scss');
+//
+//
+
+// Correction de BUGs :
+// --- --- --- --- --- --- --- --- --- --- ---
+
+//Bug AVEC LES BORDURES DE TABLEAUX (proriété de base sur tous les tableaux):
+// enlever la propriété "border:1px solid #000;" de ça : th,td{border:1px solid #000;padding:.5em}
+// ici : moodle/lib/yuilib/3.17.2/cssbase/cssbase-min.css
+//
+
+body {
+    color:red;
+}
+
+// général :
+// --- --- --- --- --- --- --- --- --- --- ---
+.notification a,
+a {
+  //color: $linkColor;
+}
+
+// Blocks :
+// --- --- --- --- --- --- --- --- --- --- ---
+.card-block h3.card-title {
+  //border-bottom: 3px solid $backgroundBody; // gris sous le titre du block (délimitation)
+}

@@ -1,0 +1,46 @@
+// vars :
+// === === === === === === === === === === ===
+
+// général
+$linkColor: #08c;
+$backgroundBody: #f4f4f4;
+
+//navbar :
+$navbarBackgroundColor: #232934;
+$navbarBorderColor: #81c0c4; //#bbbbb9;
+$navbarBorderSize: 2px;
+$navbarColor: rgba(255, 255, 255, 1) !default;
+$navbarHoverColor: rgba(255, 255, 255, .8) !default;
+$navbarActiveColor: rgba(255, 255, 255, .8) !default;
+$navbarDisabledColor: rgba(255, 255, 255, .5) !default;
+$navbarDropMenuColor: $navbarBackgroundColor;
+
+//nav-drawer
+$navDrawerColor: #cedadf;
+
+// Footer.
+$footerLinkColor: #e5512b;
+
+//Login Form:
+$themeBtnLoginColor: #e5512b;
+$themeBtnLoginHover: #d5411b;
+$cadreHome: #eeeee9;
+
+// Administration du site :
+$adminDefaultRoleColor: #00ff3e;
+
+// fonctions :
+// === === === === === === === === === === ===
+@mixin hover-focus {
+  &:focus,
+  &:hover {
+    @content
+  }
+}
+@mixin plain-hover-focus {
+  &,
+  &:focus,
+  &:hover {
+    @content
+  }
+}
