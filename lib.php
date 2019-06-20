@@ -50,8 +50,20 @@ function theme_umticeboost_get_main_scss_content($theme) {
         $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
     }
 
-    return $scss;
-    
+    // add umtice scss
+    // Post (style.scss) CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
+    $post = file_get_contents($CFG->themedir . '/umticeboost/scss/styles.scss');
+
+    // Add custom styles for Test & Pre-production environment (theme setting).
+    /*$value = $theme->settings->platform_env;
+    if ($value == "Pre-Production") {
+        $post .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_preproduction.scss');
+    } else if ($value == "Test") {
+        $post .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_test.scss');
+    }*/
+
+    return $scss . "\n" . $post;
+
     //FOEMZUBF%ZIFGRMGOFBORGIRBGPZGZRG
     // ALLER CHERCHER LES SCSS https://docs.moodle.org/dev/Creating_a_theme_based_on_boost#Duplicate_the_settings_from_Boost
 }

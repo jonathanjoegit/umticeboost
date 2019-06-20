@@ -1,0 +1,14 @@
+.icon[title='EADUM'], .icon[title='Logo EADUM'] {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+  -webkit-filter: invert(100%) contrast(200%);
+          filter: invert(100%) contrast(200%); }
+
+.navbar .logo::after,
+.footerdivEAD::after {
+  content: 'P R E  P R O D';
+  color: #00e5ff;
+  font-size: 18px;
+  font-weight: 900; }
+
+/*# sourceMappingURL=env_preproduction.css.map */

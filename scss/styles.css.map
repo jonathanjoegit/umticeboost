@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;2BAC2B;ACD3B;2BAC2B;ACE3B,OAAQ;EACN,gBAAgB,ECIM,OAAW;EDHjC,aAAa,EAAK,iBAA0C",
+"sources": ["includes/_home.scss","includes/_loginform.scss","includes/_navbar.scss","includes/_config.scss"],
+"names": [],
+"file": "styles.css"
+}

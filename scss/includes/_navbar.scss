@@ -1,74 +1,8 @@
 //navbar :
 // --- --- --- --- --- --- --- --- --- --- ---
-header {
-  .logo img {
-    width : auto;
-    height: 27px;
-    @media screen and (max-width: 1000px) {
-      height: 20px;
-    }
-  }
-}
-.navbar .dropdown-toggle {
-  @media screen and (max-width: 1000px) {
-    font-size: .9rem;
-  }
-}
-.navbar-dark {
-  border-bottom   : $navbarBorderSize solid $navbarBorderColor;
-  background-color: $navbarBackgroundColor;
-  // White links against a dark background
-  .navbar-brand {
-    color: $navbarActiveColor;
-    @include hover-focus {
-      color: $navbarActiveColor;
-    }
-  }
-  .navbar-nav {
-    .nav-link {
-      color: $navbarColor;
-      @include hover-focus {
-        color: $navbarHoverColor;
-      }
-    }
-    .active > .nav-link,
-    .nav-link.active,
-    .nav-link.open,
-    .open > .nav-link {
-      @include plain-hover-focus {
-        color: $navbarActiveColor;
-      }
-    }
-    .nav-item {
-      float       : right; // POUR METTRE LA LANGUES ET TOUT A DROITE !!!
 
-      margin-right: 10px;
-    }
-    .usermenu {
-      margin-left: 10px;
-    }
-    .navbar-divider {
-      background-color: rgba(255, 255, 255, .075);
-    }
-    // notification (pop-up)
-    #nav-notification-popover-container {
-      .notification a {
-        color: $navbarBackgroundColor !important;
-      }
-    }
-  }
-  .menubar {
-    a {
-      color: $navbarColor;
-      @include hover-focus {
-        color: $navbarHoverColor;
-      }
-    }
-    .dropdown-menu {
-      a,
-      a .icon {
-        color: $navbarDropMenuColor !important;
-      }
-    }
-  }
+.navbar {
+  background-color: $navbarBackgroundColor ;
+  border-bottom   : $navbarBorderSize solid $navbarBorderColor;
+  //color: $navbarTextColor;
 }

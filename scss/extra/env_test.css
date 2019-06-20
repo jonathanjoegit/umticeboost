@@ -1,0 +1,12 @@
+.icon[title='EADUM'], .icon[title='Logo EADUM'] {
+  transform: scaleX(-1);
+  filter: hue-rotate(90deg) saturate(200%); }
+
+.navbar .logo::after,
+.footerdivEAD::after {
+  content: 'T E S T';
+  color: #30af30;
+  font-size: 18px;
+  font-weight: 900; }
+
+/*# sourceMappingURL=env_test.css.map */
