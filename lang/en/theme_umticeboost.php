@@ -25,4 +25,36 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'UMTICE Boost';
-$string['choosereadme'] = 'Theme UMTICE Boost is a child theme of Boost for Le Mans Université'; 
+$string['choosereadme'] = 'Theme UMTICE Boost is a child theme of Boost for Le Mans Université';
+
+/* custom : */
+$string['noenrolments'] = 'No enrolments';
+$string['assistanceEns'] = 'Staff helpdesk';
+$string['assistanceTP'] = 'Assistance';
+$string['FAQ'] = 'FAQ';
+$string['espaceformation'] = 'Staff training';
+$string['creerespacecours'] = 'New course creation form';
+$string['recherchecours'] = 'Search courses';
+$string['mail'] = 'Mailbox LMU';
+/* HOME */
+$string['sitetitle'] = 'Le Mans Université Virtual Learning Environment';
+$string['connect'] = 'Sign in';
+$string['listUFR1'] = 'Law, Economics, Management';
+$string['listUFR2'] = 'Arts, Literature, Languages';
+$string['listUFR3'] = 'Humanities and Social Sciences';
+$string['listUFR4'] = 'Sciences, Technology, Health';
+$string['listUFR5'] = 'Collaborative environments';
+$string['listUFR6'] = 'Cross-disciplinary training';
+$string['listUFR7'] = 'Vocational training';
+$string['listUFR8'] = 'Staff training';
+$string['txthome1'] = 'UMTICE is a collaborative environment dedicated to Le Mans Université students and academic staff.  A true educational tool, this platform can help improve course contents and student learning experience through specific online resources and activities.';
+$string['txthome2'] = 'You can access the courses directly on your tablet: our new responsive user interface will adapt to your screen.';
+$string['txthome3'] = 'This website is optimised for the latest versions of Firefox and Chrome.  Remember to update your own Web browser.';
+$string['supportens'] = 'Staff helpdesk :';
+$string['assistance'] = 'Educational and technical support';
+$string['FAQlong'] = 'FAQ';
+$string['formations'] = 'Staff training';
+$string['createcourse'] = 'New course creation form';
+/* connections anonymes*/
+$string['connecte_invite'] = 'You are currently using guest access.';
+$string['acces_cours'] = 'Search courses';

@@ -5,5 +5,19 @@
 .navbar {
   background-color: #4d4d4d;
   border-bottom: 4px solid #de5b5e; }
+  .navbar .logo img {
+    height: 22px;
+    width: auto; }
+  .navbar .usermenu {
+    color: #fff; }
+    .navbar .usermenu a.dropdown-toggle {
+      font-weight: 700;
+      color: #fff; }
+    .navbar .usermenu .login a {
+      color: #de5b5e; }
+    .navbar .usermenu .icon {
+      color: #212529 !important; }
+  .navbar .dropdown-item:hover {
+    background-color: #d8d9da; }
 
 /*# sourceMappingURL=styles.css.map */
