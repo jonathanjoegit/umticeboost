@@ -1,2 +1,34 @@
 // Footer :
 // --- --- --- --- --- --- --- --- --- --- ---
+
+footer#page-footer {
+  background-color: $grayumtice !important;
+  text-align      : center;
+  a {
+    color          : $pinkumtice;
+    text-decoration: none;
+  }
+
+  .footer-umticeboost {
+
+    img {
+      width : auto;
+      height: 60px;
+      @media screen and (max-width: 1350px) {
+        height: 45px;
+      }
+      @media screen and (max-width: 1150px) {
+        height: 30px;
+      }
+    }
+    ul {
+      margin    : 0;
+      padding   : 0;
+      list-style: none;
+    }
+  }
+  .homelink,
+  .tool_dataprivacy {
+    display: none;
+  }
+}

@@ -101,88 +101,51 @@ class core_renderer extends \theme_boost\output\core_renderer {
             }
         }
         if ($numcourses == 0 || empty($courses)) {
-            $noenrolments = get_string('noenrolments', 'theme_umtice');
+            $noenrolments = get_string('noenrolments', 'theme_umticeboost');
             $branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
         }
 
         // Recherche cours :
-        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_umtice');
+        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_umticeboost');
         $branchurl = new moodle_url('/course/index.php');
         $branchsort = 2;
         $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
   /*
         // Mail
-        $branchtitle = $branchlabel = get_string('mail', 'theme_umtice');
+        $branchtitle = $branchlabel = get_string('mail', 'theme_umticeboost');
         $branchurl = new moodle_url('http://webmail.univ-lemans.fr/');
         $branchsort = 3;
         $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 */
 
         // Aide :
-      $branchtitle = $branchlabel = get_string('help');
+      /*$branchtitle = $branchlabel = get_string('help');
         $branchurl = new moodle_url('');
         $branchsort = 4;
         $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
         // Sous branche Enseignant :
-        $SSbranchtitle = $SSbranchlabel = get_string('assistanceEns', 'theme_umtice');
+        $SSbranchtitle = $SSbranchlabel = get_string('assistanceEns', 'theme_umticeboost');
         $SSbranchurl = new moodle_url('');
         $branchEnseignant = $branch->add($SSbranchlabel, $SSbranchurl, $SSbranchtitle);
 
         // sous sous branches :
-        $SSbranchtitle = $SSbranchlabel = get_string('FAQ', 'theme_umtice');
+        $SSbranchtitle = $SSbranchlabel = get_string('FAQ', 'theme_umticeboost');
         $SSbranchurl = new moodle_url('/course/view.php?id=2245');
         $branchEnseignant->add($SSbranchlabel, $SSbranchurl, $SSbranchtitle);
 
-        $SSbranchtitle = $SSbranchlabel = get_string('creerespacecours', 'theme_umtice');
+        $SSbranchtitle = $SSbranchlabel = get_string('creerespacecours', 'theme_umticeboost');
         $SSbranchurl = new moodle_url('http://coursumtice.univ-lemans.fr/');
         $branchEnseignant->add($SSbranchlabel, $SSbranchurl, $SSbranchtitle);
 
-
+*/
 
 }
         return parent::render_custom_menu($custommenu);
     }
 
-    /*
-     * This renders the bootstrap top menu.
-     *
-     * This renderer is needed to enable the Bootstrap style navigation.
-     */
-    protected function render_custom_menu(custom_menu $menu) {
-        global $CFG;
-
-        $langs = get_string_manager()->get_list_of_translations();
-        $haslangmenu = $this->lang_menu() != '';
-
-        if (!$menu->has_children() && !$haslangmenu) {
-            return '';
-        }
-
-        if ($haslangmenu) {
-            $strlang = get_string('language');
-            $currentlang = current_language();
-            if (isset($langs[$currentlang])) {
-                $currentlang = $langs[$currentlang];
-            } else {
-                $currentlang = $strlang;
-            }
-            $this->language = $menu->add($currentlang, new moodle_url('#'), $strlang, 10000);
-            foreach ($langs as $langtype => $langname) {
-                $this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
-            }
-        }
-
-        $content = '';
-        foreach ($menu->get_children() as $item) {
-            $context = $item->export_for_template($this);
-            $content .= $this->render_from_template('core/custom_menu_item', $context);
-        }
-
-        return $content;
-    }
-
+    
 
 
 

@@ -20,4 +20,27 @@
   .navbar .dropdown-item:hover {
     background-color: #d8d9da; }
 
+footer#page-footer {
+  background-color: #4d4d4d !important;
+  text-align: center; }
+  footer#page-footer a {
+    color: #de5b5e;
+    text-decoration: none; }
+  footer#page-footer .footer-umticeboost img {
+    width: auto;
+    height: 60px; }
+    @media screen and (max-width: 1350px) {
+      footer#page-footer .footer-umticeboost img {
+        height: 45px; } }
+    @media screen and (max-width: 1150px) {
+      footer#page-footer .footer-umticeboost img {
+        height: 30px; } }
+  footer#page-footer .footer-umticeboost ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  footer#page-footer .homelink,
+  footer#page-footer .tool_dataprivacy {
+    display: none; }
+
 /*# sourceMappingURL=styles.css.map */
