@@ -27,12 +27,24 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__ . '/lib.php');
 
-// modif umticeboost
+// modif umticeboost jjupin
 $THEME->name = 'umticeboost';
 $THEME->parents = ['boost'];
 $THEME->scss = function($theme) {
     return theme_umticeboost_get_main_scss_content($theme);
 };
+
+$THEME->layouts = [
+  // The site home page.
+  'frontpage' => array(
+      'file' => 'home.php',
+      'regions' => array('side-pre'),
+      'defaultregion' => 'side-pre',
+      'options' => array('nonavbar' => true),
+    ),
+];
+// END modif umticeboost jjupin
+
 
 
 $THEME->sheets = [];
@@ -43,6 +55,8 @@ $THEME->usefallback = true;
     return theme_boost_get_main_scss_content($theme);
 };*/
 
+
+/*
 $THEME->layouts = [
     // Most backwards compatible layout without the blocks - this is the layout used by default.
     'base' => array(
@@ -153,7 +167,7 @@ $THEME->layouts = [
         'defaultregion' => 'side-pre'
     )
 ];
-
+*/
 //$THEME->parents = [];
 $THEME->enable_dock = false;
 $THEME->csstreepostprocessor = 'theme_boost_css_tree_post_processor';

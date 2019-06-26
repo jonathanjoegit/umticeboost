@@ -4,30 +4,44 @@
 footer#page-footer {
   background-color: $grayumtice !important;
   text-align      : center;
+  line-height     : 2;
+
   a {
     color          : $pinkumtice;
     text-decoration: none;
+    &:hover {
+      color          : darken($pinkumtice, 5%);
+      text-decoration: underline;
+    }
   }
 
   .footer-umticeboost {
-
+    div {
+      margin-top: 5px;
+    }
     img {
       width : auto;
-      height: 60px;
-      @media screen and (max-width: 1350px) {
-        height: 45px;
-      }
-      @media screen and (max-width: 1150px) {
-        height: 30px;
-      }
+      height: 30px;
+
+    }
+    .logoUmPrn img {
+      height: 50px;
     }
     ul {
       margin    : 0;
       padding   : 0;
       list-style: none;
     }
+    .textfooter {
+      line-height: 1.5;
+    }
+
+  }
+  .logininfo {
+    margin-top: 15px;
   }
   .homelink,
+  .sitelink,
   .tool_dataprivacy {
     display: none;
   }

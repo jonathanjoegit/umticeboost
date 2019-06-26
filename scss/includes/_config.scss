@@ -10,9 +10,24 @@ $pinkumtice           : #de5b5e;
 $whiteText            : #fff;
 $blackText            : #212529;
 
+//background:
+$lightbackground: #eeeee9;
+
 //navbar:
 $navbarBackgroundColor: $grayumtice;
 $navbarBorderColor    : $pinkumtice;
 $navbarBorderSize     : 4px;
 $navbarTextColor      : #fff;
-$navbarHoverColor     : #d8d9da
+$navbarHoverColor     : #d8d9da;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min        : 576px;
+
+// Small tablets (portrait view)
+$screen-md-min        : 768px;
+
+// Tablets and small desktops
+$screen-lg-min        : 992px;
+
+// Large tablets and desktops
+$screen-xl-min        : 1200px;

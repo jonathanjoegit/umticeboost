@@ -1,5 +1,105 @@
 /** HOME PAGE
 -------------------------*/
+.home-header-umticeboost {
+  background: url("[[pix:theme|banner_1400]]") no-repeat center center;
+  background-size: 100%;
+  padding-top: 15px;
+  padding-bottom: 20px; }
+  @media (max-width: 576px) {
+    .home-header-umticeboost {
+      background: url("[[pix:theme|banner_600]]") no-repeat center center;
+      background-size: auto; } }
+  @media (max-width: 576px) {
+    .home-header-umticeboost {
+      background: url("[[pix:theme|banner_600]]") no-repeat center center;
+      background-size: auto; } }
+  .home-header-umticeboost .row {
+    margin-top: 150px;
+    margin-bottom: 27px; }
+    .home-header-umticeboost .row img {
+      height: 90px;
+      width: auto; }
+      @media (max-width: 576px) {
+        .home-header-umticeboost .row img {
+          height: 70px; } }
+    .home-header-umticeboost .row h1 {
+      color: #fff;
+      font-size: 2em;
+      font-weight: normal;
+      text-shadow: 5px 5px 7px #212529;
+      line-height: 5px;
+      font-style: italic; }
+      @media (max-width: 768px) {
+        .home-header-umticeboost .row h1 {
+          font-size: 1.5em; } }
+      @media (max-width: 576px) {
+        .home-header-umticeboost .row h1 {
+          font-size: 1.3em; } }
+    .home-header-umticeboost .row .btn-login {
+      width: 320px;
+      margin: 30px auto -75px;
+      padding: 12px;
+      text-align: center;
+      border: 2px solid #fff;
+      background: #de5b5e;
+      border-radius: 8px;
+      cursor: pointer; }
+      .home-header-umticeboost .row .btn-login:hover {
+        background: #da4649; }
+      .home-header-umticeboost .row .btn-login a {
+        font-size: 2.3em;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        color: #fff; }
+        .home-header-umticeboost .row .btn-login a:hover {
+          text-decoration: none;
+          color: #fff; }
+
+#page.home-umticeboost {
+  margin-top: 15px; }
+  #page.home-umticeboost #region-main {
+    margin: 40px auto 20px;
+    border: none; }
+  #page.home-umticeboost .cadre-home {
+    max-width: 1000px;
+    padding: 20px;
+    border: 1px solid #de5b5e;
+    background: #eeeee9;
+    border-radius: 8px;
+    font-size: 1.4em;
+    line-height: 20px; }
+    #page.home-umticeboost .cadre-home .list_ufr {
+      border-left: solid 4px #de5b5e;
+      padding-left: 10px;
+      margin-top: 10px;
+      width: 40%; }
+      @media (max-width: 992px) {
+        #page.home-umticeboost .cadre-home .list_ufr {
+          width: 45%; } }
+      @media (max-width: 576px) {
+        #page.home-umticeboost .cadre-home .list_ufr {
+          width: 80%; } }
+    #page.home-umticeboost .cadre-home .icon-home {
+      width: 14%;
+      margin-top: 20px;
+      text-align: center; }
+      #page.home-umticeboost .cadre-home .icon-home img {
+        width: 50px;
+        height: auto;
+        margin-left: auto !important;
+        margin-right: auto !important; }
+      @media (max-width: 768px) {
+        #page.home-umticeboost .cadre-home .icon-home {
+          width: 80%; } }
+    #page.home-umticeboost .cadre-home .text-home-icon {
+      margin-top: 20px;
+      width: 85%;
+      text-align: justify; }
+      @media (max-width: 768px) {
+        #page.home-umticeboost .cadre-home .text-home-icon {
+          margin-top: 5px; } }
+
 /** Login form
 -------------------------*/
 .navbar {
@@ -25,24 +125,31 @@
 
 footer#page-footer {
   background-color: #4d4d4d !important;
-  text-align: center; }
+  text-align: center;
+  line-height: 2; }
   footer#page-footer a {
     color: #de5b5e;
     text-decoration: none; }
+    footer#page-footer a:hover {
+      color: #da4649;
+      text-decoration: underline; }
+  footer#page-footer .footer-umticeboost div {
+    margin-top: 5px; }
   footer#page-footer .footer-umticeboost img {
     width: auto;
-    height: 60px; }
-    @media screen and (max-width: 1350px) {
-      footer#page-footer .footer-umticeboost img {
-        height: 45px; } }
-    @media screen and (max-width: 1150px) {
-      footer#page-footer .footer-umticeboost img {
-        height: 30px; } }
+    height: 30px; }
+  footer#page-footer .footer-umticeboost .logoUmPrn img {
+    height: 50px; }
   footer#page-footer .footer-umticeboost ul {
     margin: 0;
     padding: 0;
     list-style: none; }
+  footer#page-footer .footer-umticeboost .textfooter {
+    line-height: 1.5; }
+  footer#page-footer .logininfo {
+    margin-top: 15px; }
   footer#page-footer .homelink,
+  footer#page-footer .sitelink,
   footer#page-footer .tool_dataprivacy {
     display: none; }
 

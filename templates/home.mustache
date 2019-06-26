@@ -1,0 +1,144 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_boost/columns1
+
+    Boost 1 column layout template.
+
+    Context variables required for this template:
+    * sitename - The name of the site
+    * output - The core renderer for the page
+    * bodyattributes - attributes for the body tag as a string of html attributes
+
+    Example context (json):
+    {
+        "sitename": "Moodle",
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "page_title": "Test page",
+            "favicon": "favicon.ico",
+            "main_content": "<h1>Headings make html validators happier</h1>"
+         },
+         "bodyattributes":""
+    }
+}}
+{{> theme_boost/head }}
+
+<body {{{ bodyattributes }}}>
+<div id="page-wrapper" class="page-wrapper-home-umticeboost">
+
+  {{{ output.standard_top_of_body_html }}}
+
+  <div id="page" class="container-fluid home-umticeboost">
+
+    {{! home page header umticeboost add jjupin }}
+    {{> theme_umticeboost/home_header }}
+
+
+
+    <div id="page-content" class="row pb-3">
+      <div id="region-main-box" class="col-12">
+        <section id="region-main" class="d-flex justify-content-center">
+
+          {{! home page umticeboost add jjupin }}
+
+
+//===> FAIRE DES EXTRACT => 1) normal / 2) guest
+
+
+          <div class="d-flex flex-wrap  justify-content-center cadre-home ">
+
+            <div class="list_ufr">
+              {{# str }} listUFR1, theme_umticeboost {{/ str }}
+            </div>
+            <div class="list_ufr">
+              {{# str }} listUFR2, theme_umticeboost {{/ str }}
+            </div>
+            <div class="list_ufr">
+              {{# str }} listUFR3, theme_umticeboost {{/ str }}
+            </div>
+            <div class="list_ufr">
+              {{# str }} listUFR4, theme_umticeboost {{/ str }}
+            </div>
+            <div class="list_ufr">
+              {{# str }} listUFR5, theme_umticeboost {{/ str }}
+            </div>
+            <div class="list_ufr">
+              {{# str }} listUFR6, theme_umticeboost {{/ str }}
+            </div>
+            <div class="list_ufr">
+              {{# str }} listUFR7, theme_umticeboost {{/ str }}
+            </div>
+            <div class="list_ufr">
+              {{# str }} listUFR8, theme_umticeboost {{/ str }}
+            </div>
+
+
+            <div class="w-100" style="height: 20px;"></div>
+
+
+            <div class="icon-home">
+              {{# pix }} user_group_70, theme, icon {{/ pix }}
+            </div>
+            <div class="text-home-icon">
+              {{# str }} txthome1, theme_umticeboost {{/ str }}
+            </div>
+
+            <div class="icon-home">
+              {{# pix }} tablet_70, theme_umticeboost, icon{{/ pix }}
+            </div>
+            <div class="text-home-icon">
+              {{# str }} txthome2, theme_umticeboost {{/ str }}
+            </div>
+
+            <div class="icon-home">
+              {{# pix }} wifi_70, theme_umticeboost, icon{{/ pix }}
+            </div>
+            <div class="text-home-icon">
+              {{# str }} txthome3, theme_umticeboost {{/ str }}
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+      {{! END home page umticeboost add jjupin }}
+      </section>
+    </div>
+  </div>
+</div>
+
+{{{ output.standard_after_main_region_html }}}
+{{> theme_boost/footer }}
+
+{{! hack to hide main_content add jjupin }}
+<section class="novisible" style="display:none;">
+  {{{ output.main_content }}}
+</section>
+
+
+</div>
+{{{ output.standard_end_of_body_html }}}
+</body>
+</html>
+{{#js}}
+require(['theme_boost/loader']);
+{{/js}}
