@@ -38,32 +38,25 @@
     .home-header-umticeboost .row .btn-login {
       width: 320px;
       margin: 30px auto -75px;
-      padding: 12px;
-      text-align: center;
+      padding: 1rem 3rem;
       border: 2px solid #fff;
       background: #de5b5e;
       border-radius: 8px;
-      cursor: pointer; }
+      font-size: 2.3em;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase; }
       .home-header-umticeboost .row .btn-login:hover {
-        background: #da4649; }
-      .home-header-umticeboost .row .btn-login a {
-        font-size: 2.3em;
-        font-weight: 700;
-        line-height: normal;
-        text-transform: uppercase;
-        color: #fff; }
-        .home-header-umticeboost .row .btn-login a:hover {
-          text-decoration: none;
-          color: #fff; }
+        background: #d7393d; }
 
 #page.home-umticeboost {
   margin-top: 15px; }
   #page.home-umticeboost #region-main {
     margin: 40px auto 20px;
-    border: none; }
+    border: 0; }
   #page.home-umticeboost .cadre-home {
-    max-width: 1000px;
-    padding: 20px;
+    max-width: 1200px;
+    padding: 40px 20px 50px;
     border: 1px solid #de5b5e;
     background: #eeeee9;
     border-radius: 8px;
@@ -131,7 +124,7 @@ footer#page-footer {
     color: #de5b5e;
     text-decoration: none; }
     footer#page-footer a:hover {
-      color: #da4649;
+      color: #d7393d;
       text-decoration: underline; }
   footer#page-footer .footer-umticeboost div {
     margin-top: 5px; }
@@ -152,5 +145,34 @@ footer#page-footer {
   footer#page-footer .sitelink,
   footer#page-footer .tool_dataprivacy {
     display: none; }
+
+/** Dashboard PAGE
+-------------------------*/
+.btn-courses {
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 12px;
+  text-align: center;
+  border: 2px solid #fff;
+  background: #de5b5e;
+  border-radius: 8px;
+  cursor: pointer; }
+  .btn-courses:hover {
+    background: #da4649; }
+  .btn-courses a {
+    font-size: 22px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500; }
+    .btn-courses a:hover {
+      color: #fff;
+      text-decoration: none; }
+
+/*
+.btn-courses a:link,
+.btn-courses a:visited {
+  color: $whiteText;
+}
+*/
 
 /*# sourceMappingURL=styles.css.map */

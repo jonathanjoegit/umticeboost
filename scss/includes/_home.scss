@@ -1,12 +1,6 @@
 /** HOME PAGE
 -------------------------*/
 
-
-
-#page-wrapper.page-wrapper-home-umticeboost {
-  //height: auto;
-}
-
 // HEADER :
 .home-header-umticeboost {
 
@@ -50,28 +44,18 @@
       }
     }
     .btn-login {
-      width        : 320px;
-      margin       : 30px auto -75px;
-      padding      : 12px;
-      text-align   : center;
-      border       : 2px solid $whiteText;
-      background   : $pinkumtice;
-
-      border-radius: 8px;
-      cursor       : pointer;
+      width         : 320px;
+      margin        : 30px auto -75px;
+      padding       : 1rem 3rem;
+      border        : 2px solid $whiteText;
+      background    : $pinkumtice;
+      border-radius : 8px;
+      font-size     : 2.3em;
+      font-weight   : 700;
+      line-height   : normal;
+      text-transform: uppercase;
       &:hover {
-        background: darken($pinkumtice, 5%);
-      }
-      a {
-        font-size     : 2.3em;
-        font-weight   : 700;
-        line-height   : normal;
-        text-transform: uppercase;
-        color         : $whiteText;
-        &:hover {
-          text-decoration: none;
-          color          : $whiteText;
-        }
+        background: darken($pinkumtice, 8%);
       }
 
     }
@@ -84,15 +68,14 @@
 #page.home-umticeboost {
   margin-top: 15px;
 
-
   #region-main {
     margin: 40px auto 20px;
-    border: none;
+    border: 0;
   }
 
   .cadre-home {
-    max-width    : 1000px;
-    padding      : 20px;
+    max-width    : 1200px;
+    padding      : 40px 20px 50px;
     border       : 1px solid $pinkumtice;
     background   : $lightbackground;
     border-radius: 8px;
@@ -114,16 +97,15 @@
 
     }
     .icon-home {
-      width       : 14%;
-      margin-top  : 20px;
+      width     : 14%;
+      margin-top: 20px;
       text-align: center;
 
-
       img {
-        width : 50px;
-        height: auto;
-        margin-left : auto!important;
-        margin-right: auto!important;
+        width       : 50px;
+        height      : auto;
+        margin-left : auto !important;
+        margin-right: auto !important;
 
       }
       @media (max-width: $screen-md-min) {

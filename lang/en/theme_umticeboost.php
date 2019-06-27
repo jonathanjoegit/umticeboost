@@ -27,6 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 $string['pluginname'] = 'UMTICE Boost';
 $string['choosereadme'] = 'Theme UMTICE Boost is a child theme of Boost for Le Mans Université';
 
+$string['region-side-pre'] = 'region-side-pre';
+
 /* custom : */
 $string['noenrolments'] = 'No enrolments';
 $string['assistanceEns'] = 'Staff helpdesk';
