@@ -92,6 +92,22 @@
       @media (max-width: 768px) {
         #page.home-umticeboost .cadre-home .text-home-icon {
           margin-top: 5px; } }
+  #page.home-umticeboost .btn-courses {
+    width: 90%;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 1rem 3rem;
+    border: 2px solid #fff;
+    background: #de5b5e;
+    border-radius: 8px;
+    font-size: 1.8em;
+    line-height: normal;
+    text-transform: uppercase; }
+    #page.home-umticeboost .btn-courses:hover {
+      background: #d7393d; }
+    @media (max-width: 768px) {
+      #page.home-umticeboost .btn-courses {
+        font-size: 1em; } }
 
 /** Login form
 -------------------------*/

@@ -57,7 +57,6 @@
       &:hover {
         background: darken($pinkumtice, 8%);
       }
-
     }
 
   }
@@ -123,5 +122,22 @@
     }
 
   }
-
+  .btn-courses {
+    width         : 90%;
+    max-width: 400px;
+    margin        : 30px auto;
+    padding       : 1rem 3rem;
+    border        : 2px solid $whiteText;
+    background    : $pinkumtice;
+    border-radius : 8px;
+    font-size     : 1.8em;
+    line-height   : normal;
+    text-transform: uppercase;
+    &:hover {
+      background: darken($pinkumtice, 8%);
+    }
+    @media (max-width: $screen-md-min) {
+      font-size     : 1em;
+    }
+  }
 }

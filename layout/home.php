@@ -29,6 +29,12 @@ require_once($CFG->libdir . '/behat/lib.php');
 
 $navdraweropen = false;
 
+$isguestuser = '';
+if (isloggedin() and isguestuser()) {
+  $isguestuser = true;
+}
+
+
 $bodyattributes = $OUTPUT->body_attributes();
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = strpos($blockshtml, 'data-block=') !== false;
@@ -42,7 +48,9 @@ $templatecontext = [
     'navdraweropen' => $navdraweropen,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
-    'loginlink' => new moodle_url('/login/')
+    'loginlink' => new moodle_url('/login/'),
+    'courseslistlink' => new moodle_url('/course/index.php'),
+    'isguestuser' => $isguestuser
 
 ];
 
