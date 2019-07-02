@@ -63,7 +63,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
     $custommenu = new custom_menu($custommenuitems, current_language());
 
-    // umticeboost custom menu :
+    // Umticeboost custom menu.
     if (isloggedin() && !isguestuser() ) {
       // TDB + listes des cours :
       $branchtitle = $branchlabel = get_string('myhome');
@@ -90,7 +90,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $branch->add('<span class="fa fa-graduation-cap"></span>'.format_string($course->fullname),
             new moodle_url('/course/view.php?id=' . $course->id), format_string($course->shortname));
             $numcourses += 1;
-          } else if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id)) /*&& $hasdisplayhiddenmycourses*/) {
+          } else if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
             $branchtitle = format_string($course->shortname);
             $branchlabel = '<span class="dimmed_text">'/*.$this->getfontawesomemarkup('eye-slash')*/.
             format_string($course->fullname) . '</span>';
@@ -198,7 +198,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
     $header->editbutton = $this->umticeboost_edit_button();
 
-
     return $this->render_from_template('theme_umticeboost/header', $header);
   }
 
@@ -209,7 +208,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
   * @return string the editing button
   */
   public function umticeboost_edit_button() {
-    global $SITE, $PAGE, $USER, $CFG, $COURSE;
+    global $PAGE, $COURSE;
+
     if (!$PAGE->user_allowed_editing() || $COURSE->id <= 1) {
       return '';
     }
@@ -221,8 +221,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $btn = 'btn-danger editingbutton';
         $title = get_string('turneditingoff', 'core');
         $icon = 'fa-power-off';
-      }
-      else {
+      } else {
         $url->param('edit', 'on');
         $btn = 'btn-success editingbutton';
         $title = get_string('turneditingon', 'core');
@@ -236,8 +235,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         'data-tooltip' => "tooltip",
         'data-placement' => "bottom",
         'title' => $title,
-      ))  ;
-      return $output;
+      ));
     }
   }
 

@@ -50,7 +50,7 @@ function theme_umticeboost_get_main_scss_content($theme) {
         $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
     }
 
-    // add umtice scss
+    // Add umtice scss.
     // Post (style.scss) CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
     $post = file_get_contents($CFG->themedir . '/umticeboost/scss/styles.scss');
 
@@ -63,16 +63,12 @@ function theme_umticeboost_get_main_scss_content($theme) {
     }*/
 
     return $scss . "\n" . $post;
-
-
 }
 
 
-function theme_umticeboost_extend_navigation(global_navigation $navigation)
-{
-    global $PAGE, $CFG, $COURSE;
+function theme_umticeboost_extend_navigation(global_navigation $navigation) {
   // Enlever "Home".
-     if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
-         $homenode->showinflatnavigation = false;
-       }
+    if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
+        $homenode->showinflatnavigation = false;
+    }
 }
