@@ -11,7 +11,7 @@ $whiteText            : #fff;
 $blackText            : #212529;
 
 //background:
-$lightbackground: #eeeee9;
+$lightbackground      : #eeeee9;
 
 //navbar:
 $navbarBackgroundColor: $grayumtice;
@@ -31,3 +31,6 @@ $screen-lg-min        : 992px;
 
 // Large tablets and desktops
 $screen-xl-min        : 1200px;
+
+// Administration du site :
+$adminDefaultRoleColor: #00ff3e;

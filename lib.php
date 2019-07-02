@@ -64,8 +64,7 @@ function theme_umticeboost_get_main_scss_content($theme) {
 
     return $scss . "\n" . $post;
 
-    //FOEMZUBF%ZIFGRMGOFBORGIRBGPZGZRG
-    // ALLER CHERCHER LES SCSS https://docs.moodle.org/dev/Creating_a_theme_based_on_boost#Duplicate_the_settings_from_Boost
+
 }
 
 
@@ -75,38 +74,5 @@ function theme_umticeboost_extend_navigation(global_navigation $navigation)
   // Enlever "Home".
      if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
          $homenode->showinflatnavigation = false;
-     }
-  /*
-     // Ajouter "inscrire des utilisateurs" pour les admins.
-YA PLUS CETTE PAGE...
-
-    // Vérifier si l'user à le droit d'inscrire des utilisateurs (donc d'accèder à cette page).
-  $context = $PAGE->context;
-    if (has_capability('enrol/manual:enrol', $context)) {
-        // On récupère le noeud du cours (cours + section + ...).
-        $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
-        // Si la navigation contient des items.
-        if ($coursenode && $coursenode->has_children()) {
-            // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
-            $url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id' => $COURSE->id));
-            $newnode = navigation_node::create(
-              get_string('enrolusers', 'enrol'),
-                $url,
-                navigation_node::TYPE_SETTING,
-                "enrolusers",
-                "enrolusers",
-                new pix_icon('i/enrolusers', 'enrolusers')
-            );
-
-            // On check s'il y a le noeud "participants", si oui on le met en dessous (sinon à la fin).
-            if ($PAGE->navigation->find("participants", navigation_node::TYPE_CONTAINER)) {
-                $node = $coursenode->children->add($newnode, "participants");
-            } else { // Sinon à la fin du noeud.
-                $node = $coursenode->children->add($newnode);
-            }
-        }
-    }
-*/
-
-
+       }
 }

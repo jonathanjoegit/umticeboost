@@ -17,8 +17,8 @@
 /**
  * A two column layout for the boost theme.
  *
- * @package   theme_boost
- * @copyright 2016 Damyon Wiese
+ * @package    theme_umticeboost
+ * @copyright  2019 Jonathan J.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -32,6 +32,7 @@ if (isloggedin()) {
 } else {
     $navdraweropen = false;
 }
+
 $extraclasses = [];
 if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';

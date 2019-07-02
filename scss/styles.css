@@ -240,5 +240,35 @@ footer#page-footer {
   color: $whiteText;
 }
 */
+#page-admin-roles-define .capdefault {
+  background-color: #00ff3e; }
+
+/** course
+-------------------------*/
+.context-header-settings-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: auto;
+  max-width: none; }
+  .context-header-settings-menu .edit-btn {
+    margin: .5rem 1rem;
+    border: 0; }
+  .context-header-settings-menu .action-menu .dropdown-toggle .icon {
+    font-size: 40px; }
 
 /*# sourceMappingURL=styles.css.map */
