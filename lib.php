@@ -72,3 +72,16 @@ function theme_umticeboost_extend_navigation(global_navigation $navigation) {
         $homenode->showinflatnavigation = false;
     }
 }
+
+
+
+function theme_umticeboost_extend_navigation_course(navigation_node $parentnode, stdClass $course, context_course $context){
+    
+// A SUPPRIMER !!!!!
+
+    global $CFG, $OUTPUT;
+   if (has_capability('report/participation:view', $context)) {
+       $url = new moodle_url('/report/participation/index.php', array('id'=>$course->id));
+       $navigation->add(get_string('pluginname', 'report_participation'), $url, navigation_node::TYPE_SETTING, null, null, new pix_icon('i/report', ''));
+   }
+}
