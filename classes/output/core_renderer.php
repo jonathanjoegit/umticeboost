@@ -340,7 +340,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
             // Banque de qestion :
             $text = get_string('questionbank', 'question');
-            $url = new moodle_url('/question/edit.php', array('id'=>$this->page->course->id));
+            $url = new moodle_url('/question/edit.php', array('courseid'=>$this->page->course->id));
             $link = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
             $menu->add_secondary_action($link);
 
