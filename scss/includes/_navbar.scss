@@ -7,15 +7,19 @@
 
   .logo img {
     height: 22px;
-    width: auto;
+    width : auto;
 
+  }
+  .logo-xs img {
+    height: 33px;
+    width : auto;
   }
   .usermenu {
     color: $whiteText;
 
     a.dropdown-toggle {
       font-weight: 700;
-      color: $whiteText;
+      color      : $whiteText;
     }
     .login a {
       color: $pinkumtice;
