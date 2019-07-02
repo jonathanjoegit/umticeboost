@@ -196,8 +196,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
     $header->pageheadingbutton = $this->page_heading_button();
     $header->courseheader = $this->course_header();
 
-
-
     $header->editbutton = $this->umticeboost_edit_button();
 
 
