@@ -31,7 +31,7 @@ $navdraweropen = false;
 
 $isguestuser = '';
 if (isloggedin() and isguestuser()) {
-  $isguestuser = true;
+    $isguestuser = true;
 }
 
 

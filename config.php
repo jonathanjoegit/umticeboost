@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__ . '/lib.php');
 
-// modif umticeboost jjupin
+// Modif umticeboost jjupin.
 $THEME->name = 'umticeboost';
 $THEME->parents = ['boost'];
 $THEME->scss = function($theme) {
@@ -43,7 +43,7 @@ $THEME->layouts = [
       'options' => array('nonavbar' => true),
     ),
 ];
-// END modif umticeboost jjupin
+// END modif umticeboost jjupin.
 
 
 
@@ -168,7 +168,8 @@ $THEME->layouts = [
     )
 ];
 */
-//$THEME->parents = [];
+
+/* $THEME->parents = [];*/
 $THEME->enable_dock = false;
 $THEME->csstreepostprocessor = 'theme_boost_css_tree_post_processor';
 $THEME->extrascsscallback = 'theme_boost_get_extra_scss';
