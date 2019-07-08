@@ -38,7 +38,6 @@
     .home-header-umticeboost .row .btn-login {
       width: 320px;
       margin: 30px auto -75px;
-      padding: 1rem 3rem;
       border: 2px solid #fff;
       background: #de5b5e;
       border-radius: 8px;
@@ -226,6 +225,27 @@ footer#page-footer {
   footer#page-footer .sitelink,
   footer#page-footer .tool_dataprivacy {
     display: none; }
+  footer#page-footer .navbar-nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    -ms-flex-line-pack: stretch;
+        align-content: stretch; }
+    footer#page-footer .navbar-nav ul li:not(:last-child)::after {
+      content: '|';
+      margin: 0 .3rem; }
 
 /** Dashboard PAGE
 -------------------------*/
