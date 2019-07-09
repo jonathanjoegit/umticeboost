@@ -356,7 +356,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $menu->add_secondary_action($customactionmenu);
         }
         // Banque de qestion :
-        if(has_capability('report/questioninstances:view',  $this->page->context)){
+        if(has_capability('moodle/question:add',  $this->page->context)){
             $text = get_string('questionbank', 'question');
             $url = new moodle_url('/question/edit.php', array('courseid'=>$this->page->course->id));
             $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
