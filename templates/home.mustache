@@ -5,61 +5,55 @@
 {{> theme_boost/head }}
 
 
-{{! hack to hide main_content add jjupin }}
-<div class="d-none">
-  <section class="d-none" style="display:none;">
-    {{{ output.main_content }}}
-</div>
-{{! END hack to hide main_content add jjupin }}
+<body {{{bodyattributes}} }>
+    <div id="page-wrapper" class="page-wrapper-home-umticeboost">
+
+        {{{ output.standard_top_of_body_html }}}
+
+        <div id="page" class="container-fluid home-umticeboost">
+
+            {{! home page header umticeboost add jjupin }}
+            {{> theme_umticeboost/home_header }}
+
+            <div id="page-content" class="row pb-3">
+                <div id="region-main-box" class="col-12">
+                    <section id="region-main" class="d-flex justify-content-center">
 
 
-<body {{{bodyattributes}}}>
-  <div id="page-wrapper" class="page-wrapper-home-umticeboost">
-
-    {{{ output.standard_top_of_body_html }}}
-
-    <div id="page" class="container-fluid home-umticeboost">
-
-      {{! home page header umticeboost add jjupin }}
-      {{> theme_umticeboost/home_header }}
+                        {{! home page umticeboost add jjupin }}
 
 
+                        {{#isguestuser}} {{> theme_umticeboost/home_guest }} {{/isguestuser}}
 
-      <div id="page-content" class="row pb-3">
-        <div id="region-main-box" class="col-12">
-          <section id="region-main" class="d-flex justify-content-center">
-
-
-            {{! home page umticeboost add jjupin }}
+                        {{^isguestuser}} {{> theme_umticeboost/home_content }} {{/isguestuser}}
 
 
-{{#isguestuser}}   {{> theme_umticeboost/home_guest }} {{/isguestuser}}
-
-{{^isguestuser}}   {{> theme_umticeboost/home_content }} {{/isguestuser}}
+                            {{! END home page umticeboost add jjupin }}
 
 
-
-
-
-            {{! END home page umticeboost add jjupin }}
-
-
-          </section>
+                    </section>
+                </div>
+            </div>
         </div>
-      </div>
+
+        {{{ output.standard_after_main_region_html }}}
+        {{> theme_boost/footer }}
+
+
     </div>
+    {{{ output.standard_end_of_body_html }}}
 
-    {{{ output.standard_after_main_region_html }}}
-    {{> theme_boost/footer }}
+    {{! hack to hide main_content add jjupin }}
+    <div class="d-none">
+        <section class="d-none" style="display:none;">
+            {{{ output.main_content }}}
+        </section>
+    </div>
+    {{! END hack to hide main_content add jjupin }}
 
-
-
-
-  </div>
-  {{{ output.standard_end_of_body_html }}}
 </body>
 
 </html>
 {{#js}}
-  require(['theme_boost/loader']);
+    require(['theme_boost/loader']);
 {{/js}}
