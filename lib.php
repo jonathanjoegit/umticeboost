@@ -67,7 +67,7 @@ function theme_umticeboost_get_main_scss_content($theme) {
 
 
 function theme_umticeboost_extend_navigation(global_navigation $navigation) {
-  // Enlever "Home".
+    // Enlever "Home".
     if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
         $homenode->showinflatnavigation = false;
     }

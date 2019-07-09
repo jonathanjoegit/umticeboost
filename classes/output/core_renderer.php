@@ -66,9 +66,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
         // Umticeboost custom menu.
         if (isloggedin() && !isguestuser() ) {
 
-            // Add dahsboard and my courses access:
+            // Add dahsboard and my courses access.
             $this->umticeboost_get_dashboard_for_custom_menu($custommenu);
-            // Add courses seach:
+            // Add courses seach.
             $this->umticeboost_get_searchcourses_for_custom_menu($custommenu);
 
         }
