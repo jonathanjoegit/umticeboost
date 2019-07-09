@@ -349,7 +349,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         foreach ($node->children as $menuitem) {
 
             // No displaying "outcomes".
-            if( $menuitem->key == "outcomes"){
+            if ($menuitem->key == "outcomes"){
                 continue;
             }
             if ($menuitem->display) {
@@ -386,13 +386,13 @@ class core_renderer extends \theme_boost\output\core_renderer {
             }
 
             // We display the custom menu after "turn editing" / add jjupin.
-            if( $menuitem->key == "turneditingonoff" ){
+            if ($menuitem->key == "turneditingonoff" ){
                 $this->umticeboost_get_custom_action_menu_for_course_header($menu);
                 $custommenuok = true;
             }
 
         }
-        if(!$custommenuok){
+        if (!$custommenuok){
             $this->umticeboost_get_custom_action_menu_for_course_header($menu);
         }
         return $skipped;
@@ -404,7 +404,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     protected function umticeboost_get_custom_action_menu_for_course_header(action_menu $menu) {
 
         // Participants (if the user has the good capacity).
-        if(has_capability('report/participation:view',  $this->page->context)){
+        if (has_capability('report/participation:view',  $this->page->context)){
             $text = get_string('participants', 'core');
             $url = new moodle_url('/user/index.php', array('id' => $this->page->course->id));
             $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/cohort', ''));
@@ -412,14 +412,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $menu->add_secondary_action($customactionmenu);
         }
         // Méthode d'inscription.
-        if(has_capability('moodle/course:enrolreview',  $this->page->context)){
+        if (has_capability('moodle/course:enrolreview',  $this->page->context)){
             $text = get_string('enrolmentmethods', 'core');
             $url = new moodle_url('/enrol/instances.php', array('id' => $this->page->course->id));
             $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/enrolusers', ''));
             $menu->add_secondary_action($customactionmenu);
         }
         // Banque de qestion.
-        if(has_capability('moodle/question:add',  $this->page->context)){
+        if (has_capability('moodle/question:add',  $this->page->context)){
             $text = get_string('questionbank', 'question');
             $url = new moodle_url('/question/edit.php', array('courseid' => $this->page->course->id));
             $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
