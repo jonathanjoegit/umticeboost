@@ -302,14 +302,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $settingsnode = $this->page->settingsnav->find('courseadmin', navigation_node::TYPE_COURSE);
             if ($settingsnode) {
 
-
-                // Build an action menu based on the visible nodes from this navigation tree.
-                $skipped = $this->build_action_menu_from_navigation($menu, $settingsnode, false, true);
-
-                $quetionnode = $settingsnode->find('question', navigation_node::TYPE_COURSE);
-
-                // Add some important pages in the course setting menu in a course. Add jjupin.
-                $this->umticeboost_get_custom_action_menu_for_course_header($menu);
+                // Custom menu for umticeboost. Build an action menu based on the visible nodes from this navigation tree.
+                $skipped = $this->umticeboost_build_action_menu_for_course($menu, $settingsnode, false, true);
 
                 // We only add a list to the full settings menu if we didn't include every node in the short menu.
                 if ($skipped) {
@@ -332,13 +326,80 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-    * add searchcourses to custom menu.
+     * Add searchcourses to custom menu (copy of build_action_menu_from_navigation).
+     * Take a node in the nav tree and make an action menu out of it.
+     * The links are injected in the action menu.
+     *
+     * @param action_menu $menu
+     * @param navigation_node $node
+     * @param boolean $indent
+     * @param boolean $onlytopleafnodes
+     * @return boolean nodesskipped - True if nodes were skipped in building the menu
+     */
+    protected function  umticeboost_build_action_menu_for_course(action_menu $menu,
+                                                       navigation_node $node,
+                                                       $indent = false,
+                                                       $onlytopleafnodes = false) {
+        $skipped = false;
+        $custommenuok = false; // Hack for displaying custom items at the begiing (teacher) our at the end (other roles)
+
+        // Build an action menu based on the visible nodes from this navigation tree.
+        foreach ($node->children as $menuitem) {
+
+            // no displaying "outcomes"
+            if( $menuitem->key == "outcomes"){
+                continue;
+            }
+            if ($menuitem->display) {
+                if ($onlytopleafnodes && $menuitem->children->count()) {
+                    $skipped = true;
+                    continue;
+                }
+                if ($menuitem->action) {
+                    if ($menuitem->action instanceof action_link) {
+                        $link = $menuitem->action;
+                        // Give preference to setting icon over action icon.
+                        if (!empty($menuitem->icon)) {
+                            $link->icon = $menuitem->icon;
+                        }
+                    } else {
+                        $link = new action_link($menuitem->action, $menuitem->text, null, null, $menuitem->icon);
+                    }
+                } else {
+                    if ($onlytopleafnodes) {
+                        $skipped = true;
+                        continue;
+                    }
+                    $link = new action_link(new moodle_url('#'), $menuitem->text, null, ['disabled' => true], $menuitem->icon);
+                }
+                if ($indent) {
+                    $link->add_class('ml-4');
+                }
+                if (!empty($menuitem->classes)) {
+                    $link->add_class(implode(" ", $menuitem->classes));
+                }
+
+                $menu->add_secondary_action($link);
+                $skipped = $skipped || $this->build_action_menu_from_navigation($menu, $menuitem, true);
+            }
+
+            // we display the custom menu after "turn editing" / add jjupin.
+            if( $menuitem->key == "turneditingonoff" ){
+                $this->umticeboost_get_custom_action_menu_for_course_header($menu);
+                $custommenuok = true;
+            }
+
+        }
+        if(!$custommenuok){
+            $this->umticeboost_get_custom_action_menu_for_course_header($menu);
+        }
+        return $skipped;
+    }
+
+    /**
+    * add custom items to the course settings menu.
     */
     protected function umticeboost_get_custom_action_menu_for_course_header(action_menu $menu) {
-
-        //TODO: CHECK PERMISSIONS !!!!
-
-        //TODO: HIDE OUTCOMES !!!!
 
         // Participants (if the user has the good capacity):
         if(has_capability('report/participation:view',  $this->page->context)){
@@ -362,13 +423,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
             $menu->add_secondary_action($customactionmenu);
         }
-        /*$node = $menu->find('outcomes', navigation_node::TYPE_COURSE);
-        $node->remove_child($node);
-        var_dump($node);
 
-        TRY TO DO $customactionmenu->prioritise = false; with less important items
-        */
     }
-
 
 }
