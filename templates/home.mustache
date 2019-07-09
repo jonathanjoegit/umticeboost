@@ -2,6 +2,14 @@
     Home page (not connected)
 }}
 
+{{! hack to hide main_content add jjupin }}
+<div class="d-none">
+    <section class="d-none" style="display:none;">
+        {{{ output.main_content }}}
+    </section>
+</div>
+{{! END hack to hide main_content add jjupin }}
+
 {{> theme_boost/head }}
 
 
@@ -42,14 +50,6 @@
 
     </div>
     {{{ output.standard_end_of_body_html }}}
-
-    {{! hack to hide main_content add jjupin }}
-    <div class="d-none">
-        <section class="d-none" style="display:none;">
-            {{{ output.main_content }}}
-        </section>
-    </div>
-    {{! END hack to hide main_content add jjupin }}
 
 </body>
 
