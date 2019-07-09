@@ -298,17 +298,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 }
             }
         } else if ($showcoursemenu) {
+
             $settingsnode = $this->page->settingsnav->find('courseadmin', navigation_node::TYPE_COURSE);
             if ($settingsnode) {
+
+
                 // Build an action menu based on the visible nodes from this navigation tree.
                 $skipped = $this->build_action_menu_from_navigation($menu, $settingsnode, false, true);
 
                 $quetionnode = $settingsnode->find('question', navigation_node::TYPE_COURSE);
 
-
-                // Add some important pages in the course setting menu in a course. Add JJUPIN.
-                $this->umticeboost_get_custom_action_menu($menu);
-
+                // Add some important pages in the course setting menu in a course. Add jjupin.
+                $this->umticeboost_get_custom_action_menu_for_course_header($menu);
 
                 // We only add a list to the full settings menu if we didn't include every node in the short menu.
                 if ($skipped) {
@@ -333,29 +334,40 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /**
     * add searchcourses to custom menu.
     */
-    protected function umticeboost_get_custom_action_menu(action_menu $menu) {
+    protected function umticeboost_get_custom_action_menu_for_course_header(action_menu $menu) {
 
         //TODO: CHECK PERMISSIONS !!!!
 
-        // Participants :
-        $text = get_string('participants', 'core');
-        $url = new moodle_url('/user/index.php', array('id'=>$this->page->course->id));
-        $link = new action_link($url, $text, null, null, new pix_icon('t/cohort', ''));
-        $menu->add_secondary_action($link);
+        //TODO: HIDE OUTCOMES !!!!
 
+        // Participants (if the user has the good capacity):
+        if(has_capability('report/participation:view',  $this->page->context)){
+            $text = get_string('participants', 'core');
+            $url = new moodle_url('/user/index.php', array('id'=>$this->page->course->id));
+            $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/cohort', ''));
+            $customactionmenu->prioritise = true;
+            $menu->add_secondary_action($customactionmenu);
+        }
         // Méthode d'inscription :
-        $text = get_string('enrolmentmethods', 'core');
-        $url = new moodle_url('/enrol/instances.php', array('id'=>$this->page->course->id));
-        $link = new action_link($url, $text, null, null, new pix_icon('t/enrolusers', ''));
-        $menu->add_secondary_action($link);
-
+        if(has_capability('moodle/course:enrolreview',  $this->page->context)){
+            $text = get_string('enrolmentmethods', 'core');
+            $url = new moodle_url('/enrol/instances.php', array('id'=>$this->page->course->id));
+            $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/enrolusers', ''));
+            $menu->add_secondary_action($customactionmenu);
+        }
         // Banque de qestion :
-        $text = get_string('questionbank', 'question');
-        $url = new moodle_url('/question/edit.php', array('courseid'=>$this->page->course->id));
-        $link = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
-        $menu->add_secondary_action($link);
+        if(has_capability('report/questioninstances:view',  $this->page->context)){
+            $text = get_string('questionbank', 'question');
+            $url = new moodle_url('/question/edit.php', array('courseid'=>$this->page->course->id));
+            $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
+            $menu->add_secondary_action($customactionmenu);
+        }
+        /*$node = $menu->find('outcomes', navigation_node::TYPE_COURSE);
+        $node->remove_child($node);
+        var_dump($node);
 
-
+        TRY TO DO $customactionmenu->prioritise = false; with less important items
+        */
     }
 
 
