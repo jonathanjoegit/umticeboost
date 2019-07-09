@@ -2,34 +2,34 @@
 // --- --- --- --- --- --- --- --- --- --- ---
 
 .navbar {
-  background-color: $navbarBackgroundColor;
-  border-bottom   : $navbarBorderSize solid $navbarBorderColor;
+    background-color: $navbarBackgroundColor;
+    border-bottom   : $navbarBorderSize solid $navbarBorderColor;
 
-  .logo img {
-    height: 22px;
-    width : auto;
+    .logo img {
+        height: 22px;
+        width : auto;
 
-  }
-  .logo-xs img {
-    height: 33px;
-    width : auto;
-  }
-  .usermenu {
-    color: $whiteText;
+    }
+    .logo-xs img {
+        height: 33px;
+        width : auto;
+    }
+    .usermenu {
+        color: $whiteText;
 
-    a.dropdown-toggle {
-      font-weight: 700;
-      color      : $whiteText;
+        a.dropdown-toggle {
+            font-weight: 700;
+            color      : $whiteText;
+        }
+        .login a {
+            color: $pinkumtice;
+        }
+        .icon {
+            color: $blackText !important; // var textblanc / text bk
+        }
     }
-    .login a {
-      color: $pinkumtice;
+    .dropdown-item:hover {
+        background-color: $navbarHoverColor;
     }
-    .icon {
-      color: $blackText !important; // var textblanc / text bk
-    }
-  }
-  .dropdown-item:hover {
-    background-color: $navbarHoverColor;
-  }
 
 }

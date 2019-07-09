@@ -56,8 +56,8 @@ footer#page-footer {
 
         li:not(:last-child) {
             &::after {
-                content:  '|';
-                margin: 0 .3rem;
+                content: '|';
+                margin : 0 .3rem;
             }
         }
 

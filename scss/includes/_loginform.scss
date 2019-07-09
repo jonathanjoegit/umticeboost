@@ -1,64 +1,64 @@
 /** Login form
 -------------------------*/
 #page-login-index {
-  background-color: #fff;
-  [data-region='drawer-toggle'] {
-    display: none;
-  }
-  span.login {
-    color: $grayumtice;
-  }
-  .loginbox {
-    .loginpanel {
-      max-width       : 350px;
-      min-height      : 200px;
-      margin          : 50px auto 25px !important;
-      padding         : 20px 25px 40px !important;
-      text-align      : center;
-      border-radius   : 2px;
-      background-color: #f7f7f7;
-      box-shadow      : 0 2px 2px rgba(0, 0, 0, .3);
-      img {
-        display      : block;
-        width        : 96px;
-        height       : 96px;
-        margin       : 10px auto 25px;
+    background-color: #fff;
+    [data-region='drawer-toggle'] {
+        display: none;
+    }
+    span.login {
+        color: $grayumtice;
+    }
+    .loginbox {
+        .loginpanel {
+            max-width       : 350px;
+            min-height      : 200px;
+            margin          : 50px auto 25px !important;
+            padding         : 20px 25px 40px !important;
+            text-align      : center;
+            border-radius   : 2px;
+            background-color: #f7f7f7;
+            box-shadow      : 0 2px 2px rgba(0, 0, 0, .3);
+            img {
+                display      : block;
+                width        : 96px;
+                height       : 96px;
+                margin       : 10px auto 25px;
 
-        border-radius: 50%;
-      }
-    }
-    .signuppanel {
-      max-width       : 450px;
-      margin          : 50px 20px 25px !important;
-      padding         : 20px 25px 40px !important;
-      text-align      : center;
-      border-radius   : 2px;
-      background-color: #f8ffd0;
-      box-shadow      : 0 2px 2px rgba(0, 0, 0, .3);
-    }
-    .profile-img-card2 {
-      display      : block;
+                border-radius: 50%;
+            }
+        }
+        .signuppanel {
+            max-width       : 450px;
+            margin          : 50px 20px 25px !important;
+            padding         : 20px 25px 40px !important;
+            text-align      : center;
+            border-radius   : 2px;
+            background-color: #f8ffd0;
+            box-shadow      : 0 2px 2px rgba(0, 0, 0, .3);
+        }
+        .profile-img-card2 {
+            display      : block;
 
-      width        : 96px;
-      height       : 96px;
-      margin       : 10px auto 15px;
+            width        : 96px;
+            height       : 96px;
+            margin       : 10px auto 15px;
 
-      border-radius: 5%;
+            border-radius: 5%;
+        }
+        .loginpanel h2 {
+            margin : 0;
+            padding: 0;
+        }
+        div.loginbox a {
+            font-size: 1.3em;
+        }
     }
-    .loginpanel h2 {
-      margin : 0;
-      padding: 0;
-    }
-    div.loginbox a {
-      font-size: 1.3em;
-    }
-  }
-  .card {
-    margin          : 50px auto 25px !important;
-    padding         : 20px 25px 40px !important;
+    .card {
+        margin          : 50px auto 25px !important;
+        padding         : 20px 25px 40px !important;
 
-    border-radius   : 2px;
-    background-color: #f7f7f7;
-    box-shadow      : 0 2px 2px rgba(0, 0, 0, .3);
-  }
+        border-radius   : 2px;
+        background-color: #f7f7f7;
+        box-shadow      : 0 2px 2px rgba(0, 0, 0, .3);
+    }
 }

@@ -3,27 +3,27 @@
 
 // boutton for All the courses page
 .btn-courses {
-  max-width    : 450px;
-  margin       : 20px auto;
-  padding      : 12px;
-  text-align   : center;
-  border       : 2px solid $whiteText;
-  background   : $pinkumtice;
-  border-radius: 8px;
-  cursor       : pointer;
-  &:hover {
-    background: darken($pinkumtice, 5%);
-  }
-  a {
-    font-size     : 22px;
-    color         : $whiteText;
-    text-transform: uppercase;
-    font-weight   : 500;
+    max-width    : 450px;
+    margin       : 20px auto;
+    padding      : 12px;
+    text-align   : center;
+    border       : 2px solid $whiteText;
+    background   : $pinkumtice;
+    border-radius: 8px;
+    cursor       : pointer;
     &:hover {
-      color          : $whiteText;
-      text-decoration: none;
+        background: darken($pinkumtice, 5%);
     }
-  }
+    a {
+        font-size     : 22px;
+        color         : $whiteText;
+        text-transform: uppercase;
+        font-weight   : 500;
+        &:hover {
+            color          : $whiteText;
+            text-decoration: none;
+        }
+    }
 }
 
 /*
