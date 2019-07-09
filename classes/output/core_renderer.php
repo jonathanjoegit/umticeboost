@@ -36,13 +36,13 @@ use pix_icon;
 
 defined('MOODLE_INTERNAL') || die;
 
-/**
-* Renderers to align Moodle's HTML with that expected by Bootstrap
-*
-* @package    theme_umticeboost
-* @copyright  2019 Jonathan J.
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+ /**
+ * Renderers to align Moodle's HTML with that expected by Bootstrap
+ *
+ * @package    theme_umticeboost
+ * @copyright  2019 Jonathan J.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 class core_renderer extends \theme_boost\output\core_renderer {
 
@@ -66,18 +66,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
         // Umticeboost custom menu.
         if (isloggedin() && !isguestuser() ) {
 
-            // add dahsboard and my courses access :
+            // Add dahsboard and my courses access:
             $this->umticeboost_get_dashboard_for_custom_menu($custommenu);
-            // add courses seach:
+            // Add courses seach:
             $this->umticeboost_get_searchcourses_for_custom_menu($custommenu);
 
         }
         return parent::render_custom_menu($custommenu);
     }
 
-    /**
-    * add dashboard and my courses access to custom menu.
-    */
+     /**
+     * Add dashboard and my courses access to custom menu.
+     */
     protected function umticeboost_get_dashboard_for_custom_menu(custom_menu $custommenu) {
         global $CFG;
 
@@ -98,7 +98,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         // Retrieve courses and add them to the menu when they are visible.
         $numcourses = 0;
-        //$hasdisplayhiddenmycourses = \theme_essential\toolbox::get_setting('displayhiddenmycourses');
+
         if ($courses = enrol_get_my_courses(null, $sortorder . ' ASC')) {
             foreach ($courses as $course) {
                 if ($course->visible) {
