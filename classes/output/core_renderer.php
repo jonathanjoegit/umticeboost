@@ -37,12 +37,12 @@ use pix_icon;
 defined('MOODLE_INTERNAL') || die;
 
  /**
- * Renderers to align Moodle's HTML with that expected by Bootstrap
- *
- * @package    theme_umticeboost
- * @copyright  2019 Jonathan J.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+  * Renderers to align Moodle's HTML with that expected by Bootstrap
+  *
+  * @package    theme_umticeboost
+  * @copyright  2019 Jonathan J.
+  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+  */
 
 class core_renderer extends \theme_boost\output\core_renderer {
 
@@ -51,10 +51,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
 
     /*
-    * Overriding the custom_menu function ensures the custom menu is
-    * always shown, even if no menu items are configured in the global
-    * theme settings page.
-    */
+     * Overriding the custom_menu function ensures the custom menu is
+     * always shown, even if no menu items are configured in the global
+     * theme settings page.
+     */
     public function umticeboost_custom_menu($custommenuitems = '') {
         global $CFG;
 
@@ -76,8 +76,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
      /**
-     * Add dashboard and my courses access to custom menu.
-     */
+      * Add dashboard and my courses access to custom menu.
+      */
     protected function umticeboost_get_dashboard_for_custom_menu(custom_menu $custommenu) {
         global $CFG;
 
@@ -122,10 +122,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-    * add searchcourses to custom menu.
-    */
+     * add searchcourses to custom menu.
+     */
     protected function umticeboost_get_searchcourses_for_custom_menu(custom_menu $custommenu) {
-        // fetch courses :
+        // Fetch courses.
         $branchtitle = $branchlabel = get_string('recherchecours', 'theme_umticeboost');
         $branchurl = new moodle_url('/course/index.php');
         $branchsort = 2;
@@ -134,9 +134,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-    * We want to show the custom menus as a list of links in the footer on small screens.
-    * Just return the menu object exported so we can render it differently.
-    */
+     * We want to show the custom menus as a list of links in the footer on small screens.
+     * Just return the menu object exported so we can render it differently.
+     */
     public function umticeboost_custom_menu_flat() {
         global $CFG;
         $custommenuitems = '';
@@ -166,10 +166,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-    * Wrapper for header elements.
-    *
-    * @return string HTML to display the main header.
-    */
+     * Wrapper for header elements.
+     *
+     * @return string HTML to display the main header.
+     */
     public function umticeboost_full_header() {
         global $PAGE;
 
@@ -188,10 +188,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
 
     /**
-    * Editing button in a course
-    *
-    * @return string the editing button
-    */
+     * Editing button in a course
+     *
+     * @return string the editing button
+     */
     public function umticeboost_edit_button() {
         global $PAGE, $COURSE;
 
@@ -225,11 +225,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-    * This is an optional menu that can be added to a layout by a theme. It contains the
-    * menu for the course administration, only on the course main page.
-    *
-    * @return string
-    */
+     * This is an optional menu that can be added to a layout by a theme. It contains the
+     * menu for the course administration, only on the course main page.
+     *
+     * @return string
+     */
     public function umticeboost_context_header_settings_menu() {
         $context = $this->page->context;
         $menu = new action_menu();
@@ -341,12 +341,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
                                                        $indent = false,
                                                        $onlytopleafnodes = false) {
         $skipped = false;
-        $custommenuok = false; // Hack for displaying custom items at the begiing (teacher) our at the end (other roles)
+
+        // Hack for displaying custom items at the begiing (teacher) our at the end (other roles).
+        $custommenuok = false;
 
         // Build an action menu based on the visible nodes from this navigation tree.
         foreach ($node->children as $menuitem) {
 
-            // no displaying "outcomes"
+            // No displaying "outcomes".
             if( $menuitem->key == "outcomes"){
                 continue;
             }
@@ -383,7 +385,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $skipped = $skipped || $this->build_action_menu_from_navigation($menu, $menuitem, true);
             }
 
-            // we display the custom menu after "turn editing" / add jjupin.
+            // We display the custom menu after "turn editing" / add jjupin.
             if( $menuitem->key == "turneditingonoff" ){
                 $this->umticeboost_get_custom_action_menu_for_course_header($menu);
                 $custommenuok = true;
@@ -397,29 +399,29 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-    * add custom items to the course settings menu.
-    */
+     * Add custom items to the course settings menu.
+     */
     protected function umticeboost_get_custom_action_menu_for_course_header(action_menu $menu) {
 
-        // Participants (if the user has the good capacity):
+        // Participants (if the user has the good capacity).
         if(has_capability('report/participation:view',  $this->page->context)){
             $text = get_string('participants', 'core');
-            $url = new moodle_url('/user/index.php', array('id'=>$this->page->course->id));
+            $url = new moodle_url('/user/index.php', array('id' => $this->page->course->id));
             $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/cohort', ''));
             $customactionmenu->prioritise = true;
             $menu->add_secondary_action($customactionmenu);
         }
-        // Méthode d'inscription :
+        // Méthode d'inscription.
         if(has_capability('moodle/course:enrolreview',  $this->page->context)){
             $text = get_string('enrolmentmethods', 'core');
-            $url = new moodle_url('/enrol/instances.php', array('id'=>$this->page->course->id));
+            $url = new moodle_url('/enrol/instances.php', array('id' => $this->page->course->id));
             $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/enrolusers', ''));
             $menu->add_secondary_action($customactionmenu);
         }
-        // Banque de qestion :
+        // Banque de qestion.
         if(has_capability('moodle/question:add',  $this->page->context)){
             $text = get_string('questionbank', 'question');
-            $url = new moodle_url('/question/edit.php', array('courseid'=>$this->page->course->id));
+            $url = new moodle_url('/question/edit.php', array('courseid' => $this->page->course->id));
             $customactionmenu = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
             $menu->add_secondary_action($customactionmenu);
         }
