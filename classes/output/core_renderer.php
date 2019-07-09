@@ -305,29 +305,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
                 $quetionnode = $settingsnode->find('question', navigation_node::TYPE_COURSE);
 
+
                 // Add some important pages in the course setting menu in a course. Add JJUPIN.
+                $this->umticeboost_get_custom_action_menu($menu);
 
-                // Participants :
-                $text = get_string('participants', 'core');
-                $url = new moodle_url('/user/index.php', array('id'=>$this->page->course->id));
-                $link = new action_link($url, $text, null, null, new pix_icon('t/cohort', ''));
-                $menu->add_secondary_action($link);
-
-                // Méthode d'inscription :
-                $text = get_string('enrolmentmethods', 'core');
-                $url = new moodle_url('/enrol/instances.php', array('id'=>$this->page->course->id));
-                $link = new action_link($url, $text, null, null, new pix_icon('t/enrolusers', ''));
-                $menu->add_secondary_action($link);
-
-                // Banque de qestion :
-                $text = get_string('questionbank', 'question');
-                $url = new moodle_url('/question/edit.php', array('courseid'=>$this->page->course->id));
-                $link = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
-                $menu->add_secondary_action($link);
-
-
-
-                // END Add some important pages in the course setting menu in a course. Add JJUPIN.
 
                 // We only add a list to the full settings menu if we didn't include every node in the short menu.
                 if ($skipped) {
@@ -347,6 +328,34 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
 
         return $this->render($menu);
+    }
+
+    /**
+    * add searchcourses to custom menu.
+    */
+    protected function umticeboost_get_custom_action_menu(action_menu $menu) {
+
+        //TODO: CHECK PERMISSIONS !!!!
+
+        // Participants :
+        $text = get_string('participants', 'core');
+        $url = new moodle_url('/user/index.php', array('id'=>$this->page->course->id));
+        $link = new action_link($url, $text, null, null, new pix_icon('t/cohort', ''));
+        $menu->add_secondary_action($link);
+
+        // Méthode d'inscription :
+        $text = get_string('enrolmentmethods', 'core');
+        $url = new moodle_url('/enrol/instances.php', array('id'=>$this->page->course->id));
+        $link = new action_link($url, $text, null, null, new pix_icon('t/enrolusers', ''));
+        $menu->add_secondary_action($link);
+
+        // Banque de qestion :
+        $text = get_string('questionbank', 'question');
+        $url = new moodle_url('/question/edit.php', array('courseid'=>$this->page->course->id));
+        $link = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
+        $menu->add_secondary_action($link);
+
+
     }
 
 
