@@ -73,6 +73,9 @@
 #page.home-umticeboost {
     margin-top: 15px;
 
+    header{
+        z-index: 1000; // HACK TO BE ABLE TO CLICK IN THE BOUTON CONNECT (out of the header)
+    }
     #region-main {
         margin: 40px auto 20px;
         border: 0;
@@ -133,13 +136,13 @@
     }
     .btn-courses {
         width         : 90%;
-        max-width     : 400px;
+        max-width     : 600px;
         margin        : 30px auto;
         padding       : 1rem 3rem;
         border        : 2px solid $whiteText;
         background    : $pinkumtice;
         border-radius : 8px;
-        font-size     : 1.8em;
+        font-size     : 1.4em;
         line-height   : normal;
         text-transform: uppercase;
         &:hover {
