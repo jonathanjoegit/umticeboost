@@ -48,7 +48,7 @@
         .btn-login {
             width         : 320px;
             margin        : 30px auto -75px;
-            //padding       : 1rem 3rem;
+            padding       : 7px 2px 8px;
             border        : 2px solid $whiteText;
             background    : $pinkumtice;
             border-radius : 8px;
@@ -73,7 +73,7 @@
 #page.home-umticeboost {
     margin-top: 15px;
 
-    header{
+    header {
         z-index: 1000; // HACK TO BE ABLE TO CLICK IN THE BOUTON CONNECT (out of the header)
     }
     #region-main {
