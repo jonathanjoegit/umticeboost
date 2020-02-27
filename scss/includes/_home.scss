@@ -46,9 +46,10 @@
             }
         }
         .btn-login {
+            color         : $whiteText;
             width         : 320px;
             margin        : 30px auto -75px;
-            padding       : 7px 2px 8px;
+            //padding       : 1rem 3rem;
             border        : 2px solid $whiteText;
             background    : $pinkumtice;
             border-radius : 8px;
@@ -76,6 +77,7 @@
     header {
         z-index: 1000; // HACK TO BE ABLE TO CLICK IN THE BOUTON CONNECT (out of the header)
     }
+
     #region-main {
         margin: 40px auto 20px;
         border: 0;
