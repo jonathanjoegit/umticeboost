@@ -11,14 +11,29 @@ $pinkumtice: #de5b5e;
 $umtice-STS: #db4c3b;
 $umtice-LLSH: #2b3a6c;
 
+
+// POUR STS :
+/* === ===  === ===  === ===  === ===  === === */
+
 $pinkumtice: $umtice-STS;
-//$navbarBorderColor: $umtice-STS;
+footer#page-footer a {
+    color: $umtice-STS !important;
+}
+
+/* === ===  === ===  === ===  === ===  === === */
+
 
 // POUR LLSH :
+/* === ===  === ===  === ===  === ===  === === */
+/*
 $pinkumtice: $umtice-LLSH;
 footer#page-footer a {
     color: lighten($umtice-LLSH, 50%) !important;
 }
+*/
+/* === ===  === ===  === ===  === ===  === === */
+
+
 
 /* --- --- --- --- --- --- --- --- --- --- --- --- */
 
