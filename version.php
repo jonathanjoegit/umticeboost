@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2019070901;
+$plugin->version   = 2019070900;
 $plugin->requires  = 2018120300; // This is the version of Moodle this plugin requires.
 $plugin->component = 'theme_umticeboost';
-$plugin->release  = '1.1.0';
+$plugin->release  = 'Thème UMTICE v1.0.1';
