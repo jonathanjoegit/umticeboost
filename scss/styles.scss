@@ -18,3 +18,8 @@
 // ATTENTION A LA PLACE DU THEME !!!!!!
 // Fonction lib.php dans le thème va chercher les fichiers SCSS (du thème boost et du thème enfant !!!)
 //	$post = file_get_contents($CFG->themedir . '/eadumboost/scss/post.scss');
+
+
+
+// MODIF POUR LA MIGRATION PERIODE CORONAVIRUS
+@import 'includes/style-UMTICE-coronavirus';

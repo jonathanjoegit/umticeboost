@@ -3,30 +3,41 @@
 }}
 
 <header class="clearfix">
-  <div class="home-header-umticeboost">
-    <div class="container">
-      <div class="row centered text-center">
-        <div class="col-lg-12">
-          {{# pix }} logo_big_w_shadow, theme_umticeboost, UMTICE {{/ pix }}
+    <div class="home-header-umticeboost">
+        <div class="container">
+            <div class="row centered text-center">
+                <div class="col-lg-12">
+                    {{# pix }} logo_big_w_shadow, theme_umticeboost, UMTICE {{/ pix }}
 
-            <h1>
-              {{# str }} sitetitle, theme_umticeboost {{/ str }}
+                        <h1>
+                            {{# str }} sitetitle, theme_umticeboost {{/ str }}
 
-            </h1>
-
-
-
-              <a class="btn btn-primary btn-lg btn-login" href="{{{ loginlink }}}" role="button">
-                {{# str }} connect, theme_umticeboost {{/ str }}
-              </a>
+                        </h1>
 
 
+                        {{!
+                        <a class="btn btn-primary btn-lg btn-login" href="{ { { loginlink } } } " role="button">
+                            {   { # str }  } connect, theme_umticeboost {  { / str }  }
+                        </a>
+}}
 
 
+                        <a class="btn btn-primary btn-lg btn-login background-STS" href="http://umtice.univ-lemans.fr/login/" role="button">
+                            UMTICE - STS
+                        </a>
+
+                        <a class="btn btn-primary btn-lg btn-login background-LLSH" href="http://umtice2.univ-lemans.fr/login/" role="button">
+                             UMTICE - LLSH-DEG
+                        </a>
+
+
+
+
+
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-  </div>
+    </div>
 
 </header>
