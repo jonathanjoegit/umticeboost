@@ -17,8 +17,8 @@
 /**
  * Theme functions.
  *
- * @package    theme_umticeboost
- * @copyright  2019 Jonathan J. - Le Mans Université
+ * @package    theme_eadumboost
+ * @copyright  2020 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -31,7 +31,7 @@ defined('MOODLE_INTERNAL') || die();
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_umticeboost_get_main_scss_content($theme) {
+function theme_eadumboost_get_main_scss_content($theme) {
     global $CFG;
 
     $scss = '';
@@ -52,21 +52,21 @@ function theme_umticeboost_get_main_scss_content($theme) {
 
     // Add umtice scss.
     // Post (style.scss) CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
-    $post = file_get_contents($CFG->themedir . '/umticeboost/scss/styles.scss');
+    $post = file_get_contents($CFG->themedir . '/eadumboost/scss/styles.scss');
 
     // Add custom styles for Test & Pre-production environment (theme setting).
     /*$value = $theme->settings->platform_env;
     if ($value == "Pre-Production") {
-        $post .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_preproduction.scss');
+        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
     } else if ($value == "Test") {
-        $post .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_test.scss');
+        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
     }*/
 
     return $scss . "\n" . $post;
 }
 
 
-function theme_umticeboost_extend_navigation(global_navigation $navigation) {
+function theme_eadumboost_extend_navigation(global_navigation $navigation) {
     // Enlever "Home".
     if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
         $homenode->showinflatnavigation = false;

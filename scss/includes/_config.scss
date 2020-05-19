@@ -1,24 +1,67 @@
 // vars :
 // === === === === === === === === === === ===
 
+/* --- VAR EADUM: --- */
+
+$themeSpecialColor1   : #81c0c4; // Slightly desaturated cyan.
+$themeSpecialColor2   : #e5512b; // Orange EADUM.
+
+$borderSizeNavAndFooter: 4px;
+
+$lightbackground      : #f4f4f4; //Very light gray (mostly white).
+$darkBackground       : #232934; //Very dark grayish blue.
+
+$navdrawerBackground  : #cedadf; //Light grayish blue.
+
+$linkColor1           : #08c;
+
+/* --- VAR UMTICE: --- */
+/*
 // Theme color:
-$grayumtice           : #4d4d4d;
-$lightgrayumtice      : #eee;
-$pinkumtice           : #de5b5e;
+$grayumtice           : #4d4d4d; // Very dark gray.
+$lightgrayumtice      : #eee; // Very light gray.
+$pinkumtice           : #de5b5e; // Soft red / pink.
+
+$lightbackground      : #eeeee9; // Light grayish yellow.
+
+$navdrawerBackground      : $lightgrayumtice;
+*/
+
+/* ================== */
+/* --- VAR THEME: --- */
+$white                : #fff;
+$greenWarning         : #00ff3e; // Pure (or mostly pure) lime green.
+
+// Theme color:
+$themeSpecialColor1   : $themeSpecialColor1; // nav/footer border
+//$themeSpecialColor2    : $pinkumtice; // buttons,
+
+// links
+$linkColor1           : $linkColor1; // link moodle
+$linkColor2           : $themeSpecialColor2; // only on footer
+
+// navdrawer
+$navdrawerBackground  : $navdrawerBackground;
 
 // text:
-$whiteText            : #fff;
+$whiteText            : $white;
+$whiteTextHover       : #d8d9da; // Light grayish blue.
 $blackText            : #212529;
 
 //background:
-$lightbackground      : #eeeee9;
+$lightbackground      : $lightbackground;
+$darkBackground       : $darkBackground; // nav, footer
 
 //navbar:
-$navbarBackgroundColor: $grayumtice;
-$navbarBorderColor    : $pinkumtice;
-$navbarBorderSize     : 4px;
-$navbarTextColor      : #fff;
-$navbarHoverColor     : #d8d9da;
+$navbarBackgroundColor: $darkBackground;
+$navbarBorderColor    : $themeSpecialColor1;
+$navbarBorderSize     : $borderSizeNavAndFooter;
+$navbarTextColor      : $white;
+$navbarHoverColor     : $whiteTextHover;
+
+// Footer:
+$footerBorderSize: $borderSizeNavAndFooter;
+
 
 // Smallsmartphones
 $screen-xs-min        : 375px;
@@ -36,4 +79,4 @@ $screen-lg-min        : 992px;
 $screen-xl-min        : 1200px;
 
 // Administration du site :
-$adminDefaultRoleColor: #00ff3e;
+$adminDefaultRoleColor: $greenWarning;

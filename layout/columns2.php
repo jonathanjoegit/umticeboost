@@ -17,8 +17,8 @@
 /**
  * A two column layout for the boost theme.
  *
- * @package    theme_umticeboost
- * @copyright  2019 Jonathan J.
+ * @package    theme_eadumboost
+ * @copyright  2020 Jonathan J.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -53,7 +53,7 @@ $templatecontext = [
 ];
 
 // Modif du nav-drawer.
-theme_umticeboost_extend_navigation($PAGE->navigation);
+theme_eadumboost_extend_navigation($PAGE->navigation);
 
 $templatecontext['flatnavigation'] = $PAGE->flatnav;
 echo $OUTPUT->render_from_template('theme_boost/columns2', $templatecontext);

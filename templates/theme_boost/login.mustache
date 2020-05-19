@@ -1,6 +1,6 @@
 {{!
     @template theme_boost/login
-    
+
     Login page template
 }}
 
@@ -71,7 +71,7 @@ require(['jquery', 'jqueryui'], function($, jqui) {
 
     /* Ajout d'une image pour le login form (1e page) */
     $('.loginpanel').each(function() {
-        $(this).prepend('{{# pix }} login_avatar, theme{{/ pix }}');
+        $(this).prepend('{{# pix }} theme_eadumboost_login_avatar, theme_eadumboost {{/ pix }}');
     });
 
     /* Ajout d'une image pour les utilisateurs d'angers */

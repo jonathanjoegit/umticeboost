@@ -8,11 +8,11 @@
     padding      : 12px;
     text-align   : center;
     border       : 2px solid $whiteText;
-    background   : $pinkumtice;
+    background   : $themeSpecialColor1;
     border-radius: 8px;
     cursor       : pointer;
     &:hover {
-        background: darken($pinkumtice, 5%);
+        background: darken($themeSpecialColor1, 5%);
     }
     a {
         font-size     : 22px;

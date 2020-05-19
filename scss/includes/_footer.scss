@@ -2,20 +2,21 @@
 // --- --- --- --- --- --- --- --- --- --- ---
 
 footer#page-footer {
-    background-color: $grayumtice !important;
+    background-color: $darkBackground !important;
     text-align      : center;
     line-height     : 2;
+    border-top      : $footerBorderSize solid $themeSpecialColor1;
 
     a {
-        color          : $pinkumtice;
+        color          : $linkColor2;
         text-decoration: none;
         &:hover {
-            color          : darken($pinkumtice, 8%);
+            color          : darken($linkColor2, 8%);
             text-decoration: underline;
         }
     }
 
-    .footer-umticeboost {
+    .footer-eadumboost {
         div {
             margin-top: 5px;
         }

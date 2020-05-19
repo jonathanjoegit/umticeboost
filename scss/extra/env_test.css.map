@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAII,+CACsB;EAClB,SAAS,EAAE,UAAU;EACrB,MAAM,EAAE,gCAAgC;;;AAIhD;oBACqB;EACjB,OAAO,EAAM,SAAS;EACtB,KAAK,EAAQ,OAAO;EACpB,SAAS,EAAI,IAAI;EACjB,WAAW,EAAE,GAAG",
+"sources": ["env_test.scss"],
+"names": [],
+"file": "env_test.css"
+}

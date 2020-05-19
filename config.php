@@ -17,8 +17,8 @@
 /**
  * Theme config.
  *
- * @package    theme_umticeboost
- * @copyright  2019 Jonathan J. - Le Mans Université
+ * @package    theme_eadumboost
+ * @copyright  2020 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,11 +27,11 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__ . '/lib.php');
 
-// Modif umticeboost jjupin.
-$THEME->name = 'umticeboost';
+// Modif eadumboost  jjupin.
+$THEME->name = 'eadumboost';
 $THEME->parents = ['boost'];
 $THEME->scss = function($theme) {
-    return theme_umticeboost_get_main_scss_content($theme);
+    return theme_eadumboost_get_main_scss_content($theme);
 };
 
 $THEME->layouts = [
@@ -43,7 +43,7 @@ $THEME->layouts = [
       'options' => array('nonavbar' => true),
     ),
 ];
-// END modif umticeboost jjupin.
+// END modif eadumboost  jjupin.
 
 
 

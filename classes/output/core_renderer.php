@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace theme_umticeboost\output;
+namespace theme_eadumboost\output;
 
 use coding_exception;
 use html_writer;
@@ -39,8 +39,8 @@ defined('MOODLE_INTERNAL') || die;
  /**
   * Renderers to align Moodle's HTML with that expected by Bootstrap
   *
-  * @package    theme_umticeboost
-  * @copyright  2019 Jonathan J.
+  * @package    theme_eadumboost
+  * @copyright  2020 Jonathan J.
   * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
   */
 
@@ -55,7 +55,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * always shown, even if no menu items are configured in the global
      * theme settings page.
      */
-    public function umticeboost_custom_menu($custommenuitems = '') {
+    public function eadumboost_custom_menu($custommenuitems = '') {
         global $CFG;
 
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
@@ -63,13 +63,13 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $custommenu = new custom_menu($custommenuitems, current_language());
 
-        // Umticeboost custom menu.
+        // eadumboost custom menu.
         if (isloggedin() && !isguestuser() ) {
 
             // Add dahsboard and my courses access.
-            $this->umticeboost_get_dashboard_for_custom_menu($custommenu);
+            $this->eadumboost_get_dashboard_for_custom_menu($custommenu);
             // Add courses seach.
-            $this->umticeboost_get_searchcourses_for_custom_menu($custommenu);
+            $this->eadumboost_get_searchcourses_for_custom_menu($custommenu);
 
         }
         return parent::render_custom_menu($custommenu);
@@ -78,7 +78,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      /**
       * Add dashboard and my courses access to custom menu.
       */
-    protected function umticeboost_get_dashboard_for_custom_menu(custom_menu $custommenu) {
+    protected function eadumboost_get_dashboard_for_custom_menu(custom_menu $custommenu) {
         global $CFG;
 
         $branchtitle = $branchlabel = get_string('myhome');
@@ -115,7 +115,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             }
         }
         if ($numcourses == 0 || empty($courses)) {
-            $noenrolments = get_string('noenrolments', 'theme_umticeboost');
+            $noenrolments = get_string('noenrolments', 'theme_eadumboost');
             $branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
         }
 
@@ -124,9 +124,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /**
      * add searchcourses to custom menu.
      */
-    protected function umticeboost_get_searchcourses_for_custom_menu(custom_menu $custommenu) {
+    protected function eadumboost_get_searchcourses_for_custom_menu(custom_menu $custommenu) {
         // Fetch courses.
-        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_umticeboost');
+        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_eadumboost');
         $branchurl = new moodle_url('/course/index.php');
         $branchsort = 2;
 
@@ -137,7 +137,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * We want to show the custom menus as a list of links in the footer on small screens.
      * Just return the menu object exported so we can render it differently.
      */
-    public function umticeboost_custom_menu_flat() {
+    public function eadumboost_custom_menu_flat() {
         global $CFG;
         $custommenuitems = '';
 
@@ -170,20 +170,20 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *
      * @return string HTML to display the main header.
      */
-    public function umticeboost_full_header() {
+    public function eadumboost_full_header() {
         global $PAGE;
 
         $header = new stdClass();
-        $header->settingsmenu = $this->umticeboost_context_header_settings_menu();
+        $header->settingsmenu = $this->eadumboost_context_header_settings_menu();
         $header->contextheader = $this->context_header();
         $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
         $header->navbar = $this->navbar();
         $header->pageheadingbutton = $this->page_heading_button();
         $header->courseheader = $this->course_header();
 
-        $header->editbutton = $this->umticeboost_edit_button();
+        $header->editbutton = $this->eadumboost_edit_button();
 
-        return $this->render_from_template('theme_umticeboost/header', $header);
+        return $this->render_from_template('theme_eadumboost/header', $header);
     }
 
 
@@ -192,7 +192,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *
      * @return string the editing button
      */
-    public function umticeboost_edit_button() {
+    public function eadumboost_edit_button() {
         global $PAGE, $COURSE;
 
         if (!$PAGE->user_allowed_editing() || $COURSE->id <= 1) {
@@ -230,7 +230,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *
      * @return string
      */
-    public function umticeboost_context_header_settings_menu() {
+    public function eadumboost_context_header_settings_menu() {
         $context = $this->page->context;
         $menu = new action_menu();
 
@@ -302,8 +302,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $settingsnode = $this->page->settingsnav->find('courseadmin', navigation_node::TYPE_COURSE);
             if ($settingsnode) {
 
-                // Custom menu for umticeboost. Build an action menu based on the visible nodes from this navigation tree.
-                $skipped = $this->umticeboost_build_action_menu_for_course($menu, $settingsnode, false, true);
+                // Custom menu for eadumboost. Build an action menu based on the visible nodes from this navigation tree.
+                $skipped = $this->eadumboost_build_action_menu_for_course($menu, $settingsnode, false, true);
 
                 // We only add a list to the full settings menu if we didn't include every node in the short menu.
                 if ($skipped) {
@@ -336,7 +336,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @param boolean $onlytopleafnodes
      * @return boolean nodesskipped - True if nodes were skipped in building the menu
      */
-    protected function  umticeboost_build_action_menu_for_course(action_menu $menu,
+    protected function  eadumboost_build_action_menu_for_course(action_menu $menu,
                                                        navigation_node $node,
                                                        $indent = false,
                                                        $onlytopleafnodes = false) {
@@ -387,13 +387,13 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
             // We display the custom menu after "turn editing" / add jjupin.
             if ($menuitem->key == "turneditingonoff" ) {
-                $this->umticeboost_get_custom_action_menu_for_course_header($menu);
+                $this->eadumboost_get_custom_action_menu_for_course_header($menu);
                 $custommenuok = true;
             }
 
         }
         if (!$custommenuok) {
-            $this->umticeboost_get_custom_action_menu_for_course_header($menu);
+            $this->eadumboost_get_custom_action_menu_for_course_header($menu);
         }
         return $skipped;
     }
@@ -401,7 +401,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /**
      * Add custom items to the course settings menu.
      */
-    protected function umticeboost_get_custom_action_menu_for_course_header(action_menu $menu) {
+    protected function eadumboost_get_custom_action_menu_for_course_header(action_menu $menu) {
 
         // Participants (if the user has the good capacity).
         if (has_capability('report/participation:view',  $this->page->context)) {
