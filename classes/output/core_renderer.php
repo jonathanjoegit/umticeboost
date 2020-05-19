@@ -36,13 +36,13 @@ use pix_icon;
 
 defined('MOODLE_INTERNAL') || die;
 
- /**
-  * Renderers to align Moodle's HTML with that expected by Bootstrap
-  *
-  * @package    theme_eadumboost
-  * @copyright  2020 Jonathan J.
-  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-  */
+/**
+* Renderers to align Moodle's HTML with that expected by Bootstrap
+*
+* @package    theme_eadumboost
+* @copyright  2020 Jonathan J.
+* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+*/
 
 class core_renderer extends \theme_boost\output\core_renderer {
 
@@ -51,10 +51,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
 
     /*
-     * Overriding the custom_menu function ensures the custom menu is
-     * always shown, even if no menu items are configured in the global
-     * theme settings page.
-     */
+    * Overriding the custom_menu function ensures the custom menu is
+    * always shown, even if no menu items are configured in the global
+    * theme settings page.
+    */
     public function eadumboost_custom_menu($custommenuitems = '') {
         global $CFG;
 
@@ -68,16 +68,21 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
             // Add dahsboard and my courses access.
             $this->eadumboost_get_dashboard_for_custom_menu($custommenu);
-            // Add courses seach.
-            $this->eadumboost_get_searchcourses_for_custom_menu($custommenu);
+
+            // Add course search for manager and admin (if you have the good capability)
+            if (has_capability('moodle/course:view', $this->page->context) && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
+                $this->eadumboost_get_searchcourses_for_custom_menu($custommenu);
+            }
+            //add custom menus (MAIL, Help, ...)
+            //$this->eadumboost_get_custom_items_for_custom_menu($custommenu);
 
         }
         return parent::render_custom_menu($custommenu);
     }
 
-     /**
-      * Add dashboard and my courses access to custom menu.
-      */
+    /**
+    * Add dashboard and my courses access to custom menu.
+    */
     protected function eadumboost_get_dashboard_for_custom_menu(custom_menu $custommenu) {
         global $CFG;
 
@@ -122,8 +127,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * add searchcourses to custom menu.
-     */
+    * add searchcourses to custom menu.
+    */
     protected function eadumboost_get_searchcourses_for_custom_menu(custom_menu $custommenu) {
         // Fetch courses.
         $branchtitle = $branchlabel = get_string('recherchecours', 'theme_eadumboost');
@@ -133,10 +138,35 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
     }
 
+
     /**
-     * We want to show the custom menus as a list of links in the footer on small screens.
-     * Just return the menu object exported so we can render it differently.
-     */
+    * add customs items (UM MAIL, help, ...)
+    */
+    protected function eadumboost_get_custom_items_for_custom_menu(custom_menu $custommenu) {
+
+        // Mail.
+        $branchtitle = $branchlabel = get_string('mail', 'theme_eadumboost');
+        $branchurl = new moodle_url('http://webmail.univ-lemans.fr/');
+        $branchsort = 3;
+        $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+
+        // Aide.
+        $branchtitle = $branchlabel = get_string('support', 'theme_eadumboost');
+        $branchurl = new moodle_url('');
+        $branchsort = 4;
+        $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+        // Sub branches.
+        $sbranchtitle = $sbranchlabel = get_string('assistanceEtu', 'theme_eadumboost');
+        $sbranchurl = new moodle_url('/um_apps/faq/faq-connexion.html');
+        $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
+
+    }
+
+
+    /**
+    * We want to show the custom menus as a list of links in the footer on small screens.
+    * Just return the menu object exported so we can render it differently.
+    */
     public function eadumboost_custom_menu_flat() {
         global $CFG;
         $custommenuitems = '';
@@ -166,10 +196,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * Wrapper for header elements.
-     *
-     * @return string HTML to display the main header.
-     */
+    * Wrapper for header elements.
+    *
+    * @return string HTML to display the main header.
+    */
     public function eadumboost_full_header() {
         global $PAGE;
 
@@ -188,10 +218,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
 
     /**
-     * Editing button in a course
-     *
-     * @return string the editing button
-     */
+    * Editing button in a course
+    *
+    * @return string the editing button
+    */
     public function eadumboost_edit_button() {
         global $PAGE, $COURSE;
 
@@ -225,11 +255,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * This is an optional menu that can be added to a layout by a theme. It contains the
-     * menu for the course administration, only on the course main page.
-     *
-     * @return string
-     */
+    * This is an optional menu that can be added to a layout by a theme. It contains the
+    * menu for the course administration, only on the course main page.
+    *
+    * @return string
+    */
     public function eadumboost_context_header_settings_menu() {
         $context = $this->page->context;
         $menu = new action_menu();
@@ -326,20 +356,20 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * Add searchcourses to custom menu (copy of build_action_menu_from_navigation).
-     * Take a node in the nav tree and make an action menu out of it.
-     * The links are injected in the action menu.
-     *
-     * @param action_menu $menu
-     * @param navigation_node $node
-     * @param boolean $indent
-     * @param boolean $onlytopleafnodes
-     * @return boolean nodesskipped - True if nodes were skipped in building the menu
-     */
+    * Add searchcourses to custom menu (copy of build_action_menu_from_navigation).
+    * Take a node in the nav tree and make an action menu out of it.
+    * The links are injected in the action menu.
+    *
+    * @param action_menu $menu
+    * @param navigation_node $node
+    * @param boolean $indent
+    * @param boolean $onlytopleafnodes
+    * @return boolean nodesskipped - True if nodes were skipped in building the menu
+    */
     protected function  eadumboost_build_action_menu_for_course(action_menu $menu,
-                                                       navigation_node $node,
-                                                       $indent = false,
-                                                       $onlytopleafnodes = false) {
+    navigation_node $node,
+    $indent = false,
+    $onlytopleafnodes = false) {
         $skipped = false;
 
         // Hack for displaying custom items at the begiing (teacher) our at the end (other roles).
@@ -399,8 +429,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-     * Add custom items to the course settings menu.
-     */
+    * Add custom items to the course settings menu.
+    */
     protected function eadumboost_get_custom_action_menu_for_course_header(action_menu $menu) {
 
         // Participants (if the user has the good capacity).
