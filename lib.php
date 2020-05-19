@@ -50,25 +50,89 @@ function theme_eadumboost_get_main_scss_content($theme) {
         $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
     }
 
-    // Add umtice scss.
-    // Post (style.scss) CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
+    // Add theme custom scss.
     $post = file_get_contents($CFG->themedir . '/eadumboost/scss/styles.scss');
 
-    // Add custom styles for Test & Pre-production environment (theme setting).
-    /*$value = $theme->settings->platform_env;
-    if ($value == "Pre-Production") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
-    } else if ($value == "Test") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
-    }*/
+
 
     return $scss . "\n" . $post;
 }
 
 
+
+/**
+ * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
+ * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
+ */
 function theme_eadumboost_extend_navigation(global_navigation $navigation) {
+    global $PAGE, $CFG, $COURSE;
+    require_once($CFG->libdir . '/completionlib.php');
+
     // Enlever "Home".
     if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
         $homenode->showinflatnavigation = false;
+    }
+    // Enlever "Privat files".
+    // Fait en CSS (display:none;) sinon c'est un peu galère (à voir plus tard).
+
+    // Aajouter plugin "tuteur".
+    // Vérifier si l'user à le droit d'afficher le rapport Tuteur.
+    $context = $PAGE->context;
+    if (has_capability('report/tuteur:view', $context)) {
+        // S'il y a des activités.
+        $completion = new completion_info($COURSE);
+        $activities = $completion->get_activities();
+        if (count($activities) > 0) {
+            // On récupère le noeud du cours (cours + section + ...).
+            $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
+            // Si la navigation contient des items.
+            if ($coursenode && $coursenode->has_children()) {
+
+                // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
+                $url = new moodle_url($CFG->wwwroot.'/report/tuteur/index.php', array('course' => $COURSE->id));
+                $nodereport = navigation_node::create(
+                  "Rapport Tuteur",
+                    $url,
+                    navigation_node::TYPE_SETTING,
+                    "rapporttuteur",
+                    "rapporttuteur"
+                );
+                // Signature create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
+
+                // On check s'il y a le noeud "grades", si oui on le met en dessous (sinon à la fin).
+                if ($PAGE->navigation->find("grades", navigation_node::TYPE_SETTING)) {
+                    $node = $coursenode->children->add($nodereport, "grades");
+                } else { // Sinon à la fin du noeud.
+                    $node = $coursenode->children->add($nodereport);
+                }
+            }
+        }
+    }
+
+    // Ajouter "inscrire des utilisateurs" pour les admins.
+    // Vérifier si l'user à le droit d'inscrire des utilisateurs (donc d'accèder à cette page).
+    $context = $PAGE->context;
+    if (has_capability('enrol/manual:enrol', $context)) {
+        // On récupère le noeud du cours (cours + section + ...).
+        $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
+        // Si la navigation contient des items.
+        if ($coursenode && $coursenode->has_children()) {
+            // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
+            $url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id' => $COURSE->id));
+            $newnode = navigation_node::create(
+              get_string('enrolusers', 'enrol'),
+                $url,
+                navigation_node::TYPE_SETTING,
+                "enrolusers",
+                "enrolusers"
+            );
+
+            // On check s'il y a le noeud "participants", si oui on le met en dessous (sinon à la fin).
+            if ($PAGE->navigation->find("participants", navigation_node::TYPE_CONTAINER)) {
+                $node = $coursenode->children->add($newnode, "participants");
+            } else { // Sinon à la fin du noeud.
+                $node = $coursenode->children->add($newnode);
+            }
+        }
     }
 }
