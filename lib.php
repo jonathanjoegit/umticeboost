@@ -15,22 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme functions.
- *
- * @package    theme_eadumboost
- * @copyright  2020 Jonathan J. - Le Mans Université
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+* Theme functions.
+*
+* @package    theme_eadumboost
+* @copyright  2020 Jonathan J. - Le Mans Université
+* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+*/
 
 defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Returns the main SCSS content.
- *
- * @param theme_config $theme The theme config object.
- * @return string
- */
+* Returns the main SCSS content.
+*
+* @param theme_config $theme The theme config object.
+* @return string
+*/
 function theme_eadumboost_get_main_scss_content($theme) {
     global $CFG;
 
@@ -53,17 +53,26 @@ function theme_eadumboost_get_main_scss_content($theme) {
     // Add theme custom scss.
     $post = file_get_contents($CFG->themedir . '/eadumboost/scss/styles.scss');
 
+    // Add custom styles for Test & Pre-production environment (theme setting).
+    $value = $theme->settings->platform_env;
+    if ($value == "Pre-Production") {
+        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
+    } else if ($value == "Test") {
+        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
+    }
 
 
+
+    // Combine them together.
     return $scss . "\n" . $post;
 }
 
 
 
 /**
- * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
- * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
- */
+* Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
+* //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
+*/
 function theme_eadumboost_extend_navigation(global_navigation $navigation) {
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
@@ -91,11 +100,12 @@ function theme_eadumboost_extend_navigation(global_navigation $navigation) {
                 // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
                 $url = new moodle_url($CFG->wwwroot.'/report/tuteur/index.php', array('course' => $COURSE->id));
                 $nodereport = navigation_node::create(
-                  "Rapport Tuteur",
+                    "Rapport Tuteur",
                     $url,
                     navigation_node::TYPE_SETTING,
                     "rapporttuteur",
-                    "rapporttuteur"
+                    "rapporttuteur",
+                    new pix_icon('i/report', 'rapporttuteur')
                 );
                 // Signature create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
 
@@ -120,11 +130,12 @@ function theme_eadumboost_extend_navigation(global_navigation $navigation) {
             // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
             $url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id' => $COURSE->id));
             $newnode = navigation_node::create(
-              get_string('enrolusers', 'enrol'),
+                get_string('enrolusers', 'enrol'),
                 $url,
                 navigation_node::TYPE_SETTING,
                 "enrolusers",
-                "enrolusers"
+                "enrolusers",
+                new pix_icon('i/enrolusers', 'enrolusers')
             );
 
             // On check s'il y a le noeud "participants", si oui on le met en dessous (sinon à la fin).
