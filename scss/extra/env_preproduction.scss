@@ -2,20 +2,18 @@
 // --- --- --- --- --- --- --- --- --- --- ---
 
 // change the logo (invert color), to no miss it ! (home, navbar & footer)
-footer#page-footer .plateform-logo img,
 .home-header-eadumboost div.col-lg-12 > img,
+footer#page-footer .plateform-logo img,
 nav.navbar .logo img,
 nav.navbar .logo-xs img {
     filter: invert(100%) contrast(200%);
 }
 
 // add a text to know where we are (preprod or test)
-
-footer#page-footer .plateform-logo::after,
 .home-header-eadumboost div.col-lg-12:first-child::after,
-nav.navbar .logo::after,
-nav.navbar .logo-xs::after
-{
+footer#page-footer .plateform-logo::after,
+nav.navbar .logo-xs::after,
+nav.navbar .logo::after {
     content    : 'P R E P R O D';
     color      : #00e5ff;
     font-size  : 18px;
