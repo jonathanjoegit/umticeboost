@@ -1,0 +1,23 @@
+// Instances de test (bien voir qu'on est en test) :
+// --- --- --- --- --- --- --- --- --- --- ---
+
+// change the logo (invert color), to no miss it ! (home, navbar & footer)
+footer#page-footer .plateform-logo img,
+.home-header-eadumboost div.col-lg-12 > img,
+nav.navbar .logo img,
+nav.navbar .logo-xs img {
+    filter: hue-rotate(90deg) saturate(200%);
+}
+
+// add a text to know where we are (preprod or test)
+
+footer#page-footer .plateform-logo::after,
+.home-header-eadumboost div.col-lg-12:first-child::after,
+nav.navbar .logo::after,
+nav.navbar .logo-xs::after
+{
+    content    : 'T E S T';
+    color      : #30af30;
+    font-size  : 18px;
+    font-weight: 900;
+}
