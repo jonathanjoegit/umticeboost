@@ -1,16 +1,12 @@
 language: php
 
-sudo: required
-
 addons:
-  firefox: "47.0.1"
   postgresql: "9.4"
-  apt:
-    packages:
-      - openjdk-8-jre-headless
 
 services:
-  mysql
+  - mysql
+  - postgresql
+  - docker
 
 cache:
   directories:
@@ -18,30 +14,25 @@ cache:
     - $HOME/.npm
 
 php:
-#  - 5.6
-  - 7.0
-#  - 7.1
-#  - 7.2
+  - 7.1
+  - 7.2
   - 7.3
 
 env:
-  - MOODLE_BRANCH=master           DB=mysqli IGNORE_PATHS=moodle/tests/fixtures,moodle/Sniffs BEHAT=yes
-  - MOODLE_BRANCH=MOODLE_38_STABLE DB=mysqli IGNORE_PATHS=moodle/tests/fixtures,moodle/Sniffs BEHAT=yes
-  - MOODLE_BRANCH=MOODLE_37_STABLE DB=mysqli IGNORE_PATHS=moodle/tests/fixtures,moodle/Sniffs BEHAT=yes
-  - MOODLE_BRANCH=MOODLE_36_STABLE DB=mysqli  IGNORE_PATHS=moodle/tests/fixtures,moodle/Sniffs BEHAT=yes
-#  - MOODLE_BRANCH=MOODLE_35_STABLE DB=mysqli IGNORE_PATHS=moodle/tests/fixtures,moodle/Sniffs BEHAT=yes
-#  - MOODLE_BRANCH=MOODLE_34_STABLE DB=pgsql  IGNORE_PATHS=moodle/tests/fixtures,moodle/Sniffs BEHAT=yes
-#  - MOODLE_BRANCH=MOODLE_33_STABLE DB=mysqli IGNORE_PATHS=moodle/tests/fixtures,moodle/Sniffs BEHAT=yes
-#  - MOODLE_BRANCH=MOODLE_32_STABLE DB=pgsql  IGNORE_PATHS=moodle/tests/fixtures,moodle/Sniffs BEHAT=yes
-
+  global:
+    - MOODLE_BRANCH=MOODLE_38_STABLE
+  matrix:
+    - DB=pgsql
+    - DB=mysqli
 
 before_install:
   - phpenv config-rm xdebug.ini
   - nvm install 8.9
   - nvm use 8.9
   - cd ../..
-  - composer create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^2
+  - composer create-project -n --no-dev --prefer-dist blackboard-open-source/moodle-plugin-ci ci dev-master
   - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
+  - docker run -d -p 127.0.0.1:4444:4444 --net=host -v /dev/shm:/dev/shm selenium/standalone-chrome:3
 
 install:
   - moodle-plugin-ci install
@@ -53,9 +44,7 @@ script:
   - moodle-plugin-ci codechecker
   - moodle-plugin-ci validate
   - moodle-plugin-ci savepoints
-  - moodle-plugin-ci mustache
+  - moodle-plugin-ci mustache || true
   - moodle-plugin-ci grunt
+  - moodle-plugin-ci phpdoc
   - moodle-plugin-ci phpunit
-  - if [ $BEHAT == 'yes' ]; then
-        moodle-plugin-ci behat || travis_terminate 1;
-    fi
