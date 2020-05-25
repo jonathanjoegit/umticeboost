@@ -37,12 +37,12 @@ use pix_icon;
 defined('MOODLE_INTERNAL') || die;
 
 /**
-* Renderers to align Moodle's HTML with that expected by Bootstrap
-*
-* @package    theme_eadumboost
-* @copyright  2020 Jonathan J.
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+ * Renderers to align Moodle's HTML with that expected by Bootstrap
+ *
+ * @package    theme_eadumboost
+ * @copyright  2020 Jonathan J.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 class core_renderer extends \theme_boost\output\core_renderer {
 
@@ -63,18 +63,19 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $custommenu = new custom_menu($custommenuitems, current_language());
 
-        // eadumboost custom menu.
+        // Eadumboost custom menu.
         if (isloggedin() && !isguestuser() ) {
 
             // Add dahsboard and my courses access.
             $this->eadumboost_get_dashboard_for_custom_menu($custommenu);
 
-            // Add course search for manager and admin (if you have the good capability)
-            if (has_capability('moodle/course:view', $this->page->context) && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
+            // Add course search for manager and admin (if you have the good capability).
+            if (has_capability('moodle/course:view', $this->page->context)
+            && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
                 $this->eadumboost_get_searchcourses_for_custom_menu($custommenu);
             }
-            //add custom menus (MAIL, Help, ...)
-            //$this->eadumboost_get_custom_items_for_custom_menu($custommenu);
+            // Add custom menus (MAIL, Help, ...).
+            // $this->eadumboost_get_custom_items_for_custom_menu($custommenu);
 
         }
         return parent::render_custom_menu($custommenu);

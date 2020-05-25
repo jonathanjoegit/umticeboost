@@ -15,22 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-* Theme functions.
-*
-* @package    theme_eadumboost
-* @copyright  2020 Jonathan J. - Le Mans Université
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+ * Theme functions.
+ *
+ * @package    theme_eadumboost
+ * @copyright  2020 Jonathan J. - Le Mans Université
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 defined('MOODLE_INTERNAL') || die();
 
 
 /**
-* Returns the main SCSS content.
-*
-* @param theme_config $theme The theme config object.
-* @return string
-*/
+ * Returns the main SCSS content.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string
+ */
 function theme_eadumboost_get_main_scss_content($theme) {
     global $CFG;
 
@@ -61,8 +61,6 @@ function theme_eadumboost_get_main_scss_content($theme) {
         $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
     }
 
-
-
     // Combine them together.
     return $scss . "\n" . $post;
 }
@@ -70,9 +68,9 @@ function theme_eadumboost_get_main_scss_content($theme) {
 
 
 /**
-* Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
-* //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
-*/
+ * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
+ * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
+ */
 function theme_eadumboost_extend_navigation(global_navigation $navigation) {
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
