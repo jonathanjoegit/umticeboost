@@ -26,6 +26,17 @@
  $string['choosereadme'] = 'Theme EAD Boost is a child theme of Boost for Le Mans Université';
  $string['region-side-pre'] = 'region-side-pre';
 
+ /* LOGIN */
+ $string['connect-form-welcome'] = 'Willkommen!';
+ $string['connect-form-title'] = 'Um fortzufahren, loggen Sie sich bitte ein:';
+ $string['connect-as-um-user'] = 'Melden Sie sich mit Ihrem Konto an <i> Universität Le Mans</i>';
+ $string['connect-other-users'] = 'Weitere Nutzer (Universität Angers/Tours)';
+$string['connect-manual'] = 'Einloggen mit einem manuellen Konto:';
+$string['connect-form-or'] = 'Oder';
+$string['connect-help'] = '<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/faq-connexion.html" target="_blank">Probleme bei der Anmeldung?</a>';
+
+
+
  /* custom EADUM: */
  $string['noenrolments'] = 'Noch nicht zugänglich';
  $string['FAQ'] = 'FAQ';

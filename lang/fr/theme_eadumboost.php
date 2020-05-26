@@ -26,6 +26,24 @@
  $string['choosereadme'] = 'Theme EAD Boost is a child theme of Boost for Le Mans Université';
  $string['region-side-pre'] = 'region-side-pre';
 
+ /* LOGIN */
+ $string['connect-form-welcome'] = 'Bienvenue !';
+ $string['connect-form-title'] = 'Pour continuer, veuillez vous connecter&nbsp;:';
+ $string['connect-as-um-user'] = 'Se connecter avec son compte <i>Le Mans Université</i>';
+ $string['connect-other-users'] = 'Autres utilisateurs, Université d\'Angers et Université de Tours';
+ $string['connect-manual'] = 'Connectez vous avec un compte manuel&nbsp;:';
+ $string['connect-form-or'] = 'Ou';
+ $string['connect-help'] = '<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/faq-connexion.html" target="_blank"> Des soucis pour se connecter ?</a>';
+
+
+
+
+
+
+
+
+
+
  /* custom UMTICE: */
  $string['noenrolments'] = 'Aucun cours';
  $string['assistanceEns'] = 'Assistance enseignant';
@@ -42,7 +60,7 @@
   $string['acces_cours'] = 'Accéder à la liste des cours';
 
   // custom home UMTICE.
-  $string['sitetitle'] = 'Espace pédagogique - Le Mans Université';
+$string['sitetitle'] = 'Espace pédagogique - Le Mans Université';
 $string['connect'] = 'Se connecter';
 $string['listUFR1'] = 'Droit, Economie, Gestion';
 $string['listUFR2'] = 'Arts, Lettres, Langues';
@@ -79,7 +97,7 @@ $string['methodologie'] = 'Ressources méthodologiques';
 $string['support:'] = 'Aide :';
 $string['txtAssistanceFooter'] = '<ul>
                                     <li>
-                                        <a href="mailto:umtice-prn@univ-lemans.fr" target="_blank">
+                                        <a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/" target="_blank">
                                             Assistance étudiants
                                         </a>
                                     </li>
