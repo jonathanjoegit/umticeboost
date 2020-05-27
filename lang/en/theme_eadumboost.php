@@ -32,8 +32,11 @@ $string['connect-form-title'] = 'To continue, please log in:';
 $string['connect-as-um-user'] = 'Log in with your account <i>Le Mans Université</i>';
 $string['connect-other-users'] = 'Other users, Université d\'Angers and Université de Tours';
 $string['connect-manual'] = 'Login in with a manual account:';
+$string['connect-manual-button'] = 'Login in with a manual account:';
 $string['connect-form-or'] = 'Or';
 $string['connect-help'] = '<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/faq-connexion.html" target="_blank">Trouble logging in?</a>';
+$string['connect-angers-text'] = 'Users registered at the University of Angers, log in using your usual identifiers (those you use at your university):';
+$string['connect-angers-button'] = 'Log in with your account <i>Université Angers</i>';
 
 
 
@@ -139,3 +142,5 @@ Since 2001, Le Mans Université offers over 20 distance-learning qualifications 
     $string['generalsettings'] = 'General Settings';
     $string['platform_env'] = 'Platform environment';
     $string['platform_env_desc'] = 'Platform environment selection. This selection changes the theme logo "EADUM" in "Test" and "Pre-production" to show it\'s not the "Production" platform';
+    $string['title_angers_users'] = 'Connection with Angers';
+    $string['text_angers_user'] = 'Show a block for Angers Université users in the login page?';
