@@ -120,7 +120,7 @@ function theme_eadumboost_extend_navigation($navigation) {
     // ISSUE : the page "enrol user" doesnt not exist any more (now only with a pop-up).
     // Ajouter "inscrire des utilisateurs" pour les admins.
     // Vérifier si l'user à le droit d'inscrire des utilisateurs (donc d'accèder à cette page).
-/*
+    /*
     $context = $PAGE->context;
     if (has_capability('enrol/manual:enrol', $context)) {
         // On récupère le noeud du cours (cours + section + ...).

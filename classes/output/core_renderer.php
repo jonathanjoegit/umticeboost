@@ -381,22 +381,21 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         global $CFG, $SITE;
 
-       $context = $form->export_for_template($this);
+        $context = $form->export_for_template($this);
 
-       // Override because rendering is not supported in template yet.
-       if ($CFG->rememberusername == 0) {
-           $context->cookieshelpiconformatted = $this->help_icon('cookiesenabledonlysession');
-       } else {
-           $context->cookieshelpiconformatted = $this->help_icon('cookiesenabled');
-       }
-       $context->errorformatted = $this->error_text($context->error);
-       $url = $this->get_logo_url();
-       if ($url) {
-           $url = $url->out(false);
-       }
-       $context->logourl = $url;
-       $context->sitename = format_string($SITE->fullname, true,
-               ['context' => context_course::instance(SITEID), "escape" => false]);
+        // Override because rendering is not supported in template yet.
+        if ($CFG->rememberusername == 0) {
+            $context->cookieshelpiconformatted = $this->help_icon('cookiesenabledonlysession');
+        } else {
+            $context->cookieshelpiconformatted = $this->help_icon('cookiesenabled');
+        }
+        $context->errorformatted = $this->error_text($context->error);
+        $url = $this->get_logo_url();
+        if ($url) {
+            $url = $url->out(false);
+        }
+        $context->logourl = $url;
+        $context->sitename = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
 
         /* Add informaiton about the CAS (from GET) CAS or NOCAS. */
         /* If we are in /login/ => we want CAS*/
@@ -407,7 +406,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $context->cas = $cas;
 
-       return $this->render_from_template('theme_eadumboost/loginform', $context);
+        return $this->render_from_template('theme_eadumboost/loginform', $context);
     }
 
 
