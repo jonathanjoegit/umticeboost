@@ -43,15 +43,14 @@ defined('MOODLE_INTERNAL') || die;
  * @copyright  2020 Jonathan J.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class core_renderer extends \theme_boost\output\core_renderer {
 
 
     /*
-    * Overriding the custom_menu function ensures the custom menu is
-    * always shown, even if no menu items are configured in the global
-    * theme settings page.
-    */
+     * Overriding the custom_menu function ensures the custom menu is
+     * always shown, even if no menu items are configured in the global
+     * theme settings page.
+     */
     public function eadumboost_custom_menu($custommenuitems = '') {
         global $CFG;
 
@@ -72,16 +71,16 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $this->eadumboost_get_searchcourses_for_custom_menu($custommenu);
             }
             // Add custom menus (MAIL, Help, ...).
-            // $this->eadumboost_get_custom_items_for_custom_menu($custommenu);
+            // NO DISPLAYED ANY MORE $this->eadumboost_get_custom_items_for_custom_menu($custommenu);.
 
         }
         return parent::render_custom_menu($custommenu);
     }
 
     /**
-    * Add dashboard and my courses access to custom menu.
-    */
-    protected function eadumboost_get_dashboard_for_custom_menu(custom_menu $custommenu) {
+     * Add dashboard and my courses access to custom menu.
+     */
+    protected function eadumboost_get_dashboard_for_custom_menu($custommenu) {
         global $CFG;
 
         $branchtitle = $branchlabel = get_string('myhome');
@@ -125,9 +124,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-    * add searchcourses to custom menu.
-    */
-    protected function eadumboost_get_searchcourses_for_custom_menu(custom_menu $custommenu) {
+     * add searchcourses to custom menu.
+     */
+    protected function eadumboost_get_searchcourses_for_custom_menu( $custommenu) {
         // Fetch courses.
         $branchtitle = $branchlabel = get_string('recherchecours', 'theme_eadumboost');
         $branchurl = new moodle_url('/course/index.php');
@@ -138,9 +137,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
 
     /**
-    * add customs items (UM MAIL, help, ...)
-    */
-    protected function eadumboost_get_custom_items_for_custom_menu(custom_menu $custommenu) {
+     * add customs items (UM MAIL, help, ...)
+     */
+    protected function eadumboost_get_custom_items_for_custom_menu( $custommenu) {
 
         // Mail.
         $branchtitle = $branchlabel = get_string('mail', 'theme_eadumboost');
@@ -161,11 +160,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
 
-    /** Overriding!
-    * We want to show the custom menus as a list of links in the footer on small screens.
-    * Just return the menu object exported so we can render it differently.
-    */
-    public function eadumboost_custom_menu_flat() {
+    /** Overriding: remove current langague (useless in footer and ugly).
+     * We want to show the custom menus as a list of links in the footer on small screens.
+     * Just return the menu object exported so we can render it differently.
+     */
+    public function custom_menu_flat() {
         global $CFG;
         $custommenuitems = '';
 
@@ -184,7 +183,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             } else {
                 $currentlang = $strlang;
             }
-            $this->language = $custommenu;
+            $this->language = $custommenu; /* ADD JJUPIN: remove current langague (useless in footer and ugly). */
             foreach ($langs as $langtype => $langname) {
                 $this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
             }
@@ -194,35 +193,49 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
 
-/* -- -- -- COURSE CUMSTOMISATION :  -- -- -- */
+    /* -- -- -- COURSE CUMSTOMISATION :  -- -- -- */
 
-    /** Overriding!
-    * Wrapper for header elements => QUEST CE QUON FAIT ? @todo: Documenter la fonciton ç
-    *
-    * @return string HTML to display the main header.
-    */
-    public function eadumboost_full_header() {
+    /** Overriding! (check moodle 3.8 ok)
+     * Wrapper for header elements => QUEST CE QUON FAIT ?
+     *
+     * @todo: Documenter la fonction + utiliser son parent.
+     * @return string HTML to display the main header.
+     */
+    public function full_header() {
         global $PAGE;
 
+        if ($PAGE->include_region_main_settings_in_header_actions() && !$PAGE->blocks->is_block_present('settings')) {
+            // Only include the region main settings if the page has requested it and it doesn't already have
+            // the settings block on it. The region main settings are included in the settings block and
+            // duplicating the content causes behat failures.
+            $PAGE->add_header_action(html_writer::div(
+                $this->region_main_settings_menu(),
+                'd-print-none',
+                ['id' => 'region-main-settings-menu']
+            ));
+        }
+
         $header = new stdClass();
-        $header->settingsmenu = $this->eadumboost_context_header_settings_menu();
+        $header->settingsmenu = $this->context_header_settings_menu();
         $header->contextheader = $this->context_header();
         $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
         $header->navbar = $this->navbar();
         $header->pageheadingbutton = $this->page_heading_button();
         $header->courseheader = $this->course_header();
+        $header->headeractions = $PAGE->get_header_actions();
 
+        /* ADD JJUPIN: add "edit mode" in course. */
         $header->editbutton = $this->eadumboost_edit_button();
-
-        return $this->render_from_template('theme_eadumboost/header', $header);
+        /* ADD JJUPIN: eadumboost template */
+        return $this->render_from_template('theme_eadumboost/full_header', $header);
     }
 
 
     /**
-    * Editing button in a course
-    *
-    * @return string the editing button
-    */
+     * Editing button in a course
+     *
+     * @return string the editing button
+     */
     public function eadumboost_edit_button() {
         global $PAGE, $COURSE;
 
@@ -255,13 +268,13 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
     }
 
-    /**
-    * This is an optional menu that can be added to a layout by a theme. It contains the
-    * menu for the course administration, only on the course main page.
-    *
-    * @return string
-    */
-    public function eadumboost_context_header_settings_menu() {
+    /** OVERRIDE:
+     * This is an optional menu that can be added to a layout by a theme. It contains the
+     * menu for the course administration, only on the course main page.
+     *
+     * @return string
+     */
+    public function context_header_settings_menu() {
         $context = $this->page->context;
         $menu = new action_menu();
 
@@ -430,9 +443,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-    * Add custom items to the course settings menu.
-    */
-    protected function eadumboost_get_custom_action_menu_for_course_header(action_menu $menu) {
+     * Add custom items to the course settings menu.
+     */
+    protected function eadumboost_get_custom_action_menu_for_course_header( $menu) {
 
         // Participants (if the user has the good capacity).
         if (has_capability('report/participation:view',  $this->page->context)) {
@@ -472,33 +485,33 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         global $CFG, $SITE;
 
-               $context = $form->export_for_template($this);
+       $context = $form->export_for_template($this);
 
-               // Override because rendering is not supported in template yet.
-               if ($CFG->rememberusername == 0) {
-                   $context->cookieshelpiconformatted = $this->help_icon('cookiesenabledonlysession');
-               } else {
-                   $context->cookieshelpiconformatted = $this->help_icon('cookiesenabled');
-               }
-               $context->errorformatted = $this->error_text($context->error);
-               $url = $this->get_logo_url();
-               if ($url) {
-                   $url = $url->out(false);
-               }
-               $context->logourl = $url;
-               $context->sitename = format_string($SITE->fullname, true,
-                       ['context' => context_course::instance(SITEID), "escape" => false]);
+       // Override because rendering is not supported in template yet.
+       if ($CFG->rememberusername == 0) {
+           $context->cookieshelpiconformatted = $this->help_icon('cookiesenabledonlysession');
+       } else {
+           $context->cookieshelpiconformatted = $this->help_icon('cookiesenabled');
+       }
+       $context->errorformatted = $this->error_text($context->error);
+       $url = $this->get_logo_url();
+       if ($url) {
+           $url = $url->out(false);
+       }
+       $context->logourl = $url;
+       $context->sitename = format_string($SITE->fullname, true,
+               ['context' => context_course::instance(SITEID), "escape" => false]);
 
-                /* Add informaiton about the CAS (from GET) CAS or NOCAS. */
-                /* If we are in /login/ => we want CAS*/
-                $cas = true;
-                // if "NOCAS" => we want only manual login
-                if (isset($_GET['authCAS']) and $_GET['authCAS'] == 'NOCAS'){
-                    $cas=false;
-                }
-                $context->cas = $cas;
+        /* Add informaiton about the CAS (from GET) CAS or NOCAS. */
+        /* If we are in /login/ => we want CAS*/
+        $cas = true;
+        // If "NOCAS" => we want only manual login.
+        if (isset($_GET['authCAS']) and $_GET['authCAS'] == 'NOCAS') {
+            $cas = false;
+        }
+        $context->cas = $cas;
 
-               return $this->render_from_template('theme_eadumboost/loginform', $context);
+       return $this->render_from_template('theme_eadumboost/loginform', $context);
     }
 
 

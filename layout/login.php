@@ -19,19 +19,19 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * A login page layout for the boost theme.
  *
- * @package   theme_boost
- * @copyright 2016 Damyon Wiese
+ * @package   theme_eadumboost
+ * @copyright  2020 Jonathan J.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $bodyattributes = $OUTPUT->body_attributes();
 
 
-/* Check URL to get the CAS or manual form to connect*/
-$authCAS = optional_param('authCAS', '', PARAM_RAW);
-if ($authCAS == 'NOCAS') {
+/* ADD JJUPIN Check URL to get the CAS or manual form to connect*/
+$authcas = optional_param('authCAS', '', PARAM_ALPHANUMEXT);
+if ($authcas == 'NOCAS') {
     $cas = false;
-}else{
+} else {
     $cas = true;
 }
 
@@ -39,7 +39,7 @@ $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,
-    'authCAS' => $cas
+    'authCAS' => $cas /* ADD JJUPIN.*/
 ];
-
+// ADD JJUPIN: render with theme_eadumboost/login.
 echo $OUTPUT->render_from_template('theme_eadumboost/login', $templatecontext);
