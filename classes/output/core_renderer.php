@@ -46,9 +46,6 @@ defined('MOODLE_INTERNAL') || die;
 
 class core_renderer extends \theme_boost\output\core_renderer {
 
-    /** @var custom_menu_item language The language menu if created */
-    protected $language = null;
-
 
     /*
     * Overriding the custom_menu function ensures the custom menu is
@@ -164,7 +161,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
 
-    /**
+    /** Overriding!
     * We want to show the custom menus as a list of links in the footer on small screens.
     * Just return the menu object exported so we can render it differently.
     */
@@ -196,8 +193,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $custommenu->export_for_template($this);
     }
 
-    /**
-    * Wrapper for header elements.
+
+/* -- -- -- COURSE CUMSTOMISATION :  -- -- -- */
+
+    /** Overriding!
+    * Wrapper for header elements => QUEST CE QUON FAIT ? @todo: Documenter la fonciton ç
     *
     * @return string HTML to display the main header.
     */
@@ -458,5 +458,48 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
 
     }
+
+
+    /* -- -- -- LOGIN FORM CUSTOMISATION :  -- -- -- */
+
+    /**
+     * Renders the login form (to have the "CAS" or "NOCAS" value)
+     *
+     * @param \core_auth\output\login $form The renderable.
+     * @return string
+     */
+    public function render_login(\core_auth\output\login $form) {
+
+        global $CFG, $SITE;
+
+               $context = $form->export_for_template($this);
+
+               // Override because rendering is not supported in template yet.
+               if ($CFG->rememberusername == 0) {
+                   $context->cookieshelpiconformatted = $this->help_icon('cookiesenabledonlysession');
+               } else {
+                   $context->cookieshelpiconformatted = $this->help_icon('cookiesenabled');
+               }
+               $context->errorformatted = $this->error_text($context->error);
+               $url = $this->get_logo_url();
+               if ($url) {
+                   $url = $url->out(false);
+               }
+               $context->logourl = $url;
+               $context->sitename = format_string($SITE->fullname, true,
+                       ['context' => context_course::instance(SITEID), "escape" => false]);
+
+                /* Add informaiton about the CAS (from GET) CAS or NOCAS. */
+                /* If we are in /login/ => we want CAS*/
+                $cas = true;
+                // if "NOCAS" => we want only manual login
+                if (isset($_GET['authCAS']) and $_GET['authCAS'] == 'NOCAS'){
+                    $cas=false;
+                }
+                $context->cas = $cas;
+
+               return $this->render_from_template('theme_eadumboost/loginform', $context);
+    }
+
 
 }

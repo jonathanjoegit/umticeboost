@@ -102,7 +102,7 @@
         <div class="card">
             <div class="card-block">
 
-                <div class="card-header text-center">
+                <div class="card-header text-center logo-platform">
                     {{# pix }} theme_eadumboost_logo, theme_eadumboost, Logo plateforme Le Mans université{{/ pix }}
                 </div>
 
@@ -118,7 +118,7 @@
                     <div class="row justify-content-center">
 
                         {{! IF CAS }}
-                        {{^cas}}
+                        {{#cas}}
                             <div class="col-lg-10">
 
 
@@ -164,7 +164,7 @@
                             {{/cas}}
 
                             {{! IF NOT CAS : manual and other connexion }}
-                            {{#cas}}
+                            {{^cas}}
                                 <div class="col-lg-10">
                                     <h3>
                                         {{#str}} connect-manual, theme_eadumboost {{/str}}

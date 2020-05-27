@@ -50,7 +50,7 @@ $string['connect-help'] = '<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq
  $string['support:'] = 'Hilfe :';
  $string['txtAssistanceFooter'] = '<ul>
                                      <li>
-                                         <a href="mailto:umtice-prn@univ-lemans.fr" target="_blank">
+                                         <a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/" target="_blank">
                                             Unterstützung für Studente
                                          </a>
                                      </li>

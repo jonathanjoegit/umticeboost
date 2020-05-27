@@ -88,7 +88,7 @@ $string['methodologie'] = 'Methodological resources';
 $string['support:'] = 'Help:';
 $string['txtAssistanceFooter'] = '<ul>
                                     <li>
-                                        <a href="mailto:umtice-prn@univ-lemans.fr" target="_blank">
+                                        <a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/" target="_blank">
                                             Student helpdesk
                                         </a>
                                     </li>
