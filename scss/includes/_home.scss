@@ -170,6 +170,7 @@ body.pagelayout-frontpage {
         background    : $themeSpecialColor1;
         border-radius : 8px;
         font-size     : 1.4em;
+        color: $whiteText !important;
         line-height   : normal;
         text-transform: uppercase;
         &:hover {

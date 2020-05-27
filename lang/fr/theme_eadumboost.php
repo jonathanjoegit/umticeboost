@@ -32,8 +32,11 @@ $string['connect-form-title'] = 'Pour continuer, veuillez vous connecter&nbsp;:'
 $string['connect-as-um-user'] = 'Se connecter avec son compte <i>Le Mans Université</i>';
 $string['connect-other-users'] = 'Autres utilisateurs, Université d\'Angers et Université de Tours';
 $string['connect-manual'] = 'Connectez-vous avec un compte manuel&nbsp;:';
+$string['connect-manual-button'] = 'Se connecter avec un compte manuel';
 $string['connect-form-or'] = 'Ou';
 $string['connect-help'] = '<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/faq-connexion.html" target="_blank"> Des soucis pour se connecter ?</a>';
+$string['connect-angers-text'] = 'Utilisateurs inscrits à l\'Université d\'Angers, connectez-vous à l\'aide de vos identifiants habituels (ceux que vous utilisez dans votre université) : ';
+$string['connect-angers-button'] = 'Se connecter avec son compte <i>Université Angers</i>';
 
 
 

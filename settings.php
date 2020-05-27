@@ -28,22 +28,32 @@ if ($ADMIN->fulltree) {
     $settings = new theme_boost_admin_settingspage_tabs('themesettingeadumboost', get_string('configtitle', 'theme_boost'));
     $page = new admin_settingpage('theme_boost_general', get_string('generalsettings', 'theme_boost'));
 
-
     // Set plateform environment (to have extra CSS for test & pre prod).
-       $name = 'theme_eadumboost/platform_env';
-       $title = get_string('platform_env', 'theme_eadumboost');
-       $description = get_string('platform_env_desc', 'theme_eadumboost');
-       $default = 'Production';
-       $choices = array(
-         'Production' => 'Production',
-         'Pre-Production' => 'Pre-Production',
-         'Test' => 'Test'
-       );
-       $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-       $setting->set_updatedcallback('theme_reset_all_caches');
-       $page->add($setting);
+    $name = 'theme_eadumboost/platform_env';
+    $title = get_string('platform_env', 'theme_eadumboost');
+    $description = get_string('platform_env_desc', 'theme_eadumboost');
+    $default = 'Production';
+    $choices = array(
+        'Production' => 'Production',
+        'Pre-Production' => 'Pre-Production',
+        'Test' => 'Test'
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
 
-
+    // Show a block for Angers Université users in the login page.
+    $name = 'theme_eadumboost/connexion_angers_users';
+    $title = get_string('title_angers_users', 'theme_eadumboost');
+    $description = get_string('text_angers_user', 'theme_eadumboost');
+    $default = 0;
+    $choices = array(
+        0 => "No",
+        1 => "Yes"
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
 
 
     $settings->add($page);
