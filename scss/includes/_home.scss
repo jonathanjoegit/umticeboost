@@ -203,7 +203,8 @@ video#bgvid {
 
     opacity         : .3;
     background-color: $navbarBackgroundColor;
-    background-image: url('[[pix:theme_eadumboost|theme_eadumboost_screenshotvid_1400]]') no-repeat;
+    background-image: url('[[pix:theme_eadumboost|theme_eadumboost_screenshotvid_1400]]');
+    background-repeat:no-repeat;
     background-size : cover;
     filter: alpha(opacity=30);
 }

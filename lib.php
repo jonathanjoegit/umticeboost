@@ -71,7 +71,7 @@ function theme_eadumboost_get_main_scss_content($theme) {
  * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
  * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
  */
-function theme_eadumboost_extend_navigation(global_navigation $navigation) {
+function theme_eadumboost_extend_navigation($navigation) {
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
 

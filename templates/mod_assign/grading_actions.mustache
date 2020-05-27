@@ -56,18 +56,21 @@ require(['mod_assign/grading_actions'], function(GradingActions) {
     new GradingActions('[data-region="grade-actions"]');
 });
 
-// add jjupin (force the default view)
+// ADD jjupin (force the default view).
 require(['jquery', 'jqueryui'], function($, jqui) {
-	//Change the default view of the assign grader page (by default : collapse-review-panel)
-	// if it's the assign grader page :
-	if ($('body#page-mod-assign-grader')) {
-	    // Change button css class
-		$('button.collapse-none').removeClass('active');
-	    $('button.collapse-review-panel').addClass('active');
-		// change the view
-	    $('[data-region=review-panel]').addClass('collapsed');
-	}
+
+    //Change the default view of the assign grader page (by default : collapse-review-panel).
+    // If it's the assign grader page.
+    if ($('body#page-mod-assign-grader')) {
+
+        // Change button css class.
+        $('button.collapse-none').removeClass('active');
+        $('button.collapse-review-panel').addClass('active');
+
+        // Change the view.
+        $('[data-region=review-panel]').addClass('collapsed');
+    }
 });
-// END add jjupin
+// END add jjupin.
 
 {{/js}}

@@ -1,41 +1,28 @@
 {{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
     Page footer.
 }}
-
 <footer id="page-footer" class="py-3 bg-dark text-light">
     <div class="container">
         <div id="course-footer">{{{ output.course_footer }}}</div>
 
-
-        <div class="footer-eadumboost row">
-
-            <div class="col-lg-4 d-none d-lg-block logoUmPrn">
-                <a href="http://www.univ-lemans.fr/">
-                    {{# pix }} theme_eadumboost_logoUM, theme_eadumboost, Le Mans Université{{/ pix }}
-                </a>
-            </div>
-
-
-            <div class="col-lg-4 plateform-logo">
-
-                {{# pix }} theme_eadumboost_logo, theme_eadumboost, Logo plateforme Le Mans université{{/ pix }}
-                    <ul>
-                        <li>
-
-                            {{# str }} sitetitle, theme_eadumboost {{/ str }}
-                        </li>
-
-                    </ul>
-
-            </div>
-
-            <div class="col-lg-4 textfooter ">
-                <h5>{{# str }} support:, theme_eadumboost {{/ str }}</h5>
-                {{# str }} txtAssistanceFooter, theme_eadumboost {{/ str }}
-            </div>
-        </div>
-
-
+        {{! FOOTER CONTENT. }}
+        {{> theme_eadumboost/footer_content }}
 
 
         {{# output.page_doc_link }}
@@ -45,12 +32,14 @@
             {{{ output.login_info }}}
             <div class="tool_usertours-resettourcontainer"></div>
             {{{ output.home_link }}}
-            <nav class="nav navbar-nav">
-                {{# output.eadumboost_custom_menu_flat }}
+            
+            {{! ADD JJUPIN: remove "d-md-none" => display all the time.}}
+            <nav class="nav navbar-nav" aria-label="{{#str}}custommenu, admin{{/str}}">
+                {{# output.custom_menu_flat }}
                     <ul class="list-unstyled pt-3">
                         {{> theme_boost/custom_menu_footer }}
                     </ul>
-                    {{/ output.eadumboost_custom_menu_flat }}
+                    {{/ output.custom_menu_flat }}
             </nav>
             {{{ output.standard_footer_html }}}
             {{{ output.standard_end_of_body_html }}}
