@@ -232,7 +232,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
 
     /**
-     * Editing button in a course
+     * Add editing button in a course
      *
      * @return string the editing button
      */
@@ -268,134 +268,34 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
     }
 
-    /** OVERRIDE:
-     * This is an optional menu that can be added to a layout by a theme. It contains the
-     * menu for the course administration, only on the course main page.
-     *
-     * @return string
-     */
-    public function context_header_settings_menu() {
-        $context = $this->page->context;
-        $menu = new action_menu();
-
-        $items = $this->page->navbar->get_items();
-        $currentnode = end($items);
-
-        $showcoursemenu = false;
-        $showfrontpagemenu = false;
-        $showusermenu = false;
-
-        // We are on the course home page.
-        if (($context->contextlevel == CONTEXT_COURSE) &&
-        !empty($currentnode) &&
-        ($currentnode->type == navigation_node::TYPE_COURSE || $currentnode->type == navigation_node::TYPE_SECTION)) {
-            $showcoursemenu = true;
-        }
-
-        $courseformat = course_get_format($this->page->course);
-        // This is a single activity course format, always show the course menu on the activity main page.
-        if ($context->contextlevel == CONTEXT_MODULE &&
-        !$courseformat->has_view_page()) {
-
-            $this->page->navigation->initialise();
-            $activenode = $this->page->navigation->find_active_node();
-            // If the settings menu has been forced then show the menu.
-            if ($this->page->is_settings_menu_forced()) {
-                $showcoursemenu = true;
-            } else if (!empty($activenode) && ($activenode->type == navigation_node::TYPE_ACTIVITY ||
-            $activenode->type == navigation_node::TYPE_RESOURCE)) {
-
-                // We only want to show the menu on the first page of the activity. This means
-                // the breadcrumb has no additional nodes.
-                if ($currentnode && ($currentnode->key == $activenode->key && $currentnode->type == $activenode->type)) {
-                    $showcoursemenu = true;
-                }
-            }
-        }
-
-        // This is the site front page.
-        if ($context->contextlevel == CONTEXT_COURSE &&
-        !empty($currentnode) &&
-        $currentnode->key === 'home') {
-            $showfrontpagemenu = true;
-        }
-
-        // This is the user profile page.
-        if ($context->contextlevel == CONTEXT_USER &&
-        !empty($currentnode) &&
-        ($currentnode->key === 'myprofile')) {
-            $showusermenu = true;
-        }
-
-        if ($showfrontpagemenu) {
-            $settingsnode = $this->page->settingsnav->find('frontpage', navigation_node::TYPE_SETTING);
-            if ($settingsnode) {
-                // Build an action menu based on the visible nodes from this navigation tree.
-                $skipped = $this->build_action_menu_from_navigation($menu, $settingsnode, false, true);
-
-                // We only add a list to the full settings menu if we didn't include every node in the short menu.
-                if ($skipped) {
-                    $text = get_string('morenavigationlinks');
-                    $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
-                    $link = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
-                    $menu->add_secondary_action($link);
-                }
-            }
-        } else if ($showcoursemenu) {
-
-            $settingsnode = $this->page->settingsnav->find('courseadmin', navigation_node::TYPE_COURSE);
-            if ($settingsnode) {
-
-                // Custom menu for eadumboost. Build an action menu based on the visible nodes from this navigation tree.
-                $skipped = $this->eadumboost_build_action_menu_for_course($menu, $settingsnode, false, true);
-
-                // We only add a list to the full settings menu if we didn't include every node in the short menu.
-                if ($skipped) {
-                    $text = get_string('morenavigationlinks');
-                    $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
-                    $link = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
-                    $menu->add_secondary_action($link);
-                }
-            }
-        } else if ($showusermenu) {
-            // Get the course admin node from the settings navigation.
-            $settingsnode = $this->page->settingsnav->find('useraccount', navigation_node::TYPE_CONTAINER);
-            if ($settingsnode) {
-                // Build an action menu based on the visible nodes from this navigation tree.
-                $this->build_action_menu_from_navigation($menu, $settingsnode);
-            }
-        }
-
-        return $this->render($menu);
-    }
 
     /**
-    * Add searchcourses to custom menu (copy of build_action_menu_from_navigation).
-    * Take a node in the nav tree and make an action menu out of it.
-    * The links are injected in the action menu.
-    *
-    * @param action_menu $menu
-    * @param navigation_node $node
-    * @param boolean $indent
-    * @param boolean $onlytopleafnodes
-    * @return boolean nodesskipped - True if nodes were skipped in building the menu
-    */
-    protected function  eadumboost_build_action_menu_for_course(action_menu $menu,
+     * OVERRIDE (check moodle 3.8 OK).
+     * Add jjupin: searchcourses to custom menu (copy of build_action_menu_from_navigation).
+     * @todo: use the parent function if possible.
+     * Take a node in the nav tree and make an action menu out of it.
+     * The links are injected in the action menu.
+     *
+     * @param action_menu $menu
+     * @param navigation_node $node
+     * @param boolean $indent
+     * @param boolean $onlytopleafnodes
+     * @return boolean nodesskipped - True if nodes were skipped in building the menu
+     */
+    protected function  build_action_menu_from_navigation(action_menu $menu,
     navigation_node $node,
     $indent = false,
     $onlytopleafnodes = false) {
         $skipped = false;
 
-        // Hack for displaying custom items at the begiing (teacher) our at the end (other roles).
-        $custommenuok = false;
-
         // Build an action menu based on the visible nodes from this navigation tree.
         foreach ($node->children as $menuitem) {
 
-            // No displaying "outcomes".
+            // ADDJJUPIN: No displaying "outcomes / fr:objectifs".
             if ($menuitem->key == "outcomes") {
                 continue;
             }
+
             if ($menuitem->display) {
                 if ($onlytopleafnodes && $menuitem->children->count()) {
                     $skipped = true;
@@ -429,15 +329,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $skipped = $skipped || $this->build_action_menu_from_navigation($menu, $menuitem, true);
             }
 
-            // We display the custom menu after "turn editing" / add jjupin.
+            // ADD JJUPIN: We display the custom menu after "turn editing" / add jjupin.
             if ($menuitem->key == "turneditingonoff" ) {
                 $this->eadumboost_get_custom_action_menu_for_course_header($menu);
                 $custommenuok = true;
             }
-
-        }
-        if (!$custommenuok) {
-            $this->eadumboost_get_custom_action_menu_for_course_header($menu);
         }
         return $skipped;
     }

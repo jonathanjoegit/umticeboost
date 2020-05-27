@@ -93,7 +93,7 @@ $string['assistanceEtu'] = 'Assistance étudiants';
 $string['serviceUni'] = 'Services universitaires';
 $string['methodologie'] = 'Ressources méthodologiques';
 
-// footer:
+// Footer.
 $string['support:'] = 'Aide :';
 $string['txtAssistanceFooter'] = '<ul>
 <li>
