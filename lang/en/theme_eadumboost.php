@@ -29,10 +29,10 @@ $string['region-side-pre'] = 'region-side-pre';
 /* LOGIN. */
 $string['connect-form-welcome'] = 'Welcome!';
 $string['connect-form-title'] = 'To continue, please log in:';
-$string['connect-as-um-user'] = 'Log in with your account <i>Le Mans Université</i>';
-$string['connect-other-users'] = 'Other users, Université d\'Angers and Université de Tours';
-$string['connect-manual'] = 'Login in with a manual account:';
-$string['connect-manual-button'] = 'Login in with a manual account:';
+$string['connect-as-um-user'] = 'With your account <i>Le Mans Université</i>';
+$string['connect-other-users'] = '<i>Other users</i>, <i>Université d\'Angers</i> and <i>Université de Tours</i>';
+$string['connect-manual'] = 'Log in in with a manual account:';
+$string['connect-manual-button'] = 'Log in in with a manual account';
 $string['connect-form-or'] = 'Or';
 $string['connect-help'] = '<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/faq-connexion.html" target="_blank">Trouble logging in?</a>';
 $string['connect-angers-text'] = 'Users registered at the University of Angers, log in using your usual identifiers (those you use at your university):';

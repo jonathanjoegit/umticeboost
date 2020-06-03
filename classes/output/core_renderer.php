@@ -74,8 +74,23 @@ class core_renderer extends \theme_boost\output\core_renderer {
             // NO DISPLAYED ANY MORE $this->eadumboost_get_custom_items_for_custom_menu($custommenu);.
 
         }
-        return parent::render_custom_menu($custommenu);
+        return $this->render_custom_menu($custommenu);
     }
+
+    /**
+    * OVERRIDE this render to not show the lang menu !
+    */
+   protected function render_custom_menu(custom_menu $menu) {
+       global $CFG;
+
+       $content = '';
+       foreach ($menu->get_children() as $item) {
+           $context = $item->export_for_template($this);
+           $content .= $this->render_from_template('core/custom_menu_item', $context);
+       }
+
+       return $content;
+   }
 
     /**
      * Add dashboard and my courses access to custom menu.
@@ -160,7 +175,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
 
-    /** Overriding: remove current langague (useless in footer and ugly).
+    /**
+     * Overriding: remove current langague (useless in footer and ugly).
+     * -
      * We want to show the custom menus as a list of links in the footer on small screens.
      * Just return the menu object exported so we can render it differently.
      */
@@ -332,7 +349,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             // ADD JJUPIN: We display the custom menu after "turn editing" / add jjupin.
             if ($menuitem->key == "turneditingonoff" ) {
                 $this->eadumboost_get_custom_action_menu_for_course_header($menu);
-                $custommenuok = true;
+                //$custommenuok = true;
             }
         }
         return $skipped;

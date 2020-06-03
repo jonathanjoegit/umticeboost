@@ -29,8 +29,8 @@ $string['region-side-pre'] = 'region-side-pre';
 /* LOGIN. */
 $string['connect-form-welcome'] = 'Bienvenue !';
 $string['connect-form-title'] = 'Pour continuer, veuillez vous connecter&nbsp;:';
-$string['connect-as-um-user'] = 'Se connecter avec son compte <i>Le Mans Université</i>';
-$string['connect-other-users'] = 'Autres utilisateurs, Université d\'Angers et Université de Tours';
+$string['connect-as-um-user'] = 'Avec son compte <i>Le Mans Université</i>';
+$string['connect-other-users'] = '<i>Autres utilisateurs</i>, <i>Université d\'Angers</i> et <i>Université de Tours</i>';
 $string['connect-manual'] = 'Connectez-vous avec un compte manuel&nbsp;:';
 $string['connect-manual-button'] = 'Se connecter avec un compte manuel';
 $string['connect-form-or'] = 'Ou';
