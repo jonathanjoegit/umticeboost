@@ -142,7 +142,7 @@
 
 
                                 <div class="button-connect-login button-connect-UM ">
-                                    <a href="/login/index.php?authCAS=CAS" title="CAS" class="btn btn-primary btn-block">
+                                    <a href="{{linkcas}}" title="CAS" class="btn btn-primary btn-block">
                                         {{# pix }} theme_eadumboost_logoUM, theme_eadumboost, Le Mans Université{{/ pix }}
                                             {{#str}} connect-as-um-user, theme_eadumboost {{/str}}
                                     </a>
@@ -154,7 +154,7 @@
                                 </h3>
 
                                 <div class="button-connect-login">
-                                    <a href="/login/index.php?authCAS=NOCAS" title="Other user" class="btn btn-secondary btn-block">
+                                    <a href="{{linknocas}}" title="Other user" class="btn btn-secondary btn-block">
                                         {{#str}} connect-other-users, theme_eadumboost {{/str}}
                                     </a>
                                 </div>
@@ -208,7 +208,7 @@
                                         {{#str}} connect-angers-text, theme_eadumboost {{/str}}
                                     </h5>
                                     <div class="button-connect-login ">
-                                        <a href="/auth/shibboleth/index.php" title="Other user" class="btn btn-secondary btn-block">
+                                        <a href="{{linkangers}}" title="Other user" class="btn btn-secondary btn-block">
                                             {{#str}} connect-angers-button, theme_eadumboost {{/str}}
                                         </a>
                                     </div>

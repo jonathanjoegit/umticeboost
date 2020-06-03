@@ -406,6 +406,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $context->cas = $cas;
 
+        // create URL: CAS / NOCAS / Angers
+        $linkcas = new moodle_url('/login/index.php',
+        array('authCAS' => "CAS"));
+        $context->linkcas = $linkcas;
+
+        $linnocas = new moodle_url('/login/index.php',
+        array('authCAS' => "NOCAS"));
+        $context->linknocas = $linnocas;
+
+        $linkangers = new moodle_url('/auth/shibboleth/index.php');
+        $context->linkangers = $linkangers;
+
         return $this->render_from_template('theme_eadumboost/loginform', $context);
     }
 
