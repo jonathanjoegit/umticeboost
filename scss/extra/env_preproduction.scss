@@ -16,8 +16,10 @@ nav.navbar .logo-xs img {
 footer#page-footer .plateform-logo::after,
 nav.navbar .logo-xs::after,
 nav.navbar .logo::after {
-    content    : 'P R E P R O D';
-    color      : #00e5ff;
-    font-size  : 18px;
+    font-size: 18px;
     font-weight: 900;
+
+    content: 'P R E P R O D';
+
+    color: #00e5ff;
 }

@@ -3,17 +3,17 @@
 
 /* --- VAR EADUM: --- */
 
-$themeSpecialColor1    : #81c0c4; // Slightly desaturated cyan.
-$themeSpecialColor2    : #e5512b; // Orange EADUM.
+$themeSpecialColor1: #81c0c4; // Slightly desaturated cyan.
+$themeSpecialColor2: #e5512b; // Orange EADUM.
 
 $borderSizeNavAndFooter: 4px;
 
-$lightbackground       : #f4f4f4; //Very light gray (mostly white).
-$darkBackground        : #232934; //Very dark grayish blue.
+$lightbackground: #f4f4f4; //Very light gray (mostly white).
+$darkBackground: #232934; //Very dark grayish blue.
 
-$navdrawerBackground   : #cedadf; //Light grayish blue.
+$navdrawerBackground: #cedadf; //Light grayish blue.
 
-$linkColor1            : #08c;
+$linkColor1: #08c;
 
 /* --- VAR UMTICE: --- */
 /*
@@ -29,53 +29,53 @@ $navdrawerBackground      : $lightgrayumtice;
 
 /* ================== */
 /* --- VAR THEME: --- */
-$white                 : #fff;
-$greenWarning          : #00ff3e; // Pure (or mostly pure) lime green.
+$white: #fff;
+$greenWarning: #00ff3e; // Pure (or mostly pure) lime green.
 
 // Theme color:
-$themeSpecialColor1    : $themeSpecialColor1; // nav/footer border
+$themeSpecialColor1: $themeSpecialColor1; // nav/footer border
 //$themeSpecialColor2    : $pinkumtice; // buttons,
 
 // links
-$linkColor1            : $linkColor1; // link moodle
-$linkColor2            : $themeSpecialColor2; // only on footer
+$linkColor1: $linkColor1; // link moodle
+$linkColor2: $themeSpecialColor2; // only on footer
 
 // navdrawer
-$navdrawerBackground   : $navdrawerBackground;
+$navdrawerBackground: $navdrawerBackground;
 
 // text:
-$whiteText             : $white;
-$whiteTextHover        : #d8d9da; // Light grayish blue.
-$blackText             : #212529;
+$whiteText: $white;
+$whiteTextHover: #d8d9da; // Light grayish blue.
+$blackText: #212529;
 
 //background:
-$lightbackground       : $lightbackground;
-$darkBackground        : $darkBackground; // nav, footer
+$lightbackground: $lightbackground;
+$darkBackground: $darkBackground; // nav, footer
 
 //navbar:
-$navbarBackgroundColor : $darkBackground;
-$navbarBorderColor     : $themeSpecialColor1;
-$navbarBorderSize      : $borderSizeNavAndFooter;
-$navbarTextColor       : $white;
-$navbarHoverColor      : $whiteTextHover;
+$navbarBackgroundColor: $darkBackground;
+$navbarBorderColor: $themeSpecialColor1;
+$navbarBorderSize: $borderSizeNavAndFooter;
+$navbarTextColor: $white;
+$navbarHoverColor: $whiteTextHover;
 
 // Footer:
-$footerBorderSize      : $borderSizeNavAndFooter;
+$footerBorderSize: $borderSizeNavAndFooter;
 
 // Smallsmartphones
-$screen-xs-min         : 375px;
+$screen-xs-min: 375px;
 
 // Small tablets and large smartphones (landscape view)
-$screen-sm-min         : 576px;
+$screen-sm-min: 576px;
 
 // Small tablets (portrait view)
-$screen-md-min         : 768px;
+$screen-md-min: 768px;
 
 // Tablets and small desktops
-$screen-lg-min         : 992px;
+$screen-lg-min: 992px;
 
 // Large tablets and desktops
-$screen-xl-min         : 1200px;
+$screen-xl-min: 1200px;
 
 // Administration du site :
-$adminDefaultRoleColor : $greenWarning;
+$adminDefaultRoleColor: $greenWarning;

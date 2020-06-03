@@ -7,7 +7,6 @@ body.pagelayout-frontpage {
     background-color: transparent !important;
     section {
         background-color: transparent !important;
-
     }
 }
 // Hack for puting the footer on front on the video
@@ -31,20 +30,21 @@ body.pagelayout-frontpage {
         margin: 20px -15px 30px;
 
         img {
+            width: auto;
             height: 90px;
-            width : auto;
             @media (max-width: $screen-sm-min) {
-                width : 100%;
+                width: 100%;
                 height: auto;
             }
-
         }
         h1 {
-            color      : $whiteText;
-            font-size  : 2em;
+            font-size: 2em;
             font-weight: 400;
-            font-style : italic;
+            font-style: italic;
+
             padding-top: 5px;
+
+            color: $whiteText;
 
             @media (max-width: $screen-md-min) {
                 font-size: 1.5em;
@@ -54,51 +54,52 @@ body.pagelayout-frontpage {
             }
         }
         .btn-login {
-            color         : $whiteText !important;
-            width         : 320px;
-            margin        : 35px auto 0;
-            padding       : 1rem;
-            border        : 2px solid $whiteText;
-            background    : $themeSpecialColor2;
-            border-radius : 8px;
-            font-size     : 2.3em;
-            font-weight   : 700;
-            line-height   : normal;
+            font-size: 2.3em;
+            font-weight: 700;
+            line-height: normal;
+
+            width: 320px;
+            margin: 35px auto 0;
+            padding: 1rem;
+
             text-transform: uppercase;
+
+            color: $whiteText !important;
+            border: 2px solid $whiteText;
+            border-radius: 8px;
+            background: $themeSpecialColor2;
             &:hover {
                 background: darken($themeSpecialColor2, 8%);
             }
             @media (max-width: $screen-sm-min) {
-                width  : 100%;
+                width: 100%;
                 padding: 1rem;
             }
         }
         .btn-play {
             margin-top: 70px;
             img {
-                display   : block;
+                display: block;
 
-                width     : auto;
-                height    : 120px;
-                margin    : 5px auto 3px;
+                width: auto;
+                height: 120px;
+                margin: 5px auto 3px;
 
                 text-align: center;
             }
             a {
                 font-size: 1.1em;
 
-                color    : #fff !important;
+                color: #fff !important;
             }
         }
-
     }
-
 }
 
 // CONTENT :
 #page.home-eadumboost {
+    margin-top: 0;
 
-    margin-top      : 0;
     background-color: $darkBackground;
 
     header {
@@ -107,72 +108,77 @@ body.pagelayout-frontpage {
 
     #region-main {
         margin: 40px auto 20px;
+
         border: 0;
     }
 
     .cadre-home {
-        z-index      : 1000; // HACK TO BE ABLE TO CLICK IN THE BOUTON CONNECT (out of the header)
+        font-size: 1.8em;
+        line-height: 1.5;
 
-        max-width    : 1200px;
-        padding      : 40px 20px 50px;
-        border       : 3px solid $themeSpecialColor1;
-        background   : $lightbackground;
-        filter:opacity(80%);
+        z-index: 1000; // HACK TO BE ABLE TO CLICK IN THE BOUTON CONNECT (out of the header)
 
+        max-width: 1200px;
+        padding: 40px 20px 50px;
+
+        border: 3px solid $themeSpecialColor1;
         border-radius: 8px;
-        font-size    : 1.8em;
-        line-height  : 1.5;
+        background: $lightbackground;
+
+        filter: opacity(80%);
         @media (max-width: $screen-sm-min) {
             width: 100%;
         }
 
         .icon-home {
-            width     : 14%;
+            width: 14%;
             margin-top: 20px;
+
             text-align: center;
 
             img {
-                width        : 65px;
-                height       : auto;
-                margin-left  : auto !important;
-                margin-right : auto !important;
+                width: 65px;
+                height: auto;
+                margin-right: auto !important;
                 margin-bottom: 20px;
-
+                margin-left: auto !important;
             }
             @media (max-width: $screen-md-min) {
                 width: 80%;
             }
         }
         .text-home-icon {
+            width: 85%;
             margin-top: 20px;
-            width     : 85%;
+
             text-align: justify;
             @media (max-width: $screen-md-min) {
                 margin-top: 5px;
             }
             h3 {
+                font-size: 2rem;
                 font-weight: 500;
-                font-size  : 2rem;
             }
             ul {
                 margin-left: 1em;
             }
-
         }
-
     }
     .btn-courses {
-        width         : 90%;
-        max-width     : 600px;
-        margin        : 30px auto;
-        padding       : 1rem 3rem;
-        border        : 2px solid $whiteText;
-        background    : $themeSpecialColor1;
-        border-radius : 8px;
-        font-size     : 1.4em;
-        color: $whiteText !important;
-        line-height   : normal;
+        font-size: 1.4em;
+        line-height: normal;
+
+        width: 90%;
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 1rem 3rem;
+
         text-transform: uppercase;
+
+        color: $whiteText !important;
+        border: 2px solid $whiteText;
+        border-radius: 8px;
+        background: $themeSpecialColor1;
         &:hover {
             background: darken($themeSpecialColor1, 8%);
         }
@@ -180,33 +186,35 @@ body.pagelayout-frontpage {
             font-size: 1em;
         }
         @media (max-width: $screen-sm-min) {
-            width    : 100%;
-            padding  : .5rem 1rem;
             font-size: 1rem;
+
+            width: 100%;
+            padding: .5rem 1rem;
         }
     }
 }
 
 // vidéo :
 video#bgvid {
-    position        : fixed;
-    z-index         : -1000;
-    top             : 50%;
-    left            : 50%;
+    position: fixed;
+    z-index: -1000;
+    top: 50%;
+    left: 50%;
 
-    width           : auto;
-    min-width       : 100%;
-    height          : auto;
-    min-height      : 100%;
+    width: auto;
+    min-width: 100%;
+    height: auto;
+    min-height: 100%;
 
-    transition      : 1s opacity;
-    transform       : translateX(-50%) translateY(-50%);
+    transition: 1s opacity;
+    transform: translateX(-50%) translateY(-50%);
 
-    opacity         : .3;
+    opacity: .3;
     background-color: $navbarBackgroundColor;
     background-image: url('[[pix:theme_eadumboost|theme_eadumboost_screenshotvid_1400]]');
-    background-repeat:no-repeat;
-    background-size : cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+
     filter: alpha(opacity=30);
 }
 video {

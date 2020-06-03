@@ -4,18 +4,19 @@
     .card-header {
         background: $darkBackground;
         img {
-            width : auto;
+            width: auto;
             height: 30px;
         }
-
     }
     .card-body {
         text-align: center;
         h2 {
-            margin-top   : 0.8em;
+            font-size: 2.5em;
+            font-weight: 600;
+
+            margin-top: .8em;
             margin-bottom: 1em;
-            font-size    : 2.5em;
-            font-weight  : 600;
+
             color: $darkBackground;
         }
         h3 {
@@ -24,11 +25,12 @@
 
         .button-connect-login {
             a {
-                font-size    : 1.5em;
-                margin-top   : .8em;
+                font-size: 1.5em;
+
+                margin-top: .8em;
                 margin-bottom: .8em;
                 img {
-                    width : auto;
+                    width: auto;
                     height: 1.6em;
                 }
 
@@ -42,9 +44,10 @@
         }
         .button-connect-UM a {
             font-weight: 600;
-            border     : 2px solid $white;
-            background : $linkColor1;
+
             color: $whiteText;
+            border: 2px solid $white;
+            background: $linkColor1;
 
             &:hover {
                 background: darken($linkColor1, 8%);
@@ -54,8 +57,8 @@
             margin-bottom: 2em;
         }
     }
-    .connect-angers img{
-        width : auto;
+    .connect-angers img {
+        width: auto;
         height: 100px;
     }
 }
