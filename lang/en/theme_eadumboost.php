@@ -22,8 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'EADUM Boost';
-$string['choosereadme'] = 'Theme EAD Boost is a child theme of Boost for Le Mans Université';
+$string['pluginname'] = 'EADUMBOOST';
+$string['choosereadme'] = 'Theme EADUMBOOST is a child theme of Boost for Le Mans Université';
 $string['region-side-pre'] = 'region-side-pre';
 
 /* LOGIN. */
