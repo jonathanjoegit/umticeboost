@@ -15,6 +15,26 @@ $navdrawerBackground: #cedadf; //Light grayish blue.
 
 $linkColor1: #08c;
 
+/* --- VAR VALEO: (OVERRIDE EADUM ! ! !)--- */
+
+/* Install Valeo Theme (from EADUM):
+ * - search/replace all "theme_eadumboost" / theme_valeoboost
+ * - un-comment Valeo's logos in the footer_content.mustache
+ * - check pix
+
+
+$darkBackground: #4e6b7c; //Mostly desaturated dark blue.
+$themeSpecialColor1: #82e600; //Fluo green.
+$themeSpecialColor2: $themeSpecialColor1;
+
+$navdrawerBackground: #cedfda; //Light grayish cyan - lime green.
+
+// Font VALEO :
+body {
+    font-family: 'Roboto';
+}
+*/
+
 /* --- VAR UMTICE: --- */
 /*
 // Theme color:

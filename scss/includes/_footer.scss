@@ -28,9 +28,16 @@ footer#page-footer {
             width: auto;
             height: 30px;
         }
-        .logoUmPrn img {
-            height: 50px;
+        .logoFooter {
+            img {
+                height: 30px;
+                margin: 1em;
+            }
+            a img {
+                height: 50px;
+            }
         }
+
         ul {
             margin: 0;
             padding: 0;
