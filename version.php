@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->version   = 2020050700; // MAY 7th 2020
 $plugin->requires  = 2019070900; // This is the version of Moodle this plugin requires.
 $plugin->component = 'theme_valeoboost';
-$plugin->release  = 'Thème EADUM v1.0.0';
+$plugin->release  = 'Thème VAELOBOOST v1.0.0';
 
 
 
