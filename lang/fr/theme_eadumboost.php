@@ -136,7 +136,7 @@ Entreprises ou professionnels, opter pour l\'e-learning vous permet de bénéfic
 $string['txthome3'] = '<H3>Assistance :</H3>
 Vous êtes ou devenez étudiant à distance et vous rencontrez une difficulté ? Nous sommes là pour vous aider !
 <ul>
-<li><a target="_blank" href="/moodle/um_apps/faq/faq-connexion.html">Consultez notre Foire Aux Questions (FAQ)</a></li>
+<li><a target="_blank" href="http://ead.univ-lemans.fr/moodle/um_apps/faq/">Consultez notre Foire Aux Questions (FAQ)</a></li>
 <li>Contactez nous : <br />
 - par mail :
 <a href="mailto:ead-assistance@univ-lemans.fr">ead-assistance@univ-lemans.fr</a> <i>(nous vous répondrons dans un délai maximum de 24h ouvrées)</i>

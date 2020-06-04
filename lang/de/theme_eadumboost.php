@@ -88,7 +88,7 @@ die sich Ihren organisatorischen und wirtschaftlichen Rahmenbedingungen anpasst.
 $string['txthome3'] = '<H3>Unterstützung :</H3>
 Sie möchten sich für einen Fernlehrgang einschreiben oder sind schon eingeschrieben und haben ein Problem? Wir sind für Sie da!
 <ul>
-<li><a target="_blank" href="/moodle/um_apps/faq/faq-connexion.html">Bereich “häufig gestellte Fragen und Antworten” </a></li>
+<li><a target="_blank" href="http://ead.univ-lemans.fr/moodle/um_apps/faq/">Bereich “häufig gestellte Fragen und Antworten” </a></li>
 <li>Kontakt : <br />
 - Mail :
 <a href="mailto:ead-assistance@univ-lemans.fr">ead-assistance@univ-lemans.fr</a> <i>(Wir antworten Ihnen an Werktagen innerhalb von 24 Stunden)</i>

@@ -122,7 +122,7 @@ Since 2001, Le Mans Université offers over 20 distance-learning qualifications 
     $string['txthome3'] = '<H3>Help:</H3>
     You are an existing or soon-to-become distance-learner and are experiencing difficulties ?  We are here to help !
     <ul>
-    <li><a target="_blank" href="/moodle/um_apps/faq/faq-connexion.html">Read our FAQ</a></li>
+    <li><a target="_blank" href="http://ead.univ-lemans.fr/moodle/um_apps/faq/">Read our FAQ</a></li>
     <li>Contact us: <br />
     - by mail:
     <a href="mailto:ead-assistance@univ-lemans.fr">ead-assistance@univ-lemans.fr</a> <i>(we will answer within 24 hours Mon-Fri))</i>
