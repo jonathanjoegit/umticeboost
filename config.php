@@ -17,7 +17,7 @@
 /**
  * Theme config.
  *
- * @package    theme_eadumboost
+ * @package    theme_valeoboost
  * @copyright  2020 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,11 +27,11 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__ . '/lib.php');
 
-// Modif eadumboost  jjupin.
-$THEME->name = 'eadumboost';
+// Modif jjupin.
+$THEME->name = 'valeoboost';
 $THEME->parents = ['boost'];
 $THEME->scss = function($theme) {
-    return theme_eadumboost_get_main_scss_content($theme);
+    return theme_valeoboost_get_main_scss_content($theme);
 };
 
 $THEME->layouts = [
@@ -43,7 +43,7 @@ $THEME->layouts = [
       'options' => array('nonavbar' => true),
     ),
 ];
-// END modif eadumboost  jjupin.
+// END modif jjupin.
 
 
 

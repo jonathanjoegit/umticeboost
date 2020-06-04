@@ -17,7 +17,7 @@
 /**
  * A login page layout for the boost theme.
  *
- * @package   theme_eadumboost
+ * @package   theme_valeoboost
  * @copyright  2020 Jonathan J.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -41,5 +41,5 @@ $templatecontext = [
     'bodyattributes' => $bodyattributes,
     'authCAS' => $cas /* ADD JJUPIN.*/
 ];
-// ADD JJUPIN: render with theme_eadumboost/login.
-echo $OUTPUT->render_from_template('theme_eadumboost/login', $templatecontext);
+// ADD JJUPIN: render with theme_valeoboost/login.
+echo $OUTPUT->render_from_template('theme_valeoboost/login', $templatecontext);

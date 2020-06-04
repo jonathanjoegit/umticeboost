@@ -17,7 +17,7 @@
 /**
  *  Version
  *
- * @package    theme_eadumboost
+ * @package    theme_valeoboost
  * @copyright  2020 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2020050700; // MAY 7th 2020
 $plugin->requires  = 2019070900; // This is the version of Moodle this plugin requires.
-$plugin->component = 'theme_eadumboost';
+$plugin->component = 'theme_valeoboost';
 $plugin->release  = 'Thème EADUM v1.0.0';
 
 

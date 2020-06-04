@@ -2,7 +2,7 @@
 -------------------------*/
 
 // hack: force the background to be dark
-.page-wrapper-home-eadumboost,
+.page-wrapper-home-valeoboost,
 body.pagelayout-frontpage {
     background-color: transparent !important;
     section {
@@ -10,12 +10,12 @@ body.pagelayout-frontpage {
     }
 }
 // Hack for puting the footer on front on the video
-.page-wrapper-home-eadumboost footer {
+.page-wrapper-home-valeoboost footer {
     z-index: 1000;
 }
 
 // HEADER :
-.home-header-eadumboost {
+.home-header-valeoboost {
     padding-top: 70px;
 
     @media (max-width: $screen-sm-min) {
@@ -97,7 +97,7 @@ body.pagelayout-frontpage {
 }
 
 // CONTENT :
-#page.home-eadumboost {
+#page.home-valeoboost {
     margin-top: 0;
 
     background-color: $darkBackground;
@@ -211,7 +211,7 @@ video#bgvid {
 
     opacity: .3;
     background-color: $navbarBackgroundColor;
-    background-image: url('[[pix:theme_eadumboost|theme_eadumboost_screenshotvid_1400]]');
+    background-image: url('[[pix:theme_valeoboost|theme_valeoboost_screenshotvid_1400]]');
     background-repeat: no-repeat;
     background-size: cover;
 
