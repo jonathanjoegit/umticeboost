@@ -432,7 +432,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
         array('authCAS' => "NOCAS"));
         $context->linknocas = $linnocas;
 
-        $linkangers = new moodle_url('/auth/shibboleth/index.php');
+        //ISSUE WITH HTTPS: @todo, CHECK ALL THIS LATER !
+        //$linkangers = new moodle_url('/auth/shibboleth/index.php');
+        $linkangers = new moodle_url('https://ead.univ-lemans.fr/moodle/auth/shibboleth/index.php');
         $context->linkangers = $linkangers;
 
         return $this->render_from_template('theme_valeoboost/loginform', $context);
