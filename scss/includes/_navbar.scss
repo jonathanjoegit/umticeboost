@@ -31,4 +31,8 @@
     .dropdown-item:hover {
         background-color: $navbarHoverColor;
     }
+    /* Notification, it was white with background white. */
+    .notification a {
+        color: $blackText !important;
+    }
 }
