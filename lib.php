@@ -82,7 +82,7 @@ function theme_eadumboost_extend_navigation($navigation) {
     // Enlever "Privat files".
     // Fait en CSS (display:none;) sinon c'est un peu galère (à voir plus tard).
 
-    // Aajouter plugin "tuteur".
+    // Add plugin "tuteur".
     // Vérifier si l'user à le droit d'afficher le rapport Tuteur.
     $context = $PAGE->context;
     if (has_capability('report/tuteur:view', $context)) {
@@ -117,33 +117,34 @@ function theme_eadumboost_extend_navigation($navigation) {
         }
     }
 
-    // ISSUE : the page "enrol user" doesnt not exist any more (now only with a pop-up).
-    // Ajouter "inscrire des utilisateurs" pour les admins.
-    // Vérifier si l'user à le droit d'inscrire des utilisateurs (donc d'accèder à cette page).
-    /*
-    $context = $PAGE->context;
-    if (has_capability('enrol/manual:enrol', $context)) {
-        // On récupère le noeud du cours (cours + section + ...).
-        $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
-        // Si la navigation contient des items.
-        if ($coursenode && $coursenode->has_children()) {
-            // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
-            $url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id' => $COURSE->id));
-            $newnode = navigation_node::create(
-                get_string('enrolusers', 'enrol'),
-                $url,
-                navigation_node::TYPE_SETTING,
-                "enrolusers",
-                "enrolusers",
-                new pix_icon('i/enrolusers', 'enrolusers')
-            );
+    // Add edition mode for admin (to save time).
+    if ($PAGE->user_allowed_editing() && $PAGE->pagelayout == 'course') {
+        $url = new moodle_url($PAGE->url);
+        $url->param('sesskey', sesskey());
+        $title = get_string('turneditingoff', 'core');
 
-            // On check s'il y a le noeud "participants", si oui on le met en dessous (sinon à la fin).
-            if ($PAGE->navigation->find("participants", navigation_node::TYPE_CONTAINER)) {
-                $node = $coursenode->children->add($newnode, "participants");
-            } else { // Sinon à la fin du noeud.
-                $node = $coursenode->children->add($newnode);
-            }
+        if ($PAGE->user_is_editing()) {
+            $url->param('edit', 'off');
+            $title = get_string('turneditingoff', 'core');
+        } else {
+            $url->param('edit', 'on');
+            $title = get_string('turneditingon', 'core');
         }
-    }*/
+        $nodeEdit = navigation_node::create(
+            $title,
+            $url,
+            navigation_node::TYPE_SETTING,
+            $title,
+            $title,
+            new pix_icon('i/edit', 'turneditingon')
+        );
+        $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
+        $node = $coursenode->children->add($nodeEdit);
+    }
+
+
+
+
+
+
 }
