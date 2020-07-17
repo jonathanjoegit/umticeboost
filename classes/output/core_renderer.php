@@ -78,19 +78,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
     /**
-    * OVERRIDE this render to not show the lang menu !
-    */
-   protected function render_custom_menu(custom_menu $menu) {
-       global $CFG;
+     * OVERRIDE this render to not show the lang menu !
+     */
+    protected function render_custom_menu(custom_menu $menu) {
+        global $CFG;
 
-       $content = '';
-       foreach ($menu->get_children() as $item) {
-           $context = $item->export_for_template($this);
-           $content .= $this->render_from_template('core/custom_menu_item', $context);
-       }
-
-       return $content;
-   }
+        $content = '';
+        foreach ($menu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('core/custom_menu_item', $context);
+        }
+        return $content;
+    }
 
     /**
      * Add dashboard and my courses access to custom menu.
@@ -349,7 +348,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
             // ADD JJUPIN: We display the custom menu after "turn editing" / add jjupin.
             if ($menuitem->key == "turneditingonoff" ) {
                 $this->umboost_get_custom_action_menu_for_course_header($menu);
-                //$custommenuok = true;
             }
         }
         return $skipped;
@@ -412,7 +410,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $url = $url->out(false);
         }
         $context->logourl = $url;
-        $context->sitename = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
+        $context->sitename = format_string(
+            $SITE->fullname,
+            true,
+            ['context' => context_course::instance(SITEID), "escape" => false]
+        );
 
         /* Add informaiton about the CAS (from GET) CAS or NOCAS. */
         /* If we are in /login/ => we want CAS*/
@@ -423,7 +425,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $context->cas = $cas;
 
-        // create URL: CAS / NOCAS / Angers
+        // Create URL: CAS / NOCAS / Angers.
         $linkcas = new moodle_url('/login/index.php',
         array('authCAS' => "CAS"));
         $context->linkcas = $linkcas;
@@ -432,8 +434,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
         array('authCAS' => "NOCAS"));
         $context->linknocas = $linnocas;
 
-        //ISSUE WITH HTTPS: @todo, CHECK ALL THIS LATER !
-        //$linkangers = new moodle_url('/auth/shibboleth/index.php');
+        // ISSUE WITH HTTPS: @todo, CHECK ALL THIS LATER !
+        // We force https (so no: new moodle_url('/auth/shibboleth/index.php').
         $linkangers = new moodle_url('https://ead.univ-lemans.fr/moodle/auth/shibboleth/index.php');
         $context->linkangers = $linkangers;
 

@@ -105,7 +105,7 @@ function theme_eadumboost_extend_navigation($navigation) {
                     "rapporttuteur",
                     new pix_icon('i/report', 'rapporttuteur')
                 );
-                // Signature create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
+                // Function signature : create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
 
                 // On check s'il y a le noeud "grades", si oui on le met en dessous (sinon à la fin).
                 if ($PAGE->navigation->find("grades", navigation_node::TYPE_SETTING)) {
@@ -130,7 +130,7 @@ function theme_eadumboost_extend_navigation($navigation) {
             $url->param('edit', 'on');
             $title = get_string('turneditingon', 'core');
         }
-        $nodeEdit = navigation_node::create(
+        $nodeedit = navigation_node::create(
             $title,
             $url,
             navigation_node::TYPE_SETTING,
@@ -139,12 +139,7 @@ function theme_eadumboost_extend_navigation($navigation) {
             new pix_icon('i/edit', 'turneditingon')
         );
         $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
-        $node = $coursenode->children->add($nodeEdit);
+        $node = $coursenode->children->add($nodeedit);
     }
-
-
-
-
-
 
 }
