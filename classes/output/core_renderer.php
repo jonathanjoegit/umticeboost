@@ -81,7 +81,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * OVERRIDE this render to not show the lang menu !
      */
     protected function render_custom_menu(custom_menu $menu) {
-        global $CFG;
 
         $content = '';
         foreach ($menu->get_children() as $item) {

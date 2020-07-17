@@ -105,8 +105,8 @@ function theme_eadumboost_extend_navigation($navigation) {
                     "rapporttuteur",
                     new pix_icon('i/report', 'rapporttuteur')
                 );
-                // Function signature : create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
 
+                // Function signature : create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
                 // On check s'il y a le noeud "grades", si oui on le met en dessous (sinon à la fin).
                 if ($PAGE->navigation->find("grades", navigation_node::TYPE_SETTING)) {
                     $node = $coursenode->children->add($nodereport, "grades");
