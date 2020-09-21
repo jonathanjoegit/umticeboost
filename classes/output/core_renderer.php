@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace theme_umticeboost\output;
+namespace theme_eadumboost\output;
 
 use coding_exception;
 use html_writer;
@@ -36,18 +36,14 @@ use pix_icon;
 
 defined('MOODLE_INTERNAL') || die;
 
- /**
-  * Renderers to align Moodle's HTML with that expected by Bootstrap
-  *
-  * @package    theme_umticeboost
-  * @copyright  2019 Jonathan J.
-  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-  */
-
+/**
+ * Renderers to align Moodle's HTML with that expected by Bootstrap
+ *
+ * @package    theme_eadumboost
+ * @copyright  2020 Jonathan J.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class core_renderer extends \theme_boost\output\core_renderer {
-
-    /** @var custom_menu_item language The language menu if created */
-    protected $language = null;
 
 
     /*
@@ -55,7 +51,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * always shown, even if no menu items are configured in the global
      * theme settings page.
      */
-    public function umticeboost_custom_menu($custommenuitems = '') {
+    public function umboost_custom_menu($custommenuitems = '') {
         global $CFG;
 
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
@@ -63,22 +59,41 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $custommenu = new custom_menu($custommenuitems, current_language());
 
-        // Umticeboost custom menu.
+        // Eadumboost custom menu.
         if (isloggedin() && !isguestuser() ) {
 
             // Add dahsboard and my courses access.
-            $this->umticeboost_get_dashboard_for_custom_menu($custommenu);
-            // Add courses seach.
-            $this->umticeboost_get_searchcourses_for_custom_menu($custommenu);
+            $this->umboost_get_dashboard_for_custom_menu($custommenu);
+
+            // Add course search for manager and admin (if you have the good capability).
+            if (has_capability('moodle/course:view', $this->page->context)
+            && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
+                $this->umboost_get_searchcourses_for_custom_menu($custommenu);
+            }
+            // Add custom menus (MAIL, Help, ...).
+            // NO DISPLAYED ANY MORE $this->umboost_get_custom_items_for_custom_menu($custommenu);.
 
         }
-        return parent::render_custom_menu($custommenu);
+        return $this->render_custom_menu($custommenu);
     }
 
-     /**
-      * Add dashboard and my courses access to custom menu.
-      */
-    protected function umticeboost_get_dashboard_for_custom_menu(custom_menu $custommenu) {
+    /**
+     * OVERRIDE this render to not show the lang menu !
+     */
+    protected function render_custom_menu(custom_menu $menu) {
+
+        $content = '';
+        foreach ($menu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('core/custom_menu_item', $context);
+        }
+        return $content;
+    }
+
+    /**
+     * Add dashboard and my courses access to custom menu.
+     */
+    protected function umboost_get_dashboard_for_custom_menu($custommenu) {
         global $CFG;
 
         $branchtitle = $branchlabel = get_string('myhome');
@@ -115,7 +130,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             }
         }
         if ($numcourses == 0 || empty($courses)) {
-            $noenrolments = get_string('noenrolments', 'theme_umticeboost');
+            $noenrolments = get_string('noenrolments', 'theme_eadumboost');
             $branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
         }
 
@@ -124,20 +139,47 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /**
      * add searchcourses to custom menu.
      */
-    protected function umticeboost_get_searchcourses_for_custom_menu(custom_menu $custommenu) {
+    protected function umboost_get_searchcourses_for_custom_menu( $custommenu) {
         // Fetch courses.
-        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_umticeboost');
+        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_eadumboost');
         $branchurl = new moodle_url('/course/index.php');
         $branchsort = 2;
 
         $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
     }
 
+
     /**
+     * add customs items (UM MAIL, help, ...)
+     */
+    protected function umboost_get_custom_items_for_custom_menu( $custommenu) {
+
+        // Mail.
+        $branchtitle = $branchlabel = get_string('mail', 'theme_eadumboost');
+        $branchurl = new moodle_url('http://webmail.univ-lemans.fr/');
+        $branchsort = 3;
+        $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+
+        // Aide.
+        $branchtitle = $branchlabel = get_string('support', 'theme_eadumboost');
+        $branchurl = new moodle_url('');
+        $branchsort = 4;
+        $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+        // Sub branches.
+        $sbranchtitle = $sbranchlabel = get_string('assistanceEtu', 'theme_eadumboost');
+        $sbranchurl = new moodle_url('/um_apps/faq/faq-connexion.html');
+        $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
+
+    }
+
+
+    /**
+     * Overriding: remove current langague (useless in footer and ugly).
+     * -
      * We want to show the custom menus as a list of links in the footer on small screens.
      * Just return the menu object exported so we can render it differently.
      */
-    public function umticeboost_custom_menu_flat() {
+    public function custom_menu_flat() {
         global $CFG;
         $custommenuitems = '';
 
@@ -156,7 +198,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             } else {
                 $currentlang = $strlang;
             }
-            $this->language = $custommenu;
+            $this->language = $custommenu; /* ADD JJUPIN: remove current langague (useless in footer and ugly). */
             foreach ($langs as $langtype => $langname) {
                 $this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
             }
@@ -165,34 +207,51 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $custommenu->export_for_template($this);
     }
 
-    /**
-     * Wrapper for header elements.
+
+    /* -- -- -- COURSE CUMSTOMISATION :  -- -- -- */
+
+    /** Overriding! (check moodle 3.8 ok)
+     * Wrapper for header elements => QUEST CE QUON FAIT ?
      *
+     * @todo: Documenter la fonction + utiliser son parent.
      * @return string HTML to display the main header.
      */
-    public function umticeboost_full_header() {
+    public function full_header() {
         global $PAGE;
 
+        if ($PAGE->include_region_main_settings_in_header_actions() && !$PAGE->blocks->is_block_present('settings')) {
+            // Only include the region main settings if the page has requested it and it doesn't already have
+            // the settings block on it. The region main settings are included in the settings block and
+            // duplicating the content causes behat failures.
+            $PAGE->add_header_action(html_writer::div(
+                $this->region_main_settings_menu(),
+                'd-print-none',
+                ['id' => 'region-main-settings-menu']
+            ));
+        }
+
         $header = new stdClass();
-        $header->settingsmenu = $this->umticeboost_context_header_settings_menu();
+        $header->settingsmenu = $this->context_header_settings_menu();
         $header->contextheader = $this->context_header();
         $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
         $header->navbar = $this->navbar();
         $header->pageheadingbutton = $this->page_heading_button();
         $header->courseheader = $this->course_header();
+        $header->headeractions = $PAGE->get_header_actions();
 
-        $header->editbutton = $this->umticeboost_edit_button();
-
-        return $this->render_from_template('theme_umticeboost/header', $header);
+        /* ADD JJUPIN: add "edit mode" in course. */
+        $header->editbutton = $this->umboost_edit_button();
+        /* ADD JJUPIN: eadumboost template */
+        return $this->render_from_template('theme_eadumboost/full_header', $header);
     }
 
 
     /**
-     * Editing button in a course
+     * Add editing button in a course
      *
      * @return string the editing button
      */
-    public function umticeboost_edit_button() {
+    public function umboost_edit_button() {
         global $PAGE, $COURSE;
 
         if (!$PAGE->user_allowed_editing() || $COURSE->id <= 1) {
@@ -224,109 +283,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
     }
 
-    /**
-     * This is an optional menu that can be added to a layout by a theme. It contains the
-     * menu for the course administration, only on the course main page.
-     *
-     * @return string
-     */
-    public function umticeboost_context_header_settings_menu() {
-        $context = $this->page->context;
-        $menu = new action_menu();
-
-        $items = $this->page->navbar->get_items();
-        $currentnode = end($items);
-
-        $showcoursemenu = false;
-        $showfrontpagemenu = false;
-        $showusermenu = false;
-
-        // We are on the course home page.
-        if (($context->contextlevel == CONTEXT_COURSE) &&
-        !empty($currentnode) &&
-        ($currentnode->type == navigation_node::TYPE_COURSE || $currentnode->type == navigation_node::TYPE_SECTION)) {
-            $showcoursemenu = true;
-        }
-
-        $courseformat = course_get_format($this->page->course);
-        // This is a single activity course format, always show the course menu on the activity main page.
-        if ($context->contextlevel == CONTEXT_MODULE &&
-        !$courseformat->has_view_page()) {
-
-            $this->page->navigation->initialise();
-            $activenode = $this->page->navigation->find_active_node();
-            // If the settings menu has been forced then show the menu.
-            if ($this->page->is_settings_menu_forced()) {
-                $showcoursemenu = true;
-            } else if (!empty($activenode) && ($activenode->type == navigation_node::TYPE_ACTIVITY ||
-            $activenode->type == navigation_node::TYPE_RESOURCE)) {
-
-                // We only want to show the menu on the first page of the activity. This means
-                // the breadcrumb has no additional nodes.
-                if ($currentnode && ($currentnode->key == $activenode->key && $currentnode->type == $activenode->type)) {
-                    $showcoursemenu = true;
-                }
-            }
-        }
-
-        // This is the site front page.
-        if ($context->contextlevel == CONTEXT_COURSE &&
-        !empty($currentnode) &&
-        $currentnode->key === 'home') {
-            $showfrontpagemenu = true;
-        }
-
-        // This is the user profile page.
-        if ($context->contextlevel == CONTEXT_USER &&
-        !empty($currentnode) &&
-        ($currentnode->key === 'myprofile')) {
-            $showusermenu = true;
-        }
-
-        if ($showfrontpagemenu) {
-            $settingsnode = $this->page->settingsnav->find('frontpage', navigation_node::TYPE_SETTING);
-            if ($settingsnode) {
-                // Build an action menu based on the visible nodes from this navigation tree.
-                $skipped = $this->build_action_menu_from_navigation($menu, $settingsnode, false, true);
-
-                // We only add a list to the full settings menu if we didn't include every node in the short menu.
-                if ($skipped) {
-                    $text = get_string('morenavigationlinks');
-                    $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
-                    $link = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
-                    $menu->add_secondary_action($link);
-                }
-            }
-        } else if ($showcoursemenu) {
-
-            $settingsnode = $this->page->settingsnav->find('courseadmin', navigation_node::TYPE_COURSE);
-            if ($settingsnode) {
-
-                // Custom menu for umticeboost. Build an action menu based on the visible nodes from this navigation tree.
-                $skipped = $this->umticeboost_build_action_menu_for_course($menu, $settingsnode, false, true);
-
-                // We only add a list to the full settings menu if we didn't include every node in the short menu.
-                if ($skipped) {
-                    $text = get_string('morenavigationlinks');
-                    $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
-                    $link = new action_link($url, $text, null, null, new pix_icon('t/edit', ''));
-                    $menu->add_secondary_action($link);
-                }
-            }
-        } else if ($showusermenu) {
-            // Get the course admin node from the settings navigation.
-            $settingsnode = $this->page->settingsnav->find('useraccount', navigation_node::TYPE_CONTAINER);
-            if ($settingsnode) {
-                // Build an action menu based on the visible nodes from this navigation tree.
-                $this->build_action_menu_from_navigation($menu, $settingsnode);
-            }
-        }
-
-        return $this->render($menu);
-    }
 
     /**
-     * Add searchcourses to custom menu (copy of build_action_menu_from_navigation).
+     * OVERRIDE (check moodle 3.8 OK).
+     * Add jjupin: searchcourses to custom menu (copy of build_action_menu_from_navigation).
+     * @todo: use the parent function if possible.
      * Take a node in the nav tree and make an action menu out of it.
      * The links are injected in the action menu.
      *
@@ -336,22 +297,20 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @param boolean $onlytopleafnodes
      * @return boolean nodesskipped - True if nodes were skipped in building the menu
      */
-    protected function  umticeboost_build_action_menu_for_course(action_menu $menu,
-                                                       navigation_node $node,
-                                                       $indent = false,
-                                                       $onlytopleafnodes = false) {
+    protected function  build_action_menu_from_navigation(action_menu $menu,
+    navigation_node $node,
+    $indent = false,
+    $onlytopleafnodes = false) {
         $skipped = false;
-
-        // Hack for displaying custom items at the begiing (teacher) our at the end (other roles).
-        $custommenuok = false;
 
         // Build an action menu based on the visible nodes from this navigation tree.
         foreach ($node->children as $menuitem) {
 
-            // No displaying "outcomes".
+            // ADDJJUPIN: No displaying "outcomes / fr:objectifs".
             if ($menuitem->key == "outcomes") {
                 continue;
             }
+
             if ($menuitem->display) {
                 if ($onlytopleafnodes && $menuitem->children->count()) {
                     $skipped = true;
@@ -385,15 +344,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $skipped = $skipped || $this->build_action_menu_from_navigation($menu, $menuitem, true);
             }
 
-            // We display the custom menu after "turn editing" / add jjupin.
+            // ADD JJUPIN: We display the custom menu after "turn editing" / add jjupin.
             if ($menuitem->key == "turneditingonoff" ) {
-                $this->umticeboost_get_custom_action_menu_for_course_header($menu);
-                $custommenuok = true;
+                $this->umboost_get_custom_action_menu_for_course_header($menu);
             }
-
-        }
-        if (!$custommenuok) {
-            $this->umticeboost_get_custom_action_menu_for_course_header($menu);
         }
         return $skipped;
     }
@@ -401,7 +355,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /**
      * Add custom items to the course settings menu.
      */
-    protected function umticeboost_get_custom_action_menu_for_course_header(action_menu $menu) {
+    protected function umboost_get_custom_action_menu_for_course_header( $menu) {
 
         // Participants (if the user has the good capacity).
         if (has_capability('report/participation:view',  $this->page->context)) {
@@ -427,5 +381,65 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
 
     }
+
+
+    /* -- -- -- LOGIN FORM CUSTOMISATION :  -- -- -- */
+
+    /**
+     * Renders the login form (to have the "CAS" or "NOCAS" value)
+     *
+     * @param \core_auth\output\login $form The renderable.
+     * @return string
+     */
+    public function render_login(\core_auth\output\login $form) {
+
+        global $CFG, $SITE;
+
+        $context = $form->export_for_template($this);
+
+        // Override because rendering is not supported in template yet.
+        if ($CFG->rememberusername == 0) {
+            $context->cookieshelpiconformatted = $this->help_icon('cookiesenabledonlysession');
+        } else {
+            $context->cookieshelpiconformatted = $this->help_icon('cookiesenabled');
+        }
+        $context->errorformatted = $this->error_text($context->error);
+        $url = $this->get_logo_url();
+        if ($url) {
+            $url = $url->out(false);
+        }
+        $context->logourl = $url;
+        $context->sitename = format_string(
+            $SITE->fullname,
+            true,
+            ['context' => context_course::instance(SITEID), "escape" => false]
+        );
+
+        /* Add informaiton about the CAS (from GET) CAS or NOCAS. */
+        /* If we are in /login/ => we want CAS*/
+        $cas = true;
+        // If "NOCAS" => we want only manual login.
+        if (isset($_GET['authCAS']) and $_GET['authCAS'] == 'NOCAS') {
+            $cas = false;
+        }
+        $context->cas = $cas;
+
+        // Create URL: CAS / NOCAS / Angers.
+        $linkcas = new moodle_url('/login/index.php',
+        array('authCAS' => "CAS"));
+        $context->linkcas = $linkcas;
+
+        $linnocas = new moodle_url('/login/index.php',
+        array('authCAS' => "NOCAS"));
+        $context->linknocas = $linnocas;
+
+        // ISSUE WITH HTTPS: @todo, CHECK ALL THIS LATER !
+        // We force https (so no: new moodle_url('/auth/shibboleth/index.php').
+        $linkangers = new moodle_url('https://ead.univ-lemans.fr/moodle/auth/shibboleth/index.php');
+        $context->linkangers = $linkangers;
+
+        return $this->render_from_template('theme_eadumboost/loginform', $context);
+    }
+
 
 }

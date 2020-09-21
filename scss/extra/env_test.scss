@@ -1,18 +1,25 @@
 // Instances de test (bien voir qu'on est en test) :
 // --- --- --- --- --- --- --- --- --- --- ---
 
-.icon {
-    &[title='EADUM'],
-    &[title='Logo EADUM'] {
-        transform: scaleX(-1);
-        filter: hue-rotate(90deg) saturate(200%);
-    }
+// change the logo (invert color), to no miss it ! (home, navbar & footer)
+.home-header-eadumboost div.col-lg-12 > img,
+.logo-platform img,
+footer#page-footer .plateform-logo img,
+nav.navbar .logo img,
+nav.navbar .logo-xs img {
+    filter: hue-rotate(90deg) saturate(200%);
 }
 
-.footerdivEAD::after,
-.navbar .logo::after {
-    content    : 'T E S T';
-    color      : #30af30;
-    font-size  : 18px;
+// add a text to know where we are (preprod or test)
+.home-header-eadumboost div.col-lg-12:first-child::after,
+.logo-platform::after,
+footer#page-footer .plateform-logo::after,
+nav.navbar .logo-xs::after,
+nav.navbar .logo::after {
+    font-size: 18px;
     font-weight: 900;
+
+    content: 'T E S T';
+
+    color: #30af30;
 }

@@ -3,17 +3,19 @@
 
 // Course Header
 .context-header-settings-menu {
-    display        : flex;
-    flex-direction : row;
-    flex-wrap      : wrap;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-end;
-    align-items    : center;
-    align-content  : center;
-    height         : auto;
-    max-width      : none;
+
+    max-width: none;
+    height: auto;
     .edit-btn {
-        color : $whiteText !important;
         margin: .5rem 1rem;
+
+        color: $whiteText !important;
         border: 0;
         @media (max-width: $screen-sm-min) {
             display: none;
