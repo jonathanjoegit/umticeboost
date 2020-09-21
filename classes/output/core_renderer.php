@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace theme_eadumboost\output;
+namespace theme_mineticeboost\output;
 
 use coding_exception;
 use html_writer;
@@ -39,7 +39,7 @@ defined('MOODLE_INTERNAL') || die;
 /**
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
- * @package    theme_eadumboost
+ * @package    theme_mineticeboost
  * @copyright  2020 Jonathan J.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -59,7 +59,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $custommenu = new custom_menu($custommenuitems, current_language());
 
-        // Eadumboost custom menu.
+        // mineticeboost custom menu.
         if (isloggedin() && !isguestuser() ) {
 
             // Add dahsboard and my courses access.
@@ -130,7 +130,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             }
         }
         if ($numcourses == 0 || empty($courses)) {
-            $noenrolments = get_string('noenrolments', 'theme_eadumboost');
+            $noenrolments = get_string('noenrolments', 'theme_mineticeboost');
             $branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
         }
 
@@ -141,7 +141,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     protected function umboost_get_searchcourses_for_custom_menu( $custommenu) {
         // Fetch courses.
-        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_eadumboost');
+        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_mineticeboost');
         $branchurl = new moodle_url('/course/index.php');
         $branchsort = 2;
 
@@ -155,18 +155,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
     protected function umboost_get_custom_items_for_custom_menu( $custommenu) {
 
         // Mail.
-        $branchtitle = $branchlabel = get_string('mail', 'theme_eadumboost');
+        $branchtitle = $branchlabel = get_string('mail', 'theme_mineticeboost');
         $branchurl = new moodle_url('http://webmail.univ-lemans.fr/');
         $branchsort = 3;
         $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
         // Aide.
-        $branchtitle = $branchlabel = get_string('support', 'theme_eadumboost');
+        $branchtitle = $branchlabel = get_string('support', 'theme_mineticeboost');
         $branchurl = new moodle_url('');
         $branchsort = 4;
         $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
         // Sub branches.
-        $sbranchtitle = $sbranchlabel = get_string('assistanceEtu', 'theme_eadumboost');
+        $sbranchtitle = $sbranchlabel = get_string('assistanceEtu', 'theme_mineticeboost');
         $sbranchurl = new moodle_url('/um_apps/faq/faq-connexion.html');
         $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
 
@@ -241,8 +241,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         /* ADD JJUPIN: add "edit mode" in course. */
         $header->editbutton = $this->umboost_edit_button();
-        /* ADD JJUPIN: eadumboost template */
-        return $this->render_from_template('theme_eadumboost/full_header', $header);
+        /* ADD JJUPIN: mineticeboost template */
+        return $this->render_from_template('theme_mineticeboost/full_header', $header);
     }
 
 
@@ -438,7 +438,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $linkangers = new moodle_url('https://ead.univ-lemans.fr/moodle/auth/shibboleth/index.php');
         $context->linkangers = $linkangers;
 
-        return $this->render_from_template('theme_eadumboost/loginform', $context);
+        return $this->render_from_template('theme_mineticeboost/loginform', $context);
     }
 
 

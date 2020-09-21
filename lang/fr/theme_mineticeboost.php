@@ -17,13 +17,13 @@
 /**
  * Strings for theme, language 'fr'
  *
- * @package    theme_eadumboost
+ * @package    theme_mineticeboost
  * @copyright  2020 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'EADUMBOOST';
-$string['choosereadme'] = 'Theme EADUMBOOST is a child theme of Boost for Le Mans Université';
+$string['pluginname'] = 'mineticeboost';
+$string['choosereadme'] = 'Theme mineticeboost is a child theme of Boost for Le Mans Université';
 $string['region-side-pre'] = 'region-side-pre';
 
 /* LOGIN. */
@@ -87,7 +87,7 @@ $string['createcourse'] = 'Créer un espace-cours';
 
 
 
-/* Custom EADUM. */
+/* Custom EAD-UM. */
 $string['noenrolments'] = 'Aucun cours';
 $string['FAQ'] = 'FAQ';
 $string['mail'] = 'Boîte mail UM';
@@ -107,7 +107,7 @@ Assistance étudiants
 </ul>
 ';
 
-// Custome home EADUM.
+// Custome home EAD-UM.
 $string['sitetitle'] = 'A chacun son accès aux études supérieures';
 $string['connect'] = 'Se connecter';
 $string['watchvideo'] = 'Regarder la vidéo';

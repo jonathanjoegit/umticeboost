@@ -17,13 +17,13 @@
 /**
  * Strings for theme, language 'en'
  *
- * @package    theme_eadumboost
+ * @package    theme_mineticeboost
  * @copyright  2020 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'EADUMBOOST';
-$string['choosereadme'] = 'Theme EADUMBOOST is a child theme of Boost for Le Mans Université';
+$string['pluginname'] = 'mineticeboost';
+$string['choosereadme'] = 'Theme mineticeboost is a child theme of Boost for Le Mans Université';
 $string['region-side-pre'] = 'region-side-pre';
 
 /* LOGIN. */
@@ -79,7 +79,7 @@ $string['createcourse'] = 'New course creation form';
 
 
 
-/* Custom EADUM. */
+/* Custom EAD-UM. */
 $string['noenrolments'] = 'No enrolments';
 $string['FAQ'] = 'FAQ';
 $string['mail'] = 'Mailbox';
@@ -101,7 +101,7 @@ Student helpdesk
 
 
 
-// Custome home EADUM.
+// Custome home EAD-UM.
 $string['sitetitle'] = 'Your individual access to further and higher education';
 $string['connect'] = 'Login';
 $string['watchvideo'] = 'Watch the video';
@@ -141,6 +141,6 @@ Since 2001, Le Mans Université offers over 20 distance-learning qualifications 
     $string['configtitle'] = 'Config title';
     $string['generalsettings'] = 'General Settings';
     $string['platform_env'] = 'Platform environment';
-    $string['platform_env_desc'] = 'Platform environment selection. This selection changes the theme logo "EADUM" in "Test" and "Pre-production" to show it\'s not the "Production" platform';
+    $string['platform_env_desc'] = 'Platform environment selection. This selection changes the theme logo "EAD-UM" in "Test" and "Pre-production" to show it\'s not the "Production" platform';
     $string['title_angers_users'] = 'Connection with Angers';
     $string['text_angers_user'] = 'Show a block for Angers Université users in the login page?';

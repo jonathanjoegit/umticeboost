@@ -17,7 +17,7 @@
 /**
  * A two column layout for the boost theme.
  *
- * @package    theme_eadumboost
+ * @package    theme_mineticeboost
  * @copyright  2020 Jonathan J.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -54,7 +54,7 @@ $templatecontext = [
 ];
 
 // ADD JJUPIN Modif du nav-drawer.
-theme_eadumboost_extend_navigation($PAGE->navigation);
+theme_mineticeboost_extend_navigation($PAGE->navigation);
 
 $nav = $PAGE->flatnav;
 $templatecontext['flatnavigation'] = $nav;

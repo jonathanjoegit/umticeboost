@@ -2,7 +2,7 @@
 // --- --- --- --- --- --- --- --- --- --- ---
 
 // change the logo (invert color), to no miss it ! (home, navbar & footer)
-.home-header-eadumboost div.col-lg-12 > img,
+.home-header-mineticeboost div.col-lg-12 > img,
 .logo-platform img,
 footer#page-footer .plateform-logo img,
 nav.navbar .logo img,
@@ -11,7 +11,7 @@ nav.navbar .logo-xs img {
 }
 
 // add a text to know where we are (preprod or test)
-.home-header-eadumboost div.col-lg-12:first-child::after,
+.home-header-mineticeboost div.col-lg-12:first-child::after,
 .logo-platform::after,
 footer#page-footer .plateform-logo::after,
 nav.navbar .logo-xs::after,

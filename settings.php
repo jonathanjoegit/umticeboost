@@ -17,7 +17,7 @@
 /**
  * Theme settings.
  *
- * @package    theme_eadumboost
+ * @package    theme_mineticeboost
  * @copyright  2020 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,13 +25,13 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ($ADMIN->fulltree) {
-    $settings = new theme_boost_admin_settingspage_tabs('themesettingeadumboost', get_string('configtitle', 'theme_boost'));
+    $settings = new theme_boost_admin_settingspage_tabs('themesettingmineticeboost', get_string('configtitle', 'theme_boost'));
     $page = new admin_settingpage('theme_boost_general', get_string('generalsettings', 'theme_boost'));
 
     // Set plateform environment (to have extra CSS for test & pre prod).
-    $name = 'theme_eadumboost/platform_env';
-    $title = get_string('platform_env', 'theme_eadumboost');
-    $description = get_string('platform_env_desc', 'theme_eadumboost');
+    $name = 'theme_mineticeboost/platform_env';
+    $title = get_string('platform_env', 'theme_mineticeboost');
+    $description = get_string('platform_env_desc', 'theme_mineticeboost');
     $default = 'Production';
     $choices = array(
         'Production' => 'Production',
@@ -43,9 +43,9 @@ if ($ADMIN->fulltree) {
     $page->add($setting);
 
     // Show a block for Angers Université users in the login page.
-    $name = 'theme_eadumboost/connexion_angers_users';
-    $title = get_string('title_angers_users', 'theme_eadumboost');
-    $description = get_string('text_angers_user', 'theme_eadumboost');
+    $name = 'theme_mineticeboost/connexion_angers_users';
+    $title = get_string('title_angers_users', 'theme_mineticeboost');
+    $description = get_string('text_angers_user', 'theme_mineticeboost');
     $default = 0;
     $choices = array(
         0 => "No",

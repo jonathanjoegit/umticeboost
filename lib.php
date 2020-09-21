@@ -17,7 +17,7 @@
 /**
  * Theme functions.
  *
- * @package    theme_eadumboost
+ * @package    theme_mineticeboost
  * @copyright  2020 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,7 +31,7 @@ defined('MOODLE_INTERNAL') || die();
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_eadumboost_get_main_scss_content($theme) {
+function theme_mineticeboost_get_main_scss_content($theme) {
     global $CFG;
 
     $scss = '';
@@ -51,14 +51,14 @@ function theme_eadumboost_get_main_scss_content($theme) {
     }
 
     // Add theme custom scss.
-    $post = file_get_contents($CFG->themedir . '/eadumboost/scss/styles.scss');
+    $post = file_get_contents($CFG->themedir . '/mineticeboost/scss/styles.scss');
 
     // Add custom styles for Test & Pre-production environment (theme setting).
     $value = $theme->settings->platform_env;
     if ($value == "Pre-Production") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
+        $post .= file_get_contents($CFG->themedir . '/mineticeboost/scss/extra/env_preproduction.scss');
     } else if ($value == "Test") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
+        $post .= file_get_contents($CFG->themedir . '/mineticeboost/scss/extra/env_test.scss');
     }
 
     // Combine them together.
@@ -71,7 +71,7 @@ function theme_eadumboost_get_main_scss_content($theme) {
  * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
  * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
  */
-function theme_eadumboost_extend_navigation($navigation) {
+function theme_mineticeboost_extend_navigation($navigation) {
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
 

@@ -17,13 +17,13 @@
 /**
  * Strings for theme, language 'de'
  *
- * @package    theme_eadumboost
+ * @package    theme_mineticeboost
  * @copyright  2020 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'EADUMBOOST';
-$string['choosereadme'] = 'Theme EADUMBOOST is a child theme of Boost for Le Mans Université';
+$string['pluginname'] = 'mineticeboost';
+$string['choosereadme'] = 'Theme mineticeboost is a child theme of Boost for Le Mans Université';
 $string['region-side-pre'] = 'region-side-pre';
 
 /* LOGIN. */
@@ -37,7 +37,7 @@ $string['connect-help'] = '<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq
 
 
 
-/* Custom EADUM. */
+/* Custom EAD-UM. */
 $string['noenrolments'] = 'Noch nicht zugänglich';
 $string['FAQ'] = 'FAQ';
 $string['mail'] = 'Mailbox';
@@ -57,7 +57,7 @@ Unterstützung für Studente
 </ul>
 ';
 
-// Custom home EADUM.
+// Custom home EAD-UM.
 $string['sitetitle'] = 'Ein dynamischer Zugang zum Hochschulabschluss';
 $string['connect'] = 'Anmelden';
 $string['watchvideo'] = 'Video ansehen';
