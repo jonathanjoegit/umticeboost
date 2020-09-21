@@ -149,4 +149,8 @@ Vous êtes ou devenez étudiant à distance et vous rencontrez une difficulté ?
 ';
 $string['txthome4'] = '<H3>Accessibilité :</H3>
 Ce site web est optimisé pour les dernières mises à jour des navigateurs web Firefox et Chrome.
-Pensez à mettre à jour votre navigateur. Vous pouvez également y accéder depuis votre tablette et votre mobile. repri';
+Pensez à mettre à jour votre navigateur. Vous pouvez également y accéder depuis votre tablette et votre mobile.';
+
+
+// Custom home MINETICE.
+$string['sitetitle'] = 'Espace de test - Le Mans Université';
