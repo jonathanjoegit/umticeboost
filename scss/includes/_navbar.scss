@@ -2,27 +2,27 @@
 // --- --- --- --- --- --- --- --- --- --- ---
 
 .navbar {
+    border-bottom: $navbarBorderSize solid $navbarBorderColor;
     background-color: $navbarBackgroundColor;
-    border-bottom   : $navbarBorderSize solid $navbarBorderColor;
 
     .logo img {
+        width: auto;
         height: 22px;
-        width : auto;
-
     }
     .logo-xs img {
+        width: auto;
         height: 33px;
-        width : auto;
     }
     .usermenu {
         color: $whiteText;
 
         a.dropdown-toggle {
             font-weight: 700;
-            color      : $whiteText;
+
+            color: $whiteText;
         }
         .login a {
-            color: $pinkumtice;
+            color: $themeSpecialColor1;
         }
         .icon {
             color: $blackText !important; // var textblanc / text bk
@@ -31,5 +31,8 @@
     .dropdown-item:hover {
         background-color: $navbarHoverColor;
     }
-
+    /* Notification, it was white with background white. */
+    .notification a {
+        color: $blackText !important;
+    }
 }
