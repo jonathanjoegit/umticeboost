@@ -57,6 +57,7 @@ $string['assistance'] = 'Educational and technical support';
 $string['FAQlong'] = 'FAQ';
 $string['formations'] = 'Staff training';
 $string['createcourse'] = 'New course creation form';
+$string['legalnotice'] = 'Legal notice';
 /* connections anonymes*/
 $string['connecte_invite'] = 'You are currently using guest access.';
 $string['acces_cours'] = 'Search courses';
