@@ -17,8 +17,8 @@
 /**
  * A two column layout for the boost theme.
  *
- * @package    theme_eadumboost
- * @copyright  2020 Jonathan J. - Le Mans Université
+ * @package    theme_umticeboost
+ * @copyright  2019 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -55,4 +55,4 @@ $templatecontext = [
 ];
 
 $templatecontext['flatnavigation'] = $PAGE->flatnav;
-echo $OUTPUT->render_from_template('theme_eadumboost/home', $templatecontext);
+echo $OUTPUT->render_from_template('theme_umticeboost/home', $templatecontext);

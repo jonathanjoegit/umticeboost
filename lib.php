@@ -17,8 +17,8 @@
 /**
  * Theme functions.
  *
- * @package    theme_eadumboost
- * @copyright  2020 Jonathan J. - Le Mans Université
+ * @package    theme_umticeboost
+ * @copyright  2019 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -31,7 +31,7 @@ defined('MOODLE_INTERNAL') || die();
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_eadumboost_get_main_scss_content($theme) {
+function theme_umticeboost_get_main_scss_content($theme) {
     global $CFG;
 
     $scss = '';
@@ -50,96 +50,25 @@ function theme_eadumboost_get_main_scss_content($theme) {
         $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
     }
 
-    // Add theme custom scss.
-    $post = file_get_contents($CFG->themedir . '/eadumboost/scss/styles.scss');
+    // Add umtice scss.
+    // Post (style.scss) CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
+    $post = file_get_contents($CFG->themedir . '/umticeboost/scss/styles.scss');
 
     // Add custom styles for Test & Pre-production environment (theme setting).
-    $value = $theme->settings->platform_env;
+    /*$value = $theme->settings->platform_env;
     if ($value == "Pre-Production") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
+        $post .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_preproduction.scss');
     } else if ($value == "Test") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
-    }
+        $post .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_test.scss');
+    }*/
 
-    // Combine them together.
     return $scss . "\n" . $post;
 }
 
 
-
-/**
- * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
- * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
- */
-function theme_eadumboost_extend_navigation($navigation) {
-    global $PAGE, $CFG, $COURSE;
-    require_once($CFG->libdir . '/completionlib.php');
-
+function theme_umticeboost_extend_navigation(global_navigation $navigation) {
     // Enlever "Home".
     if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
         $homenode->showinflatnavigation = false;
     }
-    // Enlever "Privat files".
-    // Fait en CSS (display:none;) sinon c'est un peu galère (à voir plus tard).
-
-    // Add plugin "tuteur".
-    // Vérifier si l'user à le droit d'afficher le rapport Tuteur.
-    $context = $PAGE->context;
-    if (has_capability('report/tuteur:view', $context)) {
-        // S'il y a des activités.
-        $completion = new completion_info($COURSE);
-        $activities = $completion->get_activities();
-        if (count($activities) > 0) {
-            // On récupère le noeud du cours (cours + section + ...).
-            $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
-            // Si la navigation contient des items.
-            if ($coursenode && $coursenode->has_children()) {
-
-                // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
-                $url = new moodle_url($CFG->wwwroot.'/report/tuteur/index.php', array('course' => $COURSE->id));
-                $nodereport = navigation_node::create(
-                    "Rapport Tuteur",
-                    $url,
-                    navigation_node::TYPE_SETTING,
-                    "rapporttuteur",
-                    "rapporttuteur",
-                    new pix_icon('i/report', 'rapporttuteur')
-                );
-
-                // Function signature : create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
-                // On check s'il y a le noeud "grades", si oui on le met en dessous (sinon à la fin).
-                if ($PAGE->navigation->find("grades", navigation_node::TYPE_SETTING)) {
-                    $node = $coursenode->children->add($nodereport, "grades");
-                } else { // Sinon à la fin du noeud.
-                    $node = $coursenode->children->add($nodereport);
-                }
-            }
-        }
-    }
-
-    // Add edition mode for admin (to save time).
-    if ($PAGE->user_allowed_editing() && $PAGE->pagelayout == 'course') {
-        $url = new moodle_url($PAGE->url);
-        $url->param('sesskey', sesskey());
-        $title = get_string('turneditingoff', 'core');
-
-        if ($PAGE->user_is_editing()) {
-            $url->param('edit', 'off');
-            $title = get_string('turneditingoff', 'core');
-        } else {
-            $url->param('edit', 'on');
-            $title = get_string('turneditingon', 'core');
-        }
-        $nodeedit = navigation_node::create(
-            $title,
-            $url,
-            navigation_node::TYPE_SETTING,
-            $title,
-            $title,
-            new pix_icon('i/edit', 'turneditingon')
-        );
-        $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
-        $node = $coursenode->children->add($nodeedit);
-    }
-
 }

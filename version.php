@@ -17,22 +17,14 @@
 /**
  *  Version
  *
- * @package    theme_eadumboost
- * @copyright  2020 Jonathan J. - Le Mans Université
+ * @package    theme_umticeboost
+ * @copyright  2019 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2020071700; // JUL 17th 2020
-$plugin->requires  = 2019070900; // This is the version of Moodle this plugin requires.
-$plugin->component = 'theme_eadumboost';
-$plugin->release  = 'Thème EADUMBOOST v1.1.0';
-
-
-
-/*
-* TIP:
-* When upgrade think about desintall if problem.
-* When changing name of plugin, think about renaming the lang files.
-*/
+$plugin->version   = 2019070900;
+$plugin->requires  = 2018120300; // This is the version of Moodle this plugin requires.
+$plugin->component = 'theme_umticeboost';
+$plugin->release  = 'Thème UMTICE v1.0.1';

@@ -1,88 +1,55 @@
 // vars :
 // === === === === === === === === === === ===
 
-/* --- VAR EADUM: --- */
+// Theme color:
+$grayumtice: #4d4d4d;
+$lightgrayumtice: #eee;
+$pinkumtice: #de5b5e;
 
-$themeSpecialColor1: #81c0c4; // Slightly desaturated cyan.
-$themeSpecialColor2: #e5512b; // Orange EADUM.
-
-$borderSizeNavAndFooter: 4px;
-
-$lightbackground: #f4f4f4; //Very light gray (mostly white).
-$darkBackground: #232934; //Very dark grayish blue.
-
-$navdrawerBackground: #cedadf; //Light grayish blue.
-
-$linkColor1: #08c;
-
-/* --- VAR VALEO: (OVERRIDE EADUM ! ! !)--- */
-
-/* Install Valeo Theme (from EADUM):
- * - search/replace all "theme_valeoboost" / theme_valeoboost
- * - un-comment Valeo's logos in the footer_content.mustache
- * - rename lang
- * - check pix
+/* --- MODIF THEME STS LLSH  --- */
+/* --- --- --- --- --- --- --- --- --- --- --- --- */
+$umtice-STS: #db4c3b;
+$umtice-LLSH: #2b3a6c;
 
 
+// POUR STS :
+/* === ===  === ===  === ===  === ===  === === */
 
-$darkBackground: #4e6b7c; //Mostly desaturated dark blue.
-$themeSpecialColor1: #82e600; //Fluo green.
-$themeSpecialColor2: $themeSpecialColor1;
+$pinkumtice: $umtice-STS;
+footer#page-footer a {
+    color: $umtice-STS !important;
+}
 
-$navdrawerBackground: #cedfda; //Light grayish cyan - lime green.
+/* === ===  === ===  === ===  === ===  === === */
 
-// Font VALEO :
-body {
-    font-family: 'Roboto';
+
+// POUR LLSH :
+/* === ===  === ===  === ===  === ===  === === */
+/*
+$pinkumtice: $umtice-LLSH;
+footer#page-footer a {
+    color: lighten($umtice-LLSH, 50%) !important;
 }
 */
+/* === ===  === ===  === ===  === ===  === === */
 
-/* --- VAR UMTICE: --- */
-/*
-// Theme color:
-$grayumtice           : #4d4d4d; // Very dark gray.
-$lightgrayumtice      : #eee; // Very light gray.
-$pinkumtice           : #de5b5e; // Soft red / pink.
 
-$lightbackground      : #eeeee9; // Light grayish yellow.
 
-$navdrawerBackground      : $lightgrayumtice;
-*/
-
-/* ================== */
-/* --- VAR THEME: --- */
-$white: #fff;
-$greenWarning: #00ff3e; // Pure (or mostly pure) lime green.
-
-// Theme color:
-$themeSpecialColor1: $themeSpecialColor1; // nav/footer border
-//$themeSpecialColor2    : $pinkumtice; // buttons,
-
-// links
-$linkColor1: $linkColor1; // link moodle
-$linkColor2: $themeSpecialColor2; // only on footer
-
-// navdrawer
-$navdrawerBackground: $navdrawerBackground;
+/* --- --- --- --- --- --- --- --- --- --- --- --- */
 
 // text:
-$whiteText: $white;
-$whiteTextHover: #d8d9da; // Light grayish blue.
+$whiteText: #fff;
 $blackText: #212529;
 
 //background:
-$lightbackground: $lightbackground;
-$darkBackground: $darkBackground; // nav, footer
+$lightbackground: #eeeee9;
 
 //navbar:
-$navbarBackgroundColor: $darkBackground;
-$navbarBorderColor: $themeSpecialColor1;
-$navbarBorderSize: $borderSizeNavAndFooter;
-$navbarTextColor: $white;
-$navbarHoverColor: $whiteTextHover;
-
-// Footer:
-$footerBorderSize: $borderSizeNavAndFooter;
+$navbarBackgroundColor: $grayumtice;
+$navbarBorderColor: $pinkumtice;
+$navbarBorderSize: 4px;
+$navbarTextColor: #fff;
+$navbarHoverColor: #d8d9da;
 
 // Smallsmartphones
 $screen-xs-min: 375px;
@@ -100,4 +67,4 @@ $screen-lg-min: 992px;
 $screen-xl-min: 1200px;
 
 // Administration du site :
-$adminDefaultRoleColor: $greenWarning;
+$adminDefaultRoleColor: #00ff3e;

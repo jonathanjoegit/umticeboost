@@ -58,6 +58,7 @@ $string['FAQlong'] = 'Foire aux Questions';
 $string['formations'] = 'Espace formations';
 $string['createcourse'] = 'Créer un espace-cours';
 $string['legalnotice'] = 'Mentions légales';
+$string['catalogueFormation'] = 'Catalogue de formation d\'appui à la pédagogie';
 /* connections anonymes*/
 $string['connecte_invite'] = 'Vous êtes connecté en tant qu\'utilisateur anonyme sur la plateforme pédagogique de Le Mans Université. Seuls les cours ouverts au public vous sont autorisés.';
 $string['acces_cours'] = 'Accéder à la liste des cours';

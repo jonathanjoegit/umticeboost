@@ -1,0 +1,85 @@
+{{!
+    @template theme_boost/login
+    
+    Login page template
+}}
+
+{{> theme_boost/head }}
+
+<body {{{ bodyattributes }}}>
+
+<div id="page-wrapper">
+
+    {{{ output.standard_top_of_body_html }}}
+
+    <div id="page" class="container-fluid mt-0">
+        <div id="page-content" class="row">
+            <div id="region-main-box" class="col-12">
+                <section id="region-main" class="col-12">
+                    {{{ output.course_content_header }}}
+                    {{{ output.main_content }}}
+                    {{{ output.course_content_footer }}}
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer id="page-footer" class="py-3 bg-dark text-light">
+        <div class="container">
+            <div id="course-footer">{{{ output.course_footer }}}</div>
+
+            {{# output.page_doc_link }}
+                <p class="helplink">{{{ output.page_doc_link }}}</p>
+            {{/ output.page_doc_link }}
+
+            {{{ output.login_info }}}
+            {{{ output.home_link }}}
+            {{{ output.standard_footer_html }}}
+            {{{ output.standard_end_of_body_html }}}
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
+
+
+{{#js}}
+require(['theme_boost/loader']);
+
+require(['jquery', 'jqueryui'], function($, jqui) {
+
+/* Utilisation de Jquery pour custom la page (on ne peut pas avec les renderer) */
+
+    /* change le texte de connexion (en toutes les langues) */
+    $('.loginpanel div').find('a').each(function(){
+        $test= $(this).html();
+        if($test == 'CAS users' || $test ==  'other users' || $test == 'Utilisateurs CAS' || $test == 'Autres utilisateurs' || $test == 'CAS-Nutzer/innen' || $test == 'Weitere Nutzer/innen'){
+
+            $(this).text( $(this).html().replace('CAS users','Le Mans Université users') );
+            $(this).text( $(this).html().replace('other users','Other users') );
+
+            $(this).text( $(this).html().replace('Utilisateurs CAS','Utilisateurs de Le Mans Université') );
+            $(this).text( $(this).html().replace('Autres utilisateurs','Autres utilisateurs') );
+
+            $(this).text( $(this).html().replace('CAS-Nutzer/innen','Nutzer/in der Le Mans Université ') );
+            $(this).text( $(this).html().replace('Weitere Nutzer/innen','Weitere Nutzer (Universität Angers/Tours)') );
+
+            $(this).css('font-size', '1.3em');
+
+        }
+    });
+
+    /* Ajout d'une image pour le login form (1e page) */
+    $('.loginpanel').each(function() {
+        $(this).prepend('{{# pix }} login_avatar, theme{{/ pix }}');
+    });
+
+    /* Ajout d'une image pour les utilisateurs d'angers */
+    $('.card-block .card-title H2').each(function() {
+
+        $(this).html().replace('Première visite sur ce site ?','Nutzer/in der Le Mans Université ') ;
+
+    });
+});
+
+  {{/js}}

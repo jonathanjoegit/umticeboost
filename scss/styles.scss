@@ -2,7 +2,6 @@
 @import 'includes/config';
 
 // partials :
-@import 'includes/general';
 @import 'includes/home';
 @import 'includes/loginform';
 @import 'includes/navbar';
@@ -13,8 +12,14 @@
 @import 'includes/course';
 
 // partials plugin:
-//@import 'includes/pluginjournal';
+@import 'includes/pluginjournal';
+@import 'includes/pluginblockmyoverview';
 
 // ATTENTION A LA PLACE DU THEME !!!!!!
 // Fonction lib.php dans le thème va chercher les fichiers SCSS (du thème boost et du thème enfant !!!)
 //	$post = file_get_contents($CFG->themedir . '/eadumboost/scss/post.scss');
+
+
+
+// MODIF POUR LA MIGRATION PERIODE CORONAVIRUS
+@import 'includes/style-UMTICE-coronavirus';

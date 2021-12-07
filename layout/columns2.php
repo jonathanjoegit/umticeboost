@@ -17,8 +17,8 @@
 /**
  * A two column layout for the boost theme.
  *
- * @package    theme_eadumboost
- * @copyright  2020 Jonathan J.
+ * @package    theme_umticeboost
+ * @copyright  2019 Jonathan J.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -32,6 +32,7 @@ if (isloggedin()) {
 } else {
     $navdraweropen = false;
 }
+
 $extraclasses = [];
 if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';
@@ -39,9 +40,7 @@ if ($navdraweropen) {
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = strpos($blockshtml, 'data-block=') !== false;
-$buildregionmainsettings = !$PAGE->include_region_main_settings_in_header_actions();
-// If the settings menu will be included in the header then don't add it here.
-$regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settings_menu() : false;
+$regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -53,10 +52,8 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu)
 ];
 
-// ADD JJUPIN Modif du nav-drawer.
-theme_eadumboost_extend_navigation($PAGE->navigation);
+// Modif du nav-drawer.
+theme_umticeboost_extend_navigation($PAGE->navigation);
 
-$nav = $PAGE->flatnav;
-$templatecontext['flatnavigation'] = $nav;
-$templatecontext['firstcollectionlabel'] = $nav->get_collectionlabel();
+$templatecontext['flatnavigation'] = $PAGE->flatnav;
 echo $OUTPUT->render_from_template('theme_boost/columns2', $templatecontext);
