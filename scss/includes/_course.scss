@@ -1,27 +1,13 @@
 /** course
 -------------------------*/
 
-// Course Header
-.context-header-settings-menu {
-    display        : flex;
-    flex-direction : row;
-    flex-wrap      : wrap;
-    justify-content: flex-end;
-    align-items    : center;
-    align-content  : center;
-    height         : auto;
-    max-width      : none;
-    .edit-btn {
-        color : $whiteText !important;
-        margin: .5rem 1rem;
-        border: 0;
-        @media (max-width: $screen-sm-min) {
-            display: none;
-        }
-    }
-    .action-menu {
-        .dropdown-toggle .icon {
-            font-size: 40px;
-        }
-    }
+/*
+// correction bug avec attestoodle tool (a.btn:link, a.btn:visited { color: #555; )
+
+ a.btn:link,
+a.btn:visited {
+  //color: #fff;
 }
+corrigé ici : https://github.com/grp-attestoodle/moodle-tool_attestoodle/pull/161
+
+*/

@@ -1,10 +1,8 @@
 // vars :
 // === === === === === === === === === === ===
 
-// Theme color:
-$grayumtice: #4d4d4d;
-$lightgrayumtice: #eee;
-$pinkumtice: #de5b5e;
+
+
 
 /* --- MODIF THEME STS LLSH  --- */
 /* --- --- --- --- --- --- --- --- --- --- --- --- */
@@ -33,23 +31,68 @@ footer#page-footer a {
 */
 /* === ===  === ===  === ===  === ===  === === */
 
+/* --- VAR UMTICE: --- */
 
 
-/* --- --- --- --- --- --- --- --- --- --- --- --- */
+$grayumtice: #4d4d4d;
+$lightgrayumtice: #eee;
+//$pinkumtice: #de5b5e;
+$lightbackground: #eeeee9;
+
+// Theme color:
+$themeSpecialColor1: $pinkumtice; 
+$themeSpecialColor2: $pinkumtice; 
+
+$borderSizeNavAndFooter: 4px;
+
+$lightbackground: #f4f4f4; //Very light gray (mostly white).
+$darkBackground: $grayumtice; //Very dark grayish blue.
+
+$navdrawerBackground: $lightgrayumtice; 
+
+$linkColor1: #08c;
+
+
+
+
+/* ================== */
+/* --- VAR THEME: --- */
+
+$white: #fff;
+$greenWarning: #00ff3e; // Pure (or mostly pure) lime green.
+
+// Theme color:
+$themeSpecialColor1: $themeSpecialColor1; // nav/footer border
+$themeSpecialColor2    : $themeSpecialColor2; // buttons,
+
+// links
+$linkColor1: $linkColor1; // link moodle
+$linkColor2: $themeSpecialColor2; // only on footer
+
+// navdrawer
+$navdrawerBackground: $navdrawerBackground;
 
 // text:
-$whiteText: #fff;
+$whiteText: $white;
+$whiteTextHover: #d8d9da; // Light grayish blue.
 $blackText: #212529;
 
 //background:
-$lightbackground: #eeeee9;
+$lightbackground: $lightbackground;
+$darkBackground: $darkBackground; // nav, footer
 
 //navbar:
-$navbarBackgroundColor: $grayumtice;
-$navbarBorderColor: $pinkumtice;
-$navbarBorderSize: 4px;
-$navbarTextColor: #fff;
-$navbarHoverColor: #d8d9da;
+$navbarBackgroundColor: $darkBackground;
+$navbarBorderColor: $themeSpecialColor1;
+$navbarBorderSize: $borderSizeNavAndFooter;
+$navbarTextColor: $white;
+$navbarHoverColor: $whiteTextHover;
+
+// Footer:
+$footerBorderSize: $borderSizeNavAndFooter;
+
+// Login.
+$colorAngers: #706F6F; //#0ABBEF;
 
 // Smallsmartphones
 $screen-xs-min: 375px;
@@ -66,5 +109,8 @@ $screen-lg-min: 992px;
 // Large tablets and desktops
 $screen-xl-min: 1200px;
 
+// Large desktops
+$screen-xxl-min: 1400px;
+
 // Administration du site :
-$adminDefaultRoleColor: #00ff3e;
+$adminDefaultRoleColor: $greenWarning;

@@ -4,18 +4,18 @@
 // HEADER :
 .home-header-umticeboost {
 
-    background     : url('[[pix:theme|banner_1400]]') no-repeat center center;
+    background     : url('[[pix:theme|theme_umticeboost_banner_1400]]') no-repeat center center;
     background-size: 100%;
     padding-top    : 15px;
     padding-bottom : 20px;
     //max-width: 1200px;
 
     @media (max-width: $screen-sm-min) {
-        background     : url('[[pix:theme|banner_600]]') no-repeat center center;
+        background     : url('[[pix:theme|theme_umticeboost_banner_600]]') no-repeat center center;
         background-size: auto;
     }
     @media (max-width: $screen-sm-min) {
-        background     : url('[[pix:theme|banner_600]]') no-repeat center center;
+        background     : url('[[pix:theme|theme_umticeboost_banner_600]]') no-repeat center center;
         background-size: auto;
     }
     .row {

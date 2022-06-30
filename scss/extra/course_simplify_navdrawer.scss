@@ -1,0 +1,10 @@
+// Simplify the nav-drawer in a course.
+// Hide the bloc "Site".
+// --- --- --- --- --- --- --- --- --- --- ---
+body.pagelayout-course, 
+body.pagelayout-incourse, 
+body[class*="course-"]:not(.course-1){ // All except course-1 => ADMIN.
+    nav[aria-label="Site"]{
+        display: none;
+    }
+}

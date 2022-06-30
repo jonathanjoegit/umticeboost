@@ -18,18 +18,57 @@
  * Language file.
  *
  * @package    theme_umticeboost
- * @copyright  2019 Jonathan J. - Le Mans Université
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'UMTICE Boost';
-$string['choosereadme'] = 'Theme UMTICE Boost is a child theme of Boost for Le Mans Université';
+/* PLUGIN NAME */
+$string['pluginname'] = 'UMTICEBOOST';
+$string['choosereadme'] = 'Theme UMTICEBOOST is a child theme of Boost for Le Mans Université';
+$string['configtitle'] = 'Settings UMTICEBOOST';
 
-$string['region-side-pre'] = 'region-side-pre';
+/* Navbar */
+$string['dashboard'] = 'Tableau de bord'; /* Attention : utilisé en css */
+$string['mycourses'] = 'Mes cours';  /* Attention : utilisé en css */
+$string['courselist'] = 'Tous les cours';  /* Attention : utilisé en css */
 
-/* custom : */
+/* Login. */
+$string['connect-form-welcome'] = 'Bienvenue !';
+$string['connect-form-title'] = 'Pour continuer, veuillez vous connecter&nbsp;:';
+$string['connect-as-um-user'] = 'Avec votre compte <i>Le Mans Université</i>';
+$string['connect-other-users'] = '<i>Autres utilisateurs</i>';
+$string['connect-manual'] = 'Connectez-vous avec un compte manuel&nbsp;:';
+$string['connect-manual-button'] = 'Se connecter avec un compte manuel';
+$string['connect-form-or'] = 'Ou';
+$string['connect-help'] = '<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/faq-connexion.html" target="_blank"> Des soucis pour se connecter ?</a>';
+$string['connect-angers-text'] = 'Utilisateurs inscrits à l\'Université d\'Angers, connectez-vous à l\'aide de vos identifiants habituels (ceux que vous utilisez dans votre université) : ';
+$string['connect-angers-button'] = 'Avec votre compte <i>Université Angers</i>';
+
+/* Connections anonymes. */
+$string['connecte_invite'] = 'Vous êtes connecté en tant qu\'utilisateur anonyme sur la plateforme pédagogique de Le Mans Université. Seuls les cours ouverts au public vous sont autorisés.';
+$string['acces_cours'] = 'Accéder à la liste des cours';
+
+// Admin settings.
+$string['general_settings'] = 'General';
+$string['course_settings'] = 'Cours';
+$string['platform_env'] = 'Environnement';
+$string['platform_env_desc'] = 'Sélection de l\'environnement de la plate-forme. Cette sélection change le logo du thème pour montrer qu\'il ne s\'agit pas de la plateforme "Production".';
+$string['title_angers_users'] = 'Connexion avec Angers';
+$string['text_angers_user'] = 'Afficher un bloc pour les utilisateurs d\'Angers Université dans la page de connexion';
+$string['navbar_course_list'] = 'Afficher la "Tous les cours" dans la navbar';
+$string['navbar_text_course_list_navbar'] = 'Accès à la liste des cours depuis la barre de navigation pour tous les utilisateurs ou seulement les managers (UMTICE : everybody, EADUM : manager)';
+$string['course_simplify_navdrawer'] = 'Simplifier le nav-drawer dans les cours';
+$string['course_text_simplify_navdrawer'] = 'Simplifier le nav-drawer dans le contexte "cours" (cacher ce qui n\'est pas lié au cours)';
+$string['course_rapport_tuteur'] = 'Rapport Tuteur :';
+$string['course_text_rapport_tuteur'] = 'Ajouter l\'accès dans le nav-drawer d\'un cours qui utilise le suivi d\'achèvement';
+$string['course_editing_mode_navdrawer'] = 'Bouton mode édition: ';
+$string['course_text_editing_mode_navdrawer'] = 'Ajouter l\'accès dans le nav-drawer';
+
+/* - - UMTICE : - - */
+
+/* navbar */
 $string['noenrolments'] = 'Aucun cours';
 $string['assistanceEns'] = 'Assistance enseignant';
 $string['assistanceTP'] = 'Assistance pédagogique et technique';
@@ -38,7 +77,8 @@ $string['espaceformation'] = 'Espace formations';
 $string['creerespacecours'] = 'Créer un espace-cours ';
 $string['recherchecours'] = 'Rechercher un cours';
 $string['mail'] = 'Messagerie LMU';
-/* HOME */
+
+/* Home page & footer */
 $string['sitetitle'] = 'Espace pédagogique - Le Mans Université';
 $string['connect'] = 'Se connecter';
 $string['listUFR1'] = 'Droit, Economie, Gestion';
@@ -59,6 +99,4 @@ $string['formations'] = 'Espace formations';
 $string['createcourse'] = 'Créer un espace-cours';
 $string['legalnotice'] = 'Mentions légales';
 $string['catalogueFormation'] = 'Catalogue de formation d\'appui à la pédagogie';
-/* connections anonymes*/
-$string['connecte_invite'] = 'Vous êtes connecté en tant qu\'utilisateur anonyme sur la plateforme pédagogique de Le Mans Université. Seuls les cours ouverts au public vous sont autorisés.';
-$string['acces_cours'] = 'Accéder à la liste des cours';
+/* - - - - */

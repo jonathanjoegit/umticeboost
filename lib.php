@@ -18,12 +18,13 @@
  * Theme functions.
  *
  * @package    theme_umticeboost
- * @copyright  2019 Jonathan J. - Le Mans Université
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->dirroot.'/theme/boost/lib.php');
 
 /**
  * Returns the main SCSS content.
@@ -34,41 +35,115 @@ defined('MOODLE_INTERNAL') || die();
 function theme_umticeboost_get_main_scss_content($theme) {
     global $CFG;
 
-    $scss = '';
-    $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;
-    $fs = get_file_storage();
-
-    $context = context_system::instance();
-    if ($filename == 'default.scss') {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
-    } else if ($filename == 'plain.scss') {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');
-    } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_boost', 'preset', 0, '/', $filename))) {
-        $scss .= $presetfile->get_content();
-    } else {
-        // Safety fallback - maybe new installs etc.
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+    // get the main css of the parent theme_boost
+    static $boosttheme = null;
+    if (empty($boosttheme)) {
+        $boosttheme = theme_config::load('boost'); // Needs to be the Boost theme so that we get its settings.
     }
+    $scss = theme_boost_get_main_scss_content($boosttheme);
 
-    // Add umtice scss.
-    // Post (style.scss) CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
-    $post = file_get_contents($CFG->themedir . '/umticeboost/scss/styles.scss');
+    // Add theme custom scss.
+    $custom = file_get_contents($CFG->themedir . '/umticeboost/scss/styles.scss');
 
     // Add custom styles for Test & Pre-production environment (theme setting).
-    /*$value = $theme->settings->platform_env;
+    $value = $theme->settings->platform_env;
     if ($value == "Pre-Production") {
-        $post .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_preproduction.scss');
+        $custom .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_preproduction.scss');
     } else if ($value == "Test") {
-        $post .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_test.scss');
-    }*/
-
-    return $scss . "\n" . $post;
+        $custom .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_test.scss');
+    } else if ($value == "Test-annualisation") {
+        $custom .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/env_testannualisation.scss');
+    }
+    if ($theme->settings->course_simplify_navdrawer ) {
+        // Theme setting: course_simplify_navdrawer => add scss.
+        $custom .= file_get_contents($CFG->themedir . '/umticeboost/scss/extra/course_simplify_navdrawer.scss');
+    }
+    // Combine them together.
+    return $scss . "\n" . $custom;
 }
 
+/**
+ * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
+ * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
+ */
+function theme_umticeboost_extend_navigation($navigation) {
+    global $PAGE, $CFG, $COURSE;
+    require_once($CFG->libdir . '/completionlib.php');
 
-function theme_umticeboost_extend_navigation(global_navigation $navigation) {
-    // Enlever "Home".
+    static $theme;
+    if (empty($theme)) {
+        $theme = theme_config::load('umticeboost');
+    }
+
+    // Enlever "Home" (accueil non connecté, utile vu qu'on ne cache des blocs qu'en CSS après).
     if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
         $homenode->showinflatnavigation = false;
+    }
+
+    // Add plugin "tuteur" (setting course_rapport_tuteur).
+    // Vérifier si l'user à le droit d'afficher le rapport Tuteur.
+    $context = $PAGE->context;
+    if (
+        has_capability('report/tuteur:view', $context)
+        && $theme->settings->course_rapport_tuteur
+        ) {
+        // S'il y a des activités.
+        $completion = new completion_info($COURSE);
+        $activities = $completion->get_activities();
+        if (count($activities) > 0) {
+            // On récupère le noeud du cours (cours + section + ...).
+            $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
+            // Si la navigation contient des items.
+            if ($coursenode && $coursenode->has_children()) {
+
+                // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
+                $url = new moodle_url($CFG->wwwroot.'/report/tuteur/index.php', array('course' => $COURSE->id));
+                $nodereport = navigation_node::create(
+                    "Rapport Tuteur",
+                    $url,
+                    navigation_node::TYPE_SETTING,
+                    "rapporttuteur",
+                    "rapporttuteur",
+                    new pix_icon('i/report', 'rapporttuteur')
+                );
+
+                // Function signature : create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
+                // On check s'il y a le noeud "grades", si oui on le met en dessous (sinon à la fin).
+                if ($PAGE->navigation->find("grades", navigation_node::TYPE_SETTING)) {
+                    $node = $coursenode->children->add($nodereport, "grades");
+                } else { // Sinon à la fin du noeud.
+                    $node = $coursenode->children->add($nodereport);
+                }
+            }
+        }
+    }
+
+    // Add edition mode in nav drawer (setting : course_editing_mode_navdrawer).
+    if (
+        $PAGE->user_allowed_editing()
+        && $PAGE->pagelayout == 'course'
+        && $theme->settings->course_editing_mode_navdrawer
+    ) {
+        $url = new moodle_url($PAGE->url);
+        $url->param('sesskey', sesskey());
+        $title = get_string('turneditingoff', 'core');
+
+        if ($PAGE->user_is_editing()) {
+            $url->param('edit', 'off');
+            $title = get_string('turneditingoff', 'core');
+        } else {
+            $url->param('edit', 'on');
+            $title = get_string('turneditingon', 'core');
+        }
+        $nodeedit = navigation_node::create(
+            $title,
+            $url,
+            navigation_node::TYPE_SETTING,
+            $title,
+            $title,
+            new pix_icon('i/edit', 'turneditingon')
+        );
+        $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
+        $node = $coursenode->children->add($nodeedit);
     }
 }

@@ -18,13 +18,25 @@
  *  Version
  *
  * @package    theme_umticeboost
- * @copyright  2019 Jonathan J. - Le Mans Université
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2019070900;
-$plugin->requires  = 2018120300; // This is the version of Moodle this plugin requires.
+// Version (YYYYMMDDrr where rr is the release number)
+$plugin->version   = 2022063000;
+
+$plugin->requires  = 2019121200;
 $plugin->component = 'theme_umticeboost';
-$plugin->release  = 'Thème UMTICE v1.0.1';
+$plugin->release  = 'Theme UMTICEBOOST v2 Moodle 3.10';
+
+$plugin->dependencies = array(
+    'theme_boost'  => 2020110900
+);
+
+/*
+* TIP:
+* When upgrade think about desintall if problem.
+* When changing name of plugin, think about renaming the lang files.
+*/

@@ -2,27 +2,27 @@
 // --- --- --- --- --- --- --- --- --- --- ---
 
 .navbar {
-    background-color: $navbarBackgroundColor;
-    border-bottom   : $navbarBorderSize solid $navbarBorderColor;
+    border-bottom: $navbarBorderSize solid $navbarBorderColor;
+    background-color: $navbarBackgroundColor !important;
 
     .logo img {
+        width: auto;
         height: 22px;
-        width : auto;
-
     }
     .logo-xs img {
+        width: auto;
         height: 33px;
-        width : auto;
     }
     .usermenu {
         color: $whiteText;
 
         a.dropdown-toggle {
             font-weight: 700;
-            color      : $whiteText;
+
+            color: $whiteText;
         }
         .login a {
-            color: $pinkumtice;
+            color: $themeSpecialColor1;
         }
         .icon {
             color: $blackText !important; // var textblanc / text bk
@@ -30,6 +30,45 @@
     }
     .dropdown-item:hover {
         background-color: $navbarHoverColor;
+        color: $blackText !important;
+
+    }
+    /* Notification, it was white with background white. */
+    .notification a {
+        color: $blackText !important;
+    }
+    /* Search bar : */
+    .simplesearchform .collapse {
+        background-color: $navdrawerBackground;
+    }
+}
+
+
+/* Show icon in custom menu in nav-bar. */
+ nav ul.navbar-nav:first-of-type li.nav-item { 
+    a:before{
+        //display: inline-block;
+        font-family: FontAwesome;
+        color: $whiteTextHover;
+        padding-right: 0.2rem;
+        font-size: 1.1rem ;
+    }
+    a:hover:before{
+        color: $whiteText;
+    }
+    a[title="Dashboard"]:before, a[title="Tableau de bord"]:before { 
+        padding-right: 0.5rem;
+        content: "\F0E4"; /* fontawesome unicode */
+    }
+    a[title="My courses"]:before, a[title="Mes cours"]:before { 
+        content: "\f19d"; /* fontawesome unicode */
+    }
+    a[title="Course list"]:before, a[title="Tous les cours"]:before { 
+        content: "\f0e8"; /* fontawesome unicode f0e8 f0ca */
+        padding-right: 0.5rem;
+    }
+    @media (max-width: $screen-xxl-min) {
+        font-size:0px;
     }
 
-}
+  }

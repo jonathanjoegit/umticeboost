@@ -1,64 +1,67 @@
 /** Login form
 -------------------------*/
-#page-login-index {
-    background-color: #fff;
-    [data-region='drawer-toggle'] {
-        display: none;
+.pagelayout-login {
+    .card-header {
+        background: $darkBackground;
+        img {
+            width: auto;
+            height: 30px;
+        }
     }
-    span.login {
-        color: $grayumtice;
-    }
-    .loginbox {
-        .loginpanel {
-            max-width       : 350px;
-            min-height      : 200px;
-            margin          : 50px auto 25px !important;
-            padding         : 20px 25px 40px !important;
-            text-align      : center;
-            border-radius   : 2px;
-            background-color: #f7f7f7;
-            box-shadow      : 0 2px 2px rgba(0, 0, 0, .3);
-            img {
-                display      : block;
-                width        : 96px;
-                height       : 96px;
-                margin       : 10px auto 25px;
+    .card-body {
+        text-align: center;
+        h2 {
+            font-size: 2.5em;
+            font-weight: 600;
 
-                border-radius: 50%;
+            margin-top: .8em;
+            margin-bottom: 1em;
+
+            color: $darkBackground;
+        }
+        h3 {
+            //font-size: 1.6em;
+        }
+
+        .button-connect-login {
+            a {
+                font-size: 1.5em;
+                color: $whiteText;
+                margin-top: .8em;
+                margin-bottom: .8em;
+                img {
+                    width: auto;
+                    height: 1.2em;
+                }
+                @media (max-width: $screen-lg-min) {
+                    font-size: 1.3em;
+                }
+                @media (max-width: $screen-md-min) {
+                    font-size: 1em;
+                }
             }
         }
-        .signuppanel {
-            max-width       : 450px;
-            margin          : 50px 20px 25px !important;
-            padding         : 20px 25px 40px !important;
-            text-align      : center;
-            border-radius   : 2px;
-            background-color: #f8ffd0;
-            box-shadow      : 0 2px 2px rgba(0, 0, 0, .3);
+        .button-connect-UM a {
+            font-weight: 600;
+            background: $linkColor1;
+            img {
+                width: auto;
+                height: 2em;
+            }
+            &:hover {
+                background: darken($linkColor1, 8%);
+            }
         }
-        .profile-img-card2 {
-            display      : block;
-
-            width        : 96px;
-            height       : 96px;
-            margin       : 10px auto 15px;
-
-            border-radius: 5%;
+        .button-connect-angers a{
+            background: $colorAngers;
+            &:hover {
+                background: darken($colorAngers, 8%);
+            }
+       
         }
-        .loginpanel h2 {
-            margin : 0;
-            padding: 0;
-        }
-        div.loginbox a {
-            font-size: 1.3em;
+        form {
+            margin-bottom: 2em;
         }
     }
-    .card {
-        margin          : 50px auto 25px !important;
-        padding         : 20px 25px 40px !important;
-
-        border-radius   : 2px;
-        background-color: #f7f7f7;
-        box-shadow      : 0 2px 2px rgba(0, 0, 0, .3);
-    }
+    
 }
