@@ -8,3 +8,6 @@ ehthumbs.db
 Thumbs.db
 *.css
 *.map
+.DS_Store
+lang/.DS_Store
+scss/.DS_Store
