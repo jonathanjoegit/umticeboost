@@ -64,8 +64,11 @@ function theme_umticeboost_get_main_scss_content($theme) {
 
 /**
  * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
- * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
+ * doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
+ *
+ * @param  navigation_node$navigation.
  */
+
 function theme_umticeboost_extend_navigation($navigation) {
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
