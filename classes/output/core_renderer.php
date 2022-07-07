@@ -209,11 +209,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $buttontitle, array('href' => $url, 'class' => 'btn '.$btn, 'title' => $title));
     }
 
-
-   
-   
-
-
     /**
      * OVERRIDE (check moodle 3.8 OK).
      * Add jjupin: searchcourses to custom menu (copy of build_action_menu_from_navigation).

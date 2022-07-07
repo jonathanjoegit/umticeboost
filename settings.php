@@ -27,7 +27,10 @@ defined('MOODLE_INTERNAL') || die();
 if ($ADMIN->fulltree) {
 
     // Boost provides a nice setting page which splits settings onto separate tabs. We want to use it here.
-    $settings = new theme_boost_admin_settingspage_tabs('themesettingumticeboostboost', get_string('configtitle', 'theme_umticeboost'));
+    $settings = new theme_boost_admin_settingspage_tabs(
+        'themesettingumticeboostboost',
+        get_string('configtitle', 'theme_umticeboost')
+    );
 
 
     /*
@@ -35,7 +38,10 @@ if ($ADMIN->fulltree) {
     * General settings tab
     * ----------------------
     */
-    $page = new admin_settingpage('theme_umticeboost_general', get_string('general_settings', 'theme_umticeboost'));
+    $page = new admin_settingpage(
+        'theme_umticeboost_general',
+        get_string('general_settings', 'theme_umticeboost')
+    );
 
 
     // Set plateform environment (to have extra CSS for test & pre prod).

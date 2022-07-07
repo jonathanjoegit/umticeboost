@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Version (YYYYMMDDrr where rr is the release number)
+// Version (YYYYMMDDrr where rr is the release number).
 $plugin->version   = 2022063000;
 
 $plugin->requires  = 2019121200;

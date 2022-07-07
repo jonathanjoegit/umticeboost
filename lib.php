@@ -35,7 +35,7 @@ require_once($CFG->dirroot.'/theme/boost/lib.php');
 function theme_umticeboost_get_main_scss_content($theme) {
     global $CFG;
 
-    // get the main css of the parent theme_boost
+    // Get the main css of the parent theme_boost.
     static $boosttheme = null;
     if (empty($boosttheme)) {
         $boosttheme = theme_config::load('boost'); // Needs to be the Boost theme so that we get its settings.
@@ -107,7 +107,8 @@ function theme_umticeboost_extend_navigation($navigation) {
                     new pix_icon('i/report', 'rapporttuteur')
                 );
 
-                // Function signature : create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
+                // Function signature.
+                // Create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
                 // On check s'il y a le noeud "grades", si oui on le met en dessous (sinon à la fin).
                 if ($PAGE->navigation->find("grades", navigation_node::TYPE_SETTING)) {
                     $node = $coursenode->children->add($nodereport, "grades");
